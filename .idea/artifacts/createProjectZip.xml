@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="createProjectZip">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="root">
+      <element id="archive" name="nemesis 1.15.2.zip">
+        <element id="dir-copy" path="$PROJECT_DIR$" />
+      </element>
+    </root>
+  </artifact>
+</component>

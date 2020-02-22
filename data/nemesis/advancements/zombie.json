@@ -1,0 +1,16 @@
+{
+    "criteria": {
+        "killed": {
+            "trigger": "minecraft:entity_killed_player",
+            "conditions": {
+                "entity": {
+                    "type": "minecraft:zombie"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "nemesis:upgrade/zombie"
+    },
+    "parent": "nemesis:root"
+}

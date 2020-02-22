@@ -1,0 +1,42 @@
+Green hills
+    creeper: Either camouflage or explosion
+    phantom: summons a nightmarish phantom
+    skeleton: lost its identity long ago and assumes a new one
+    spider: have a positive effect
+    witch: Curse the player on death
+    zombie: ...
+    zombie villager: a profession with its perks
+
+Underground
+    cave spider: Immitation of a spider but in larger numbers
+    silverfish: fast, persistant, or plentyful
+    slime: Increase in numbers on death
+
+Dessert
+    husk: A small group that helps eachother on death
+
+Snow dessert
+    stray: Are harder to hit in melee
+
+Sea
+    drowned: Sea
+
+Raid
+    Dying to a raid member will result in the summoning of a different raid member
+    
+    pillager: Goes to ravager
+    ravager: Goes to a vindicator
+    vindicator: Goes to a evoker
+    evoker: Goes back to a pillager
+    vex: A pillager
+    illusioner: evoker with a potion effect
+
+Nether
+    blaze: Some form of demon
+    ghast: Some form of ghost
+    magma cube: hinder each other
+    wither skeleton: Some form of guard
+
+Misc
+    endermite: Summon mobs from a group
+    rabbit: summons more rabbits

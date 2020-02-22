@@ -1,0 +1,6 @@
+{
+    "pack": {
+        "pack_format": 1,
+        "description": "Makes a mob stronger when a player dies"
+    }
+}
