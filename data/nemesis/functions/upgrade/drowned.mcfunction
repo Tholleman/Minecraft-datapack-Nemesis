@@ -15,7 +15,7 @@ execute if score @s nem_drowned < amount nem_num run scoreboard players operatio
 execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type=drowned] add nemesis
 
 # Summon one of the drowned
-execute if score rng nem_num matches 0..1 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {CustomName:"\"an angler Fish\"",PersistenceRequired:1b,CanPickUpLoot:0b,Attributes:[{Name:"generic.followRange",Base:64}],Silent:1,IsBaby:1,ArmorItems:[{},{},{},{id:"minecraft:lantern",Count:1}],ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647}]}
+execute if score rng nem_num matches 0..1 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {CustomName:"\"Angler Fish\"",PersistenceRequired:1b,CanPickUpLoot:0b,Attributes:[{Name:"generic.followRange",Base:64}],Silent:1,IsBaby:1,ArmorItems:[{},{},{},{id:"minecraft:lantern",Count:1}],ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647}]}
 execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {CustomName:"\"Diver\"",PersistenceRequired:1b,CanPickUpLoot:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:fishing_rod",Count:1},{}],ArmorItems:[{id:"minecraft:leather_boots",Count:1,tag:{Enchantments:[{id:frost_walker,lvl:2}]}},{id:"minecraft:leather_leggings",Count:1},{id:"minecraft:leather_chestplate",Count:1},{id:"minecraft:white_stained_glass",Count:1}]}
 execute if score rng nem_num matches 4..5 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {CustomName:"\"Bodyguard\"",PersistenceRequired:1b,CanPickUpLoot:1b,LeftHanded:1,Attributes:[{Name:"generic.followRange",Base:64},{Name:"generic.knockbackResistance",Base:0.33f}],HandItems:[{},{id:"minecraft:trident",Count:1}],ArmorItems:[{id:"minecraft:chainmail_boots",Count:1,tag:{Enchantments:[{id:frost_walker,lvl:2}]}},{id:"minecraft:chainmail_leggings",Count:1},{id:"minecraft:chainmail_chestplate",Count:1},{id:"minecraft:chainmail_helmet",Count:1}]}
 execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {CustomName:"\"Triton\"",PersistenceRequired:1b,CanPickUpLoot:1b,Health:40,Attributes:[{Name:"generic.maxHealth",Base:40},{Name:"generic.followRange",Base:64},{Name:"generic.knockbackResistance",Base:0.5f}],Age:0,HandItems:[{id:"minecraft:trident",Count:1},{}],ArmorItems:[{id:"minecraft:chainmail_boots",Count:1,tag:{Enchantments:[{id:frost_walker,lvl:2}]}},{id:"minecraft:chainmail_leggings",Count:1,tag:{Enchantments:[{id:protection,lvl:2}]}},{id:"minecraft:chainmail_chestplate",Count:1,tag:{Enchantments:[{id:protection,lvl:2}]}},{id:"minecraft:golden_helmet",Count:1,tag:{Enchantments:[{id:protection,lvl:4}]}}]}
@@ -53,6 +53,31 @@ execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_blo
 execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[-1.4d,0.1d,0.2d]}
 execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[-1.6d,0.2d,-1.4d]}
 execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[-1.2d,0.3d,-1.4d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~2 ~1 ~2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~2 ~1 ~1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~2 ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~2 ~1 ~-1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~2 ~1 ~-2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~1 ~1 ~2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~1 ~1 ~1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~1 ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~1 ~1 ~-1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~1 ~1 ~-2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~-1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~ ~1 ~-2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-1 ~1 ~2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-1 ~1 ~1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-1 ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-1 ~1 ~-1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-1 ~1 ~-2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~-1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
+execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~-2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
 
 execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Drowned has grown more powerful","italic":true,"color":"dark_red"}
 
