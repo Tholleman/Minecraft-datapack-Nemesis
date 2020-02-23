@@ -518,6 +518,20 @@ There is also a chance of a illusioner in addition to the 3 evokers.
 5. Invisibility
 
 ## Nether `Normal`
+### Zombie Pigman `Normal`
+| Subject  | Zombie Pigman |
+| -------- | --- |
+| Theme    | Buff other pigman and leave bait |
+| Notes    | The bait picks up loot from the player |
+| Strategy |  |
+
+Increase the attribute of up to 5 zombie pigman per attribute.
+- Knockback resistance
+- Max Health
+- Speed
+- Knockback resistance
+- Damage
+
 ### Blaze `Normal`
 | Subject  | Blaze |
 | -------- | --- |
