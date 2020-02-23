@@ -37,7 +37,7 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:b
 
 # A fire demon
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:blaze ~ ~ ~ {CustomName:"\"Pyromaniac\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:falling_block",BlockState:{Name:"minecraft:lava"},Time:1b}]}
-execute if score rng nem_num matches 3 at @e[tag=nemesis] run fill ~-1 ~-1 ~-1 ~1 ~1 ~1 lava replace air
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run fill ~ ~-1 ~ ~ ~1 ~ lava replace air
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[1.0d,0.3d,0.0d]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[1.0d,0.3d,1.0d]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[1.0d,0.3d,-1.0d]}
