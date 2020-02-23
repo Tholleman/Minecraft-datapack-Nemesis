@@ -1,6 +1,6 @@
 # The amount of different outcomes (index + 1)
 # This amount -1 should also be at the bottom at # Reset...
-scoreboard players set amount nem_num 4
+scoreboard players set amount nem_num 5
 
 # Create a random number between 0 and the amount: [0, amount>
 execute store result score rng nem_num run loot spawn ~ ~ ~ loot nemesis:rng
@@ -35,12 +35,17 @@ execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:h
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
+# Mix
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:11,Amplifier:1,Duration:1200}]},Count:1}}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1200}]},Count:1}}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:5,Amplifier:1,Duration:1200}]},Count:1}}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
 
 execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Husk has grown more powerful","italic":true,"color":"dark_red"}
 
 # Reset for another summoning
 advancement revoke @s only nemesis:husk
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_husk=..3}] nem_husk 1
+execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_husk=..4}] nem_husk 1
 
 # Replace the original killer
 tp @e[tag=nemesis] ~ -64 ~
