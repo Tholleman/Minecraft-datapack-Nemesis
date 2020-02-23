@@ -25,7 +25,7 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:v
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {PersistenceRequired:1b,HandItems:[{id:"minecraft:iron_sword",Count:1b},{}],HandDropChances:[0F,0F],Attributes:[{Name:generic.followRange,Base:64}]}
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {PersistenceRequired:1b,HandItems:[{id:"minecraft:iron_sword",Count:1b},{}],HandDropChances:[0F,0F],Attributes:[{Name:generic.followRange,Base:64}]}
 
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Shulker has grown more powerful","italic":true,"color":"dark_red"}
+execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Shulker gains help","italic":true,"color":"dark_red"}
 
 # Reset for another summoning
 advancement revoke @s only nemesis:shulker

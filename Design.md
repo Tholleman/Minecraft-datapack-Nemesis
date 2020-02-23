@@ -644,7 +644,7 @@ Increase the attribute of up to 5 zombie pigman per attribute.
     - Experience requirement: `None`
     - Difficulty: `Hard`
 
-## Misc
+## End `Normal`
 ### Enderman `Normal`
 | Subject  | Enderman |
 | -------- | --- |
@@ -689,6 +689,18 @@ Increase the attribute of up to 5 zombie pigman per attribute.
     - Experience requirement: `Battle`
     - Difficulty: `Normal`
 
+### Shulker `Easy`
+| Subject  | Shulker |
+| -------- | --- |
+| Theme    | Summons a mystical mob |
+| Notes    |  |
+| Strategy |  |
+
+1. Endermite
+2. Phantom
+3. Vex
+
+## Misc
 ### Rabbit `Easy`
 | Subject  | Rabbit |
 | -------- | --- |
