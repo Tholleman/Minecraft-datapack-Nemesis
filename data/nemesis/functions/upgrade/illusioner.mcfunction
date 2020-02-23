@@ -16,7 +16,7 @@ execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type
 
 # Summon one of the evokers
 execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:12,Amplifier:0,Duration:2147483647}]}
-execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:22,Amplifier:0,Duration:2147483647}]}
+execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:22,Amplifier:4,Duration:2147483647}]}
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:10,Amplifier:0,Duration:2147483647}]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:1, Amplifier:1,Duration:2147483647}]}
 execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647}]}
