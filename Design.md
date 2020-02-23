@@ -405,42 +405,10 @@ Since the types are the same as the spider I will only quickly mention them
 Dying to a raid member will result in the summoning of a different raid member.
 Unlike the other mobs, the original killer will not be replaced for raid members.
     
-### Pillager `Hard`
-| Subject  |  |
+### Pillager `Normal`
+| Subject  | Pillager |
 | -------- | --- |
-| Theme    | Goes to ravager |
-| Notes    |  |
-| Strategy | Bow or narrow passage |
-
-1. Double Ravager
-    - 2 ravagers
-    - Experience requirement: `None`
-    - Difficulty: `Hard`
-
-2. Flaming Ravager
-    - A ravager on fire with a fire aspect wooden sword
-    - Experience requirement: `None`
-    - Difficulty: `Hard`
-
-3. Pillager rider
-    - Ravager with a pillager on top
-    - Experience requirement: `None`
-    - Difficulty: `Hard`
-
-4. Vindicator rider
-    - Ravager with 2 vindicators on top
-    - Experience requirement: `Learned`
-    - Difficulty: `Hard`
-
-5. Evoker leader rider
-    - Ravager with an evoker patrol leader on top
-    - Experience requirement: `None`
-    - Difficulty: `Hard`
-
-### Ravager `Normal`
-| Subject  | Ravager |
-| -------- | --- |
-| Theme    | Goes to a vindicator |
+| Theme    | Goes to Vindicator |
 | Notes    |  |
 | Strategy |  |
 
@@ -473,7 +441,39 @@ Unlike the other mobs, the original killer will not be replaced for raid members
 ### Vindicator `Hard`
 | Subject  | Vindicator |
 | -------- | --- |
-| Theme    | Goes to a evoker |
+| Theme    | Goes to a Ravager |
+| Notes    |  |
+| Strategy |  |
+
+1. Double Ravager
+    - 2 ravagers
+    - Experience requirement: `None`
+    - Difficulty: `Hard`
+
+2. Flaming Ravager
+    - A ravager on fire with a fire aspect wooden sword
+    - Experience requirement: `None`
+    - Difficulty: `Hard`
+
+3. Pillager rider
+    - Ravager with a pillager on top
+    - Experience requirement: `None`
+    - Difficulty: `Hard`
+
+4. Vindicator rider
+    - Ravager with 2 vindicators on top
+    - Experience requirement: `Learned`
+    - Difficulty: `Hard`
+
+5. Evoker leader rider
+    - Ravager with an evoker patrol leader on top
+    - Experience requirement: `None`
+    - Difficulty: `Hard`
+
+### Ravager `Easy`
+| Subject  | Ravager |
+| -------- | --- |
+| Theme    | Goes to a vindicator |
 | Notes    |  |
 | Strategy |  |
 
