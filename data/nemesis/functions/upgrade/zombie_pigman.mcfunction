@@ -11,8 +11,6 @@ scoreboard objectives add nem_zombie_pigma dummy "Nemesis Zombie Pigman Progress
 scoreboard players add @s nem_zombie_pigma 0
 execute if score @s nem_zombie_pigma < amount nem_num run scoreboard players operation rng nem_num = @s nem_zombie_pigma
 
-execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon ...
-
 # Knockback
 execute unless entity @e[tag=nem_uninstall] if score rng nem_num matches 0..4 run data merge entity @e[type=minecraft:zombie_pigman,sort=random,limit=1,distance=..64] {PersistenceRequired:1b,Attributes:[{Name:"generic.attackKnockback",Base:10},{Name:"generic.followRange",Base:64}]}
 execute unless entity @e[tag=nem_uninstall] if score rng nem_num matches 1..4 run data merge entity @e[type=minecraft:zombie_pigman,sort=random,limit=1,distance=..64] {PersistenceRequired:1b,Attributes:[{Name:"generic.attackKnockback",Base:10},{Name:"generic.followRange",Base:64}]}
