@@ -4,13 +4,13 @@
             "trigger": "minecraft:entity_killed_player",
             "conditions": {
                 "entity": {
-                    "type": "minecraft:zombie_pigman"
+                    "type": "minecraft:zombified_piglin"
                 }
             }
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/zombie_pigman"
+        "function": "nemesis:upgrade/zombified_piglin"
     },
     "parent": "nemesis:root"
 }

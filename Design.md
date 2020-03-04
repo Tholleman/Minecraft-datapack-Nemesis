@@ -518,14 +518,31 @@ There is also a chance of a illusioner in addition to the 3 evokers.
 5. Invisibility
 
 ## Nether `Normal`
-### Zombie Pigman `Normal`
-| Subject  | Zombie Pigman |
+### Piglin `Easy`
+| Subject  | Piglin |
+| -------- | --- |
+| Theme    | Mess with the items left behind |
+| Notes    | Since the piglins can easily be made passive, I instead mess with the the items to make death still something to be feared. |
+| Strategy | Wear gold and recover your items |
+
+The steps execute 5 times.
+
+0. make an item too expensive to use in an anvil
+1. hide any data like enchantments and attribute modifiers
+2. give an item curse of binding
+3. Reduce an amount to have only 1
+4. give an item curse of vanishing
+5. remove all enchantments
+6. destroy an item
+
+### Zombified Piglin `Normal`
+| Subject  | Zombified Piglin |
 | -------- | --- |
 | Theme    | Buff other pigman and leave bait |
 | Notes    | The bait picks up loot from the player |
 | Strategy |  |
 
-Increase the attribute of up to 5 zombie pigman per attribute.
+Increase the attribute of up to 5 Zombified Piglin per attribute.
 - Knockback resistance
 - Max Health
 - Speed

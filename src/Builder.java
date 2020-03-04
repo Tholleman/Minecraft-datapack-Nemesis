@@ -14,7 +14,7 @@ public class Builder
 	private static final String[] PARSE_WHITELIST = {".*\\.mcfunction"};
 	
 	public static final String DATAPACK_NAME = "nemesis";
-	public static final String CURRENT_MINECRAFT_VERSION = "1.15.2";
+	public static final String CURRENT_MINECRAFT_VERSION = "1.16";
 	public static final String SOURCE_DIRECTORY = "data source";
 	public static final String OUTPUT_DIRECTORY = "data";
 	public static final Map<String, String> OTHER_SOURCE_FILES = Map.ofEntries(Map.entry("pack.json", "pack.mcmeta"));

@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:piglin"}}}},"rewards":{"function":"nemesis:upgrade/piglin"},"parent":"nemesis:root"}
