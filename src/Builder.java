@@ -10,7 +10,7 @@ import static parser.Constants.ERROR_MESSAGES.*;
 
 public class Builder
 {
-	private static final String[] BLACKLIST = {".*\\.mctemplate"};
+	private static final String[] BLACKLIST = {".*\\.mctemplate", ".*\\.md", ".*\\.txt"};
 	private static final String[] PARSE_WHITELIST = {".*\\.mcfunction"};
 	
 	public static final String DATAPACK_NAME = "nemesis";
