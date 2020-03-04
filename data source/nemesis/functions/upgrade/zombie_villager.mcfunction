@@ -72,6 +72,11 @@ ${var butcher \
 }
 ${repeat 3}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon <<butcher>>;
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=chicken,distance=..5];
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=cow,distance=..5];
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=mooshroom,distance=..5];
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=pig,distance=..5];
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=sheep,distance=..5];
 
 ${var priestStart \
 	minecraft:zombie_villager ~ ~ ~ {\
