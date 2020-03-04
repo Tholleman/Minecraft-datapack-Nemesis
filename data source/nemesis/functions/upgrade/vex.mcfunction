@@ -4,13 +4,27 @@ ${file global.mctemplate}
 # tag
 execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type=vex] add nemesis;
 
+${var fireworks {\
+		id:"minecraft:firework_rocket",\
+		Count:4b,\
+		tag:{Fireworks:{\
+			Flight:1b,\
+			Explosions:[{\
+				Type:1,\
+				Flicker:1b,\
+				Colors:[I;16633688,15891724,8390921,15761171]\
+			}]\
+		}}\
+	}\
+}
+
 # summon
 execute at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	PersistenceRequired:1b,
 	<<defaultData>>,
 	PatrolLeader:1b,
 
-	HandItems:[{id:"minecraft:crossbow",Count:1},{}],
+	HandItems:[{id:"minecraft:crossbow",Count:1},<<fireworks>>],
 	<<noHandDrop>>,
 
 	ArmorItems:[

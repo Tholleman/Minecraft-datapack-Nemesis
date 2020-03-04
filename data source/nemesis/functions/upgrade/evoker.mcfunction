@@ -9,11 +9,25 @@ ${file raid setup.mctemplate}
 
 ${var defaultData <<defaultData>>,<<noHandDrop>>}
 
+${var fireworks {\
+		id:"minecraft:firework_rocket",\
+		Count:4b,\
+		tag:{Fireworks:{\
+			Flight:1b,\
+			Explosions:[{\
+				Type:1,\
+				Flicker:1b,\
+				Colors:[I;16633688,15891724,8390921,15761171]\
+			}]\
+		}}\
+	}\
+}
+
 # Summon one of the pillagers
 ${repeat 3}
 execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	<<defaultData>>,
-	HandItems:[{id:"minecraft:crossbow",Count:1},{}],
+	HandItems:[{id:"minecraft:crossbow",Count:1},<<fireworks>>],
 };
 
 ${repeat 2}
@@ -27,8 +41,9 @@ execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:p
 				{id:quick_charge,lvl:3},
 				{id:piercing,lvl:4}
 			]},
-			Count:1},
-		{}
+			Count:1
+		},
+		<<fireworks>>
 	]
 };
 
@@ -50,8 +65,9 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:p
 				{id:multishot,lvl:1},
 				{id:quick_charge,lvl:3}
 			]},
-			Count:1},
-		{}
+			Count:1
+		},
+		<<fireworks>>
 	],
 	<<noHandDrop>>,
 

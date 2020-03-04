@@ -21,7 +21,7 @@ public class Builder
 	
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
-		String version = getVersion();
+		System.out.println("Minecraft version " + CURRENT_MINECRAFT_VERSION);
 		
 		iterate(new File(SOURCE_DIRECTORY));
 		
@@ -33,7 +33,7 @@ public class Builder
 		}
 		System.out.println("All files inside \"" + SOURCE_DIRECTORY + "\" are now parsed and ready to be used");
 		
-		Zipper.zip(toZip, DATAPACK_NAME + " " + version + ".zip");
+		Zipper.zip(toZip, DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + ".zip");
 		System.out.println("The datapack is now a .zip file and ready to be distributed");
 	}
 	
@@ -66,22 +66,6 @@ public class Builder
 		}
 		toZip[index] = new File(OUTPUT_DIRECTORY);
 		return toZip;
-	}
-	
-	private static String getVersion()
-	{
-		Scanner userInput = new Scanner(System.in);
-		System.out.print("Minecraft version (" + CURRENT_MINECRAFT_VERSION + "): ");
-		String version = userInput.nextLine();
-		if (!version.isBlank())
-		{
-			System.err.println("Please change the field \"CURRENT_MINECRAFT_VERSION\" in " + Builder.class.getSimpleName());
-		}
-		else
-		{
-			version = CURRENT_MINECRAFT_VERSION;
-		}
-		return version;
 	}
 	
 	private static void iterate(File f) throws IOException
