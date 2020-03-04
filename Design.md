@@ -534,6 +534,9 @@ The steps execute 5 times.
 5. remove all enchantments
 6. destroy an item
 
+### Hoglin `Normal`
+Will summon 8 small hoglins that grow up quickly.
+
 ### Zombified Piglin `Normal`
 | Subject  | Zombified Piglin |
 | -------- | --- |
