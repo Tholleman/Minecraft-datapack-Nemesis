@@ -433,7 +433,6 @@ Unlike the other mobs, the original killer will not be replaced for raid members
     - Difficulty: `Normal`
 
 5. Diamond axe
-    - Slower
     - Patrol leader
     - Experience requirement: `None`
     - Difficulty: `Normal`
