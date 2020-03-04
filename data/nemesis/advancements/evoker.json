@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:evoker"}}}},"rewards":{"function":"nemesis:upgrade/evoker"},"parent":"nemesis:root"}

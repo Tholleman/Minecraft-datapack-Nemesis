@@ -1,0 +1,16 @@
+{
+    "criteria": {
+        "killed": {
+            "trigger": "minecraft:entity_killed_player",
+            "conditions": {
+                "entity": {
+                    "type": "minecraft:cave_spider"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "nemesis:upgrade/cave_spider"
+    },
+    "parent": "nemesis:root"
+}

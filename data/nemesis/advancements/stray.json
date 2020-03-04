@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:stray"}}}},"rewards":{"function":"nemesis:upgrade/stray"},"parent":"nemesis:root"}

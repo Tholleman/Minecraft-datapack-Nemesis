@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:illusioner"}}}},"rewards":{"function":"nemesis:upgrade/illusioner"},"parent":"nemesis:root"}

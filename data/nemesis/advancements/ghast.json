@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:ghast"}}}},"rewards":{"function":"nemesis:upgrade/ghast"},"parent":"nemesis:root"}

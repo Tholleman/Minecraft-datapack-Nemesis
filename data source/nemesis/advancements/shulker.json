@@ -1,0 +1,16 @@
+{
+    "criteria": {
+        "killed": {
+            "trigger": "minecraft:entity_killed_player",
+            "conditions": {
+                "entity": {
+                    "type": "minecraft:shulker"
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "nemesis:upgrade/shulker"
+    },
+    "parent": "nemesis:root"
+}

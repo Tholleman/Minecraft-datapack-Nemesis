@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:magma_cube"}}}},"rewards":{"function":"nemesis:upgrade/magma_cube"},"parent":"nemesis:root"}

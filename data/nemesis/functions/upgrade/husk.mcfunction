@@ -1,0 +1,35 @@
+scoreboard players set amount nem_num 5
+execute store result score rng nem_num run loot spawn ~ ~ ~ loot nemesis:rng
+scoreboard players operation rng nem_num %= amount nem_num
+scoreboard objectives add nem_husk dummy "Nemesis Husk Progress"
+scoreboard players add @s nem_husk 0
+execute if score @s nem_husk < amount nem_num run scoreboard players operation rng nem_num = @s nem_husk
+execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type=husk] add nemesis
+execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:11,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:11,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:11,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:11,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:5,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:5,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:5,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:5,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}]}
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}]}
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}]}
+execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}]}
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:11,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:5,Amplifier:1,Duration:1200}]},Count:1}}]}
+execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}]}
+execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Husk has grown more powerful","italic":true,"color":"dark_red"}
+advancement revoke @s only nemesis:husk
+execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_husk=..4}] nem_husk 1
+tp @e[tag=nemesis] ~ -64 ~
+tag @e[tag=nemesis] remove nemesis
+scoreboard players reset rng
+scoreboard players reset amount
+execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_husk

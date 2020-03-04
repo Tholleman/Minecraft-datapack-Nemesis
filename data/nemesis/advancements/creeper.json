@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:creeper"}}}},"rewards":{"function":"nemesis:upgrade/creeper"},"parent":"nemesis:root"}

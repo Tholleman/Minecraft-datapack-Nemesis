@@ -1,0 +1,22 @@
+# var scoreboardName
+# var mobId
+# var name
+# var amount
+
+# The amount of different outcomes (index + 1)
+# This amount -1 should also be at the bottom at # Reset...
+scoreboard players set amount nem_num <<amount>>;
+
+# Create a random number between 0 and the amount: [0, amount>
+execute store result score rng nem_num run loot spawn ~ ~ ~ loot nemesis:rng;
+scoreboard players operation rng nem_num %= amount nem_num;
+
+# The player will go through each nemesis before a random one is summoned
+scoreboard objectives add <<scoreboardName>> dummy "Nemesis <<name>> Progress";
+scoreboard players add @s <<scoreboardName>> 0;
+execute if score @s <<scoreboardName>> < amount nem_num run scoreboard players operation rng nem_num = @s <<scoreboardName>>;
+
+# Don't punish the player for uninstalling
+execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type=<<mobId>>] add nemesis;
+
+${var message The <<name>> has increased the raid}

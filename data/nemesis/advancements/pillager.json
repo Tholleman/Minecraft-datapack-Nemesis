@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:pillager"}}}},"rewards":{"function":"nemesis:upgrade/pillager"},"parent":"nemesis:root"}

@@ -1,0 +1,1 @@
+{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:witch"}}}},"rewards":{"function":"nemesis:upgrade/witch"},"parent":"nemesis:root"}
