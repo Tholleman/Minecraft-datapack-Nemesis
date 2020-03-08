@@ -22,4 +22,6 @@ execute if score rng nem_num matches 7 as @e[limit=5,type=item,distance=..5,sort
 execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Piglin took a look at your items","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:piglin
 execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_piglin=..7}] nem_piglin 1
+scoreboard players reset rng
+scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_piglin
