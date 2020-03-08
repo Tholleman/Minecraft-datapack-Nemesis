@@ -1,9 +1,9 @@
 # var name
-${var message The <<name>> has grown more powerful}
-${var persistent PersistenceRequired:1b}
-${var attributeStart Attributes:[{Name:"generic.followRange",Base:64}}
-${var attributeEnd ]}
-${var persistent PersistenceRequired:1b}
-${var defaultData <<persistent>>,<<attributeStart>><<attributeEnd>>}
-${var noHandDrop HandDropChances:[0F,0F]}
-${var noArmorDrop ArmorDropChances:[0F,0F,0F,0F]}
+\var message The <<name>> has grown more powerful
+\var persistent PersistenceRequired:1b
+\var attributeStart Attributes:[{Name:"generic.followRange",Base:64}
+\var attributeEnd ]
+\var persistent PersistenceRequired:1b
+\var defaultData <<persistent>>,<<attributeStart>><<attributeEnd>>
+\var noHandDrop HandDropChances:[0F,0F]
+\var noArmorDrop ArmorDropChances:[0F,0F,0F,0F]

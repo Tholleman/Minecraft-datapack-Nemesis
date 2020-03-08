@@ -1,37 +1,36 @@
-${var name Evoker}
-${file global.mctemplate}
+\var name Evoker
+\file global.mctemplate
 #                    123456789 123456
-${var scoreboardName nem_evoker}
-${var mobId evoker}
-${var amount 3}
+\var scoreboardName nem_evoker
+\var mobId evoker
+\var amount 3
 
-${file raid setup.mctemplate}
+\file raid setup.mctemplate
 
-${var defaultData <<defaultData>>,<<noHandDrop>>}
+\var defaultData <<defaultData>>,<<noHandDrop>>
 
-${var fireworks {\
-		id:"minecraft:firework_rocket",\
-		Count:4b,\
-		tag:{Fireworks:{\
-			Flight:1b,\
-			Explosions:[{\
-				Type:1,\
-				Flicker:1b,\
-				Colors:[I;16633688,15891724,8390921,15761171]\
-			}]\
-		}}\
-	}\
-}
+\var fireworks {
+		id:"minecraft:firework_rocket",
+		Count:4b,
+		tag:{Fireworks:{
+			Flight:1b,
+			Explosions:[{
+				Type:1,
+				Flicker:1b,
+				Colors:[I;16633688,15891724,8390921,15761171]
+			}]
+		}}
+	}
 
 # Summon one of the pillagers
-${repeat 3}
-execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
+\repeat 3
+/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	<<defaultData>>,
 	HandItems:[{id:"minecraft:crossbow",Count:1},<<fireworks>>],
-};
+}
 
-${repeat 2}
-execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
+\repeat 2
+/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	<<defaultData>>,
 	CanPickUpLoot:1b,
 	HandItems:[
@@ -45,9 +44,9 @@ execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:p
 		},
 		<<fireworks>>
 	]
-};
+}
 
-execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
+/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	<<persistent>>,
 	CanPickUpLoot:1b,
 	PatrolLeader:1b,
@@ -85,6 +84,6 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:p
 		}
 	],
 	<<noArmorDrop>>
-};
+}
 
-${file raid teardown.mctemplate}
+\file raid teardown.mctemplate

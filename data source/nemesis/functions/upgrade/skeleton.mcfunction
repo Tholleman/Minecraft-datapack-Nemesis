@@ -1,20 +1,20 @@
-${var name Skeleton}
-${file global.mctemplate}
+\var name Skeleton
+\file global.mctemplate
 #                    123456789 123456
-${var scoreboardName nem_skeleton}
-${var mobId skeleton}
-${var amount 4}
-${var message The Skeleton thinks it has found its long lost identity}
+\var scoreboardName nem_skeleton
+\var mobId skeleton
+\var amount 4
+\var message The Skeleton thinks it has found its long lost identity
 
-${file setup.mctemplate}
+\file setup.mctemplate
 
 # If the skeleton believes it's that mob, it should upgrade like one
-execute if entity @e[tag=nem_skeleton_zombie,tag=nemesis] run function nemesis:upgrade/zombie;
-execute if entity @e[tag=nem_skeleton_blaze,tag=nemesis] run function nemesis:upgrade/blaze;
-execute if entity @e[tag=nem_skeleton_wither_skeleton,tag=nemesis] run function nemesis:upgrade/wither_skeleton;
+/execute if entity @e[tag=nem_skeleton_zombie,tag=nemesis] run function nemesis:upgrade/zombie
+/execute if entity @e[tag=nem_skeleton_blaze,tag=nemesis] run function nemesis:upgrade/blaze
+/execute if entity @e[tag=nem_skeleton_wither_skeleton,tag=nemesis] run function nemesis:upgrade/wither_skeleton
 
 # Summon one of the nemesis
-execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
+/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
 	CustomName:"\"Zombie\"",
 	Tags:["nem_skeleton_zombie"],
 	<<defaultData>>,
@@ -26,15 +26,15 @@ execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:s
 		{id:"minecraft:zombie_head",Count:1}
 	],
 	<<noArmorDrop>>
-};
-execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
+}
+/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
 	CustomName:"\"Stray\"",
 	Tags:["nem_skeleton_stray"],
 	<<defaultData>>,
 	HandItems:[{id:"minecraft:bow",Count:1},{}],
 	<<noHandDrop>>
-};
-execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
+}
+/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
 	CustomName:"\"Blaze\"",
 	Tags:["nem_skeleton_blaze"],
 	<<defaultData>>,
@@ -50,8 +50,8 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:s
 		# Invisibility
 		{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}
 	]
-};
-execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
+}
+/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
 	CustomName:"\"Wither Skeleton\"",
 	Tags:["nem_skeleton_wither_skeleton"],
 	<<persistent>>,
@@ -64,6 +64,6 @@ execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:s
 
 	ArmorItems:[{},{},{},{id:"minecraft:wither_skeleton_skull",Count:1}],
 	<<noArmorDrop>>
-};
+}
 
-${file teardown.mctemplate}
+\file teardown.mctemplate

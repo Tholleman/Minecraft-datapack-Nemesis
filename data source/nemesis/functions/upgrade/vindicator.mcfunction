@@ -1,17 +1,17 @@
-${var name Vindicator}
-${file global.mctemplate}
+\var name Vindicator
+\file global.mctemplate
 #                    123456789 123456
-${var scoreboardName nem_vindicator}
-${var mobId vindicator}
-${var amount 6}
+\var scoreboardName nem_vindicator
+\var mobId vindicator
+\var amount 6
 
-${file raid setup.mctemplate}
+\file raid setup.mctemplate
 
 # Summon one of the pillagers
-execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>};
-${repeat 2}
-execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>};
-execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>}
+\repeat 2
+/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>}
+/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Fire:1277951,
 	HandDropChances:[0F,0F],
@@ -26,8 +26,8 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:r
 		{}
 	],
 	ActiveEffects:[{Id:12,Amplifier:0,Duration:2147483647}]
-};
-execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+}
+/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Passengers:[{
 		id:"minecraft:pillager",
@@ -36,23 +36,22 @@ execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:r
 		HandItems:[{id:"minecraft:crossbow",Count:1},{}],
 		<<noHandDrop>>
 	}]
-};
-${var vindicator {\
-		id:"minecraft:vindicator",\
-		<<defaultData>>,\
-		CanPickUpLoot:1b,\
-		HandItems:[{id:"minecraft:iron_axe",Count:1},{}],\
-		<<noHandDrop>>\
-	}\
 }
-execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+\var vindicator {
+		id:"minecraft:vindicator",
+		<<defaultData>>,
+		CanPickUpLoot:1b,
+		HandItems:[{id:"minecraft:iron_axe",Count:1},{}],
+		<<noHandDrop>>
+	}
+/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Passengers:[
 		<<vindicator>>,
 		<<vindicator>>
 	]
-};
-execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+}
+/execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Passengers:[{
 		id:"minecraft:evoker",
@@ -73,6 +72,6 @@ execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:r
 			}
 		]
 	}]
-};
+}
 
-${file raid teardown.mctemplate}
+\file raid teardown.mctemplate
