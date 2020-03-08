@@ -1,14 +1,14 @@
-${var name Wither Skeleton}
-${file global.mctemplate}
+\var name Wither Skeleton
+\file global.mctemplate
 #                    123456789 123456
-${var scoreboardName nem_wither_skele}
-${var mobId wither_skeleton}
-${var amount 4}
+\var scoreboardName nem_wither_skele
+\var mobId wither_skeleton
+\var amount 4
 
-${file setup.mctemplate}
+\file setup.mctemplate
 
 # Summon one of the wither skeletons
-execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Stationed Guard\"",
 	<<persistent>>,
 	CanPickUpLoot:1b,
@@ -30,8 +30,8 @@ execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:w
 		{Name:"generic.movementSpeed",Base:0f},
 		{Name:"generic.attackDamage",Base:20}
 	]
-};
-execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+}
+/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Adaptus Astartes\"",
 	<<defaultData>>,
 
@@ -45,8 +45,8 @@ execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:w
 		{id:"minecraft:iron_helmet",Count:1}
 	],
 	<<noArmorDrop>>
-};
-execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+}
+/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Adaptus Custodes\"",
 	<<defaultData>>,
 
@@ -60,8 +60,8 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:w
 		{id:"minecraft:golden_helmet",Count:1}
 	],
 	<<noArmorDrop>>
-};
-execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+}
+/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Captain-General\"",
 	<<persistent>>,
 	Health:50,
@@ -80,6 +80,6 @@ execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:w
 		{id:"minecraft:wither_skeleton_skull",Count:1}
 	],
 	<<noArmorDrop>>
-};
+}
 
-${file teardown.mctemplate}
+\file teardown.mctemplate

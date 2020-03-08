@@ -34,6 +34,17 @@ public class Builder
 		{
 			thread.join();
 		}
+		
+		// All threads are now back into this one
+		
+		if (!MultiThread.failures.isEmpty()) {
+			for (Throwable failure : MultiThread.failures)
+			{
+				failure.printStackTrace();
+			}
+			return;
+		}
+		
 		System.out.println("All files inside \"" + SOURCE_DIRECTORY + "\" are now parsed and ready to be used");
 		
 		Zipper.zip(toZip, getDestZipFile());
@@ -171,10 +182,12 @@ public class Builder
 	private static class MultiThread extends Thread
 	{
 		private static final Vector<Thread> threads = new Vector<>();
+		private static final Vector<Throwable> failures = new Vector<>();
 		
 		public MultiThread()
 		{
 			threads.add(this);
+			setUncaughtExceptionHandler((t, e) -> failures.add(e));
 		}
 	}
 	

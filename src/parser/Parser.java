@@ -48,72 +48,51 @@ public class Parser
 		String line;
 		while ((line = reader.readLine()) != null)
 		{
-			if (handleMetaLine(line)) continue;
-			StringBuilder builder = new StringBuilder(line);
-			while (!builder.toString().endsWith(LINE_TERMINATOR))
+			if (reader.isMeta())
 			{
-				builder.append(reader.readExpectedLine());
+				handleMetaLine(line);
+				continue;
 			}
-			
-			line = builder.toString();
-			writer.writeLine(line.substring(0, line.length() - LINE_TERMINATOR.length()));
+			writer.writeLine(line);
 		}
 	}
 	
-	private boolean handleMetaLine(String line)
+	private void handleMetaLine(String line)
 	{
-		if (line.startsWith(META_PREFIX))
+		String[] args = splitOnWS(line);
+		
+		switch (args[0])
 		{
-			if (!line.endsWith(META_SUFFIX))
-			{
-				if (!line.endsWith(META_MULTILINE)) throw new ParsingException(EXPECTED_META_SUFFIX(reader.getLineCounter()));
-				do
+			case Constants.META_TAGS.VAR:
+				if (args.length < 3) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 3, reader.getLineCounter()));
+				variables.put(args[1], Helper.reattach(line, args[1]));
+				return;
+			case Constants.META_TAGS.REPEAT:
+				try
 				{
-					line = line.substring(0, line.length() - META_SUFFIX.length()) + reader.readExpectedLine();
-				} while (line.endsWith(META_MULTILINE));
-				
-				if (!line.endsWith(META_SUFFIX)) throw new ParsingException(EXPECTED_META_SUFFIX(reader.getLineCounter()));
-			}
-			
-			line = Helper.metaTrim(line);
-			
-			String[] args = splitOnWS(line);
-			
-			switch (args[0])
-			{
-				case Constants.META_TAGS.VAR:
-					if (args.length < 3) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 3, reader.getLineCounter()));
-					variables.put(args[1], Helper.reattach(line, args[1]));
-					return true;
-				case Constants.META_TAGS.REPEAT:
-					try
-					{
-						if (args.length != 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS(args[0], 2, reader.getLineCounter()));
-						writer.setRepeat(Integer.parseInt(args[1]));
-						return true;
-					}
-					catch (NumberFormatException nfEx)
-					{
-						throw new ParsingException(NOT_A_NUMBER(reader.getLineCounter()), nfEx);
-					}
-				case Constants.META_TAGS.FILE:
-					if (args.length < 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 2, reader.getLineCounter()));
-					String filePath = inputDir + File.separator + Helper.reattach(line, args[0]);
-					try (BufferedReader br = new BufferedReader(new FileReader(new File(filePath))))
-					{
-						new Parser(inputDir, br, writer, variables).parse();
-					}
-					catch (IOException e)
-					{
-						throw new ParsingException(AN_ERROR_OCCURRED_WHILE_PARSING(filePath, reader.getLineCounter()), e);
-					}
-					return true;
-				default:
-					throw new ParsingException(UNKNOWN_LINE_META(args[0], reader.getLineCounter()));
-			}
-			
+					if (args.length != 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS(args[0], 2, reader.getLineCounter()));
+					writer.setRepeat(Integer.parseInt(args[1]));
+					return;
+				}
+				catch (NumberFormatException nfEx)
+				{
+					throw new ParsingException(NOT_A_NUMBER(reader.getLineCounter()), nfEx);
+				}
+			case Constants.META_TAGS.FILE:
+				if (args.length < 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 2, reader.getLineCounter()));
+				String filePath = inputDir + File.separator + Helper.reattach(line, args[0]);
+				try (BufferedReader br = new BufferedReader(new FileReader(new File(filePath))))
+				{
+					new Parser(inputDir, br, writer, variables).parse();
+				}
+				catch (IOException e)
+				{
+					throw new ParsingException(AN_ERROR_OCCURRED_WHILE_PARSING(filePath, reader.getLineCounter()), e);
+				}
+				return;
+			default:
+				throw new ParsingException(UNKNOWN_LINE_META(args[0], reader.getLineCounter()));
 		}
-		return false;
 	}
 	
 	private String parseInlineMeta(String line)
@@ -157,28 +136,83 @@ public class Parser
 	private class Reader
 	{
 		private final BufferedReader fileToParse;
-		private int _lineCounter = 0;
+		private int lineCounter = 0;
+		private boolean meta;
+		private String next;
 		
-		private Reader(BufferedReader fileToParse)
+		public Reader(BufferedReader fileToParse)
 		{
 			assert fileToParse != null;
 			this.fileToParse = fileToParse;
+			meta = false;
 		}
 		
-		private String readLine()
+		public String readLine()
 		{
 			try
 			{
-				String s = fileToParse.readLine();
-				if (s != null)
+				StringBuilder result = new StringBuilder();
+				boolean multilining = false;
+				do
 				{
-					_lineCounter++;
-					s = s.trim();
-					if (s.isEmpty()) return readLine();
-					if (s.startsWith(Constants.IDENTIFIERS.COMMENT_PREFIX)) return readLine();
+					String s;
+					if (next == null)
+					{
+						s = fileToParse.readLine();
+						if (s == null)
+						{
+							
+							s = result.toString();
+							if (s.isEmpty())
+							{
+								return null;
+							}
+							return s;
+						}
+						lineCounter++;
+						
+						s = s.replaceAll("^\\s+", "");
+						if (s.isEmpty()) continue;
+						if (s.startsWith(COMMENT_PREFIX)) continue;
+						
+						
+						if (multilining)
+						{
+							if (s.startsWith(META_PREFIX) || s.startsWith(COMMAND_PREFIX))
+							{
+								next = s;
+								break;
+							}
+							s = parseInlineMeta(s);
+							
+							result.append(s);
+							continue;
+						}
+					}
+					else
+					{
+						s = next;
+						next = null;
+					}
 					s = parseInlineMeta(s);
-				}
-				return s;
+					
+					if (s.startsWith(META_PREFIX))
+					{
+						meta = true;
+						multilining = true;
+						result.append(s.substring(META_PREFIX.length()));
+						continue;
+					}
+					else if (s.startsWith(COMMAND_PREFIX))
+					{
+						meta = false;
+						multilining = true;
+						result.append(s.substring(COMMAND_PREFIX.length()));
+						continue;
+					}
+					throw new ParsingException(UNEXPECTED_START(lineCounter));
+				} while (true);
+				return result.toString();
 			}
 			catch (IOException e)
 			{
@@ -186,16 +220,15 @@ public class Parser
 			}
 		}
 		
-		private String readExpectedLine()
-		{
-			String s = readLine();
-			if (s == null) throw new ParsingException(EXPECTED_ANOTHER_LINE(getLineCounter()));
-			return s;
-		}
-		
 		public int getLineCounter()
 		{
-			return _lineCounter;
+			// If next is filled, the amount of lines read is 1 higher, subtract it when asked
+			return lineCounter + (next == null ? 0 : 1);
+		}
+		
+		public boolean isMeta()
+		{
+			return meta;
 		}
 	}
 	
@@ -207,7 +240,7 @@ public class Parser
 		private int repeat = REPEAT_DEFAULT;
 		private boolean first = true;
 		
-		private Writer(FileWriter output)
+		public Writer(FileWriter output)
 		{
 			assert output != null;
 			this.output = output;
