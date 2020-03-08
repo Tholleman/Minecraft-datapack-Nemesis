@@ -544,12 +544,13 @@ Will summon 8 small hoglins that grow up quickly.
 | Notes    | The bait picks up loot from the player |
 | Strategy |  |
 
-Increase the attribute of up to 5 Zombified Piglin per attribute.
-- Knockback resistance
-- Max Health
-- Speed
-- Knockback resistance
-- Damage
+Increase the attribute of 5 Zombified Piglin.
+1. Health
+2. Speed
+3. Knockback resistance
+4. Armor & Armor toughness
+5. Attack knockback & Attack damage
+6. All of the above
 
 ### Blaze `Normal`
 | Subject  | Blaze |
