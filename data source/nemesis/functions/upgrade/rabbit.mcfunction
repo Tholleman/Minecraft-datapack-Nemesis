@@ -16,15 +16,4 @@
 /execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
 /execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
 
-/execute if entity @e[tag=nemesis] run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
-
-# Reset for another summoning
-/advancement revoke @s only nemesis:rabbit
-/execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_rabbit=..3}] nem_rabbit 1
-
-/tag @e[tag=nemesis] remove nemesis
-
-# Clean up
-/scoreboard players reset rng
-/scoreboard players reset amount
-/execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_rabbit
+\file teardown no kill.mctemplate

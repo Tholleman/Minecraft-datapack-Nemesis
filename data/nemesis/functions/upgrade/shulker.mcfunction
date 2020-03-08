@@ -14,10 +14,10 @@ execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:p
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:iron_sword",Count:1b},{}],HandDropChances:[0F,0F]}
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:iron_sword",Count:1b},{}],HandDropChances:[0F,0F]}
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:iron_sword",Count:1b},{}],HandDropChances:[0F,0F]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Shulker gains help","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Shulker gains help","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:shulker
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_shulker=..3}] nem_shulker 1
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_shulker=..3}] nem_shulker 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_shulker

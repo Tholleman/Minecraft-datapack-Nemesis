@@ -11,11 +11,11 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:s
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {CustomName:"\"Leeching Spider\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:10,Amplifier:1,Duration:2147483647}]}
 execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {CustomName:"\"Allied Spider\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:skeleton",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:bow",Count:1},{}],HandDropChances:[0F,0F],CanPickUpLoot:1b}]}
 execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {CustomName:"\"Infested Spider\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:cave_spider",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]},{id:"minecraft:cave_spider",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Spider has grown more powerful","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Spider has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:spider
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_spider=..5}] nem_spider 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_spider=..5}] nem_spider 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_spider
+tp @e[tag=nemesis] ~ -64 ~

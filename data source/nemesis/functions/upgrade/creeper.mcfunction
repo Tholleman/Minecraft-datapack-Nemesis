@@ -1,26 +1,11 @@
-\var name Cave Spider
+\var name Creeper
 \file global.mctemplate
 \var scoreboardName nem_creeper
 \var mobId creeper
-\var name Creeper
 \var amount 4
 \var message The Creeper has reincarnated into a more powerful version
 
-# The amount of different outcomes (index + 1)
-# This amount -1 should also be at the bottom at # Reset...
-/scoreboard players set amount nem_num <<amount>>
-
-# Create a random number between 0 and the amount: [0, amount>
-/execute store result score rng nem_num run loot spawn ~ ~ ~ loot nemesis:rng
-/scoreboard players operation rng nem_num %= amount nem_num
-
-# The player will go through each blaze before a random one is summoned
-/scoreboard objectives add <<scoreboardName>> dummy "Nemesis <<name>> Progress"
-/scoreboard players add @s <<scoreboardName>> 0
-/execute if score @s <<scoreboardName>> < amount nem_num run scoreboard players operation rng nem_num = @s <<scoreboardName>>
-
-# Don't punish the player for uninstalling
-/execute if entity @e[tag=nem_uninstall] run scoreboard players set rng nem_num -1
+\file setup no tag.mctemplate
 
 # Summon one of the creepers
 /execute if score rng nem_num matches 0 run summon minecraft:creeper ~ ~ ~ {
@@ -64,13 +49,4 @@
 	<<attributeEnd>>
 }
 
-/execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
-
-# Reset for another summoning
-/advancement revoke @s only nemesis:<<mobId>>
-/scoreboard players add @s[scores={<<scoreboardName>>=..<<<<amount>> - 1>>}] nem_creeper 1
-
-# Clean up
-/scoreboard players reset rng
-/scoreboard players reset amount
-/execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove <<scoreboardName>>
+\file teardown no kill.mctemplate

@@ -21,6 +21,7 @@ execute if score rng nem_num matches 7 as @e[limit=5,type=item,distance=..5,sort
 execute if score rng nem_num matches 7 as @e[limit=5,type=item,distance=..5,sort=random] run data remove entity @s Item.tag.Enchantments
 execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Piglin took a look at your items","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:piglin
+tag @e[tag=nemesis] remove nemesis
 execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_piglin=..7}] nem_piglin 1
 scoreboard players reset rng
 scoreboard players reset amount

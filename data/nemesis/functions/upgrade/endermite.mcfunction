@@ -23,11 +23,11 @@ execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:e
 execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {CustomName:"\"Raid\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],Passengers:[{id:"minecraft:pillager",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:crossbow",Count:1},{}],HandDropChances:[0F,0F]}]}
 execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {CustomName:"\"Raid\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],Passengers:[{id:"minecraft:vindicator",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:iron_axe",Count:1},{}],HandDropChances:[0F,0F]}]}
 execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {CustomName:"\"Raid\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],Passengers:[{id:"minecraft:evoker",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Endermite has warped around to collect other mobs","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Endermite has warped around to collect other mobs","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:endermite
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_endermite=..5}] nem_endermite 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_endermite=..5}] nem_endermite 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_endermite
+tp @e[tag=nemesis] ~ -64 ~

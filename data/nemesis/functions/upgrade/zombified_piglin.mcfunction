@@ -13,8 +13,9 @@ execute if score rng nem_num matches 2 as @e[type=minecraft:zombified_piglin,dis
 execute if score rng nem_num matches 3 as @e[type=minecraft:zombified_piglin,distance=..64,limit=5,sort=random] run data merge entity @s {CanPickUpLoot:1b,PersistenceRequired:1b,Attributes:[{Name:"generic.armor",Base:4},{Name:"generic.armorToughness",Base:4}],CustomName:"\"Pectoralis major\""}
 execute if score rng nem_num matches 4 as @e[type=minecraft:zombified_piglin,distance=..64,limit=5,sort=random] run data merge entity @s {CanPickUpLoot:1b,PersistenceRequired:1b,Attributes:[{Name:"generic.attackKnockback",Base:10},{Name:"generic.attackDamage",Base:15}],CustomName:"\"Biceps brachii\""}
 execute if score rng nem_num matches 5 as @e[type=minecraft:zombified_piglin,distance=..64,limit=5,sort=random] run data merge entity @s {CanPickUpLoot:1b,PersistenceRequired:1b,Attributes:[{Name:"generic.maxHealth",Base:40},{Name:"generic.movementSpeed",Base:0.4},{Name:"generic.knockbackResistance",Base:1},{Name:"generic.armor",Base:4},{Name:"generic.armorToughness",Base:4},{Name:"generic.attackKnockback",Base:10},{Name:"generic.attackDamage",Base:15}],Health:40,CustomName:"\"Ultimum cadaver\""}
-execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Zombified Piglin has spread the power","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Zombified Piglin has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:zombified_piglin
+tag @e[tag=nemesis] remove nemesis
 execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_zombified_pi=..5}] nem_zombified_pi 1
 scoreboard players reset rng
 scoreboard players reset amount

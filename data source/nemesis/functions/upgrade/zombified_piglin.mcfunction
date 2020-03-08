@@ -4,6 +4,8 @@
 
 \var maxRange 64
 \var alterAmount 5
+\var mobId zombified_piglin
+\var scoreboardName nem_zombified_pi
 
 # The amount of different outcomes (index + 1)
 # This amount -1 should also be at the bottom at # Reset...
@@ -14,9 +16,9 @@
 /scoreboard players operation rng nem_num %= amount nem_num
 
 # The player will go through each Zombified Piglin before a random one is summoned
-/scoreboard objectives add nem_zombified_pi dummy "Nemesis Zombified Piglin Progress"
-/scoreboard players add @s nem_zombified_pi 0
-/execute if score @s nem_zombified_pi < amount nem_num run scoreboard players operation rng nem_num = @s nem_zombified_pi
+/scoreboard objectives add <<scoreboardName>> dummy "Nemesis Zombified Piglin Progress"
+/scoreboard players add @s <<scoreboardName>> 0
+/execute if score @s <<scoreboardName>> < amount nem_num run scoreboard players operation rng nem_num = @s <<scoreboardName>>
 
 /execute if entity @e[tag=nem_uninstall] run scoreboard players set rng nem_num -1
 
@@ -57,12 +59,4 @@
 	CustomName:"\"Ultimum cadaver\""
 }
 
-/execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Zombified Piglin has spread the power","italic":true,"color":"dark_red"}
-
-/advancement revoke @s only nemesis:zombified_piglin
-/execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_zombified_pi=..<<<<amount>> - 1>>}] nem_zombified_pi 1
-
-# Clean up
-/scoreboard players reset rng
-/scoreboard players reset amount
-/execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_zombified_pi
+\file teardown no kill.mctemplate

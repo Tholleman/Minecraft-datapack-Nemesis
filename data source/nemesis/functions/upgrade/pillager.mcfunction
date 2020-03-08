@@ -91,4 +91,4 @@
 	<<noArmorDrop>>
 }
 
-\file raid teardown.mctemplate
+\file teardown no kill.mctemplate

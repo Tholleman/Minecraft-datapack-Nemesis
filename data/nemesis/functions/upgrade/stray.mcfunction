@@ -10,11 +10,11 @@ execute if score rng nem_num matches 3..5 at @e[tag=nemesis] run summon minecraf
 execute if score rng nem_num matches 6..8 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:1,Passengers:[{id:"minecraft:stray",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:bow",Count:1},{}],HandDropChances:[0F,0F]}]}
 execute if score rng nem_num matches 9..11 at @e[tag=nemesis] run summon minecraft:bat ~ ~ ~ {Passengers:[{id:"minecraft:stray",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:bow",Count:1},{}],HandDropChances:[0F,0F],ActiveEffects:[{Id:28,Amplifier:0,Duration:2147483647}]}]}
 execute if score rng nem_num matches 12 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,Passengers:[{id:"minecraft:stray",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:bow",Count:1},{}],HandDropChances:[0F,0F]}]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Nemesis has grown more powerful","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Nemesis has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:stray
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_stray=..12}] nem_stray 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_stray=..12}] nem_stray 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_stray
+tp @e[tag=nemesis] ~ -64 ~

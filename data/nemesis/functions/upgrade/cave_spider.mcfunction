@@ -23,11 +23,11 @@ execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:c
 execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {CustomName:"\"Innovator\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:wither_skeleton",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],CanPickUpLoot:1b,HandItems:[{id:"minecraft:stone_sword",Count:1},{}],HandDropChances:[0F,0F]}]}
 execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {CustomName:"\"Innovator\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:wither_skeleton",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],CanPickUpLoot:1b,HandItems:[{id:"minecraft:stone_sword",Count:1},{}],HandDropChances:[0F,0F]}]}
 execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {CustomName:"\"Innovator\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:wither_skeleton",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],CanPickUpLoot:1b,HandItems:[{id:"minecraft:stone_sword",Count:1},{}],HandDropChances:[0F,0F]}]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Cave Spider has laid eggs and started a cluster","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Cave Spider has laid eggs and started a cluster","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:cave_spider
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_cave_spider=..5}] nem_cave_spider 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_cave_spider=..5}] nem_cave_spider 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_cave_spider
+tp @e[tag=nemesis] ~ -64 ~

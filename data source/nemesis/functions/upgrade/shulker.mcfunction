@@ -30,15 +30,4 @@
 	<<noHandDrop>>
 }
 
-/execute if entity @e[tag=nemesis] run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
-
-# Reset for another summoning
-/advancement revoke @s only nemesis:<<mobId>>
-/execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={<<scoreboardName>>=..<<<<amount>> - 1>>}] <<scoreboardName>> 1
-
-/tag @e[tag=nemesis] remove nemesis
-
-# Clean up
-/scoreboard players reset rng
-/scoreboard players reset amount
-/execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove <<scoreboardName>>
+\file teardown no kill.mctemplate

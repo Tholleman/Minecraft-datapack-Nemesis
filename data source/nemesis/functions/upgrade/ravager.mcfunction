@@ -13,4 +13,4 @@
 /execute if score rng nem_num matches 4..6 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {<<defaultData>>}
 /execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon minecraft:illusioner ~ ~ ~ {<<defaultData>>,HandItems:[{id:"minecraft:bow",Count:1},{}]}
 
-\file raid teardown.mctemplate
+\file teardown no kill.mctemplate

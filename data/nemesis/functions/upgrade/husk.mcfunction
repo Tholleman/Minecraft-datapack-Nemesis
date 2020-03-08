@@ -25,11 +25,11 @@ execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:h
 execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:1,Amplifier:1,Duration:1200}]},Count:1}}]}
 execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:5,Amplifier:1,Duration:1200}]},Count:1}}]}
 execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:husk ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:potion",Potion:{id:"minecraft:splash_potion",tag:{CustomPotionEffects:[{Id:7,Amplifier:4,Duration:1}]},Count:1}}]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Husk has grown more powerful","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Husk has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:husk
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_husk=..4}] nem_husk 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_husk=..4}] nem_husk 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_husk
+tp @e[tag=nemesis] ~ -64 ~

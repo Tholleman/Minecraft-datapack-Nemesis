@@ -29,11 +29,11 @@ execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_blo
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[-1.0d,0.3d,1.0d]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[-1.0d,0.3d,-1.0d]}
 execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:blaze ~ ~ ~ {CustomName:"\"Large Demon\"",ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:blaze",CustomName:"\"Large Demon\"",ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]},{id:"minecraft:blaze",CustomName:"\"Large Demon\"",ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]},{id:"minecraft:blaze",CustomName:"\"Large Demon\"",ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]},{id:"minecraft:blaze",CustomName:"\"Large Demon\"",ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],Passengers:[{id:"minecraft:magma_cube",CustomName:"\"Large Demon\"",Size:1,PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}]}]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Blaze has grown more powerful","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Blaze has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:blaze
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_blaze=..4}] nem_blaze 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_blaze=..4}] nem_blaze 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_blaze
+tp @e[tag=nemesis] ~ -64 ~

@@ -1,5 +1,7 @@
 \var name vex
 \file global.mctemplate
+\var message The Vex has increased the raid
+\var mobId vex
 
 # tag
 /execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type=vex] add nemesis
@@ -34,8 +36,5 @@
 	],
 	<<noArmorDrop>>
 }
-/execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Vex has increased the raid","italic":true,"color":"dark_red"}
 
-# clean
-/advancement revoke @s only nemesis:vex
-/tag @e[tag=nemesis] remove nemesis
+\file teardown no rng.mctemplate

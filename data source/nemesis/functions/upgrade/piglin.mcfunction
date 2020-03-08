@@ -48,13 +48,4 @@
 /execute if <<step>> 7 as <<selector>> run <<vanishing>>
 /execute if <<step>> 7 as <<selector>> run <<grindstone>>
 
-/execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
-
-# Reset for another summoning
-/advancement revoke @s only nemesis:<<mobId>>
-/execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={<<scoreboardName>>=..<<<<amount>> - 1>>}] <<scoreboardName>> 1
-
-# Clean up
-/scoreboard players reset rng
-/scoreboard players reset amount
-/execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove <<scoreboardName>>
+\file teardown no kill.mctemplate

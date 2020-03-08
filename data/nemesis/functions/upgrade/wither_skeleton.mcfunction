@@ -11,11 +11,11 @@ execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:w
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Adaptus Custodes\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:golden_sword",Count:1},{}],HandDropChances:[0F,0F],ArmorItems:[{id:"minecraft:golden_boots",Count:1},{id:"minecraft:golden_leggings",Count:1},{id:"minecraft:golden_chestplate",Count:1},{id:"minecraft:golden_helmet",Count:1}],ArmorDropChances:[0F,0F,0F,0F]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Warmaster\"",PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:diamond_sword",Count:1},{}],HandDropChances:[0F,0F],ArmorItems:[{id:"minecraft:diamond_boots",Count:1},{id:"minecraft:diamond_leggings",Count:1},{id:"minecraft:diamond_chestplate",Count:1},{id:"minecraft:diamond_helmet",Count:1}],ArmorDropChances:[0F,0F,0F,0F]}
 execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Captain-General\"",PersistenceRequired:1b,Health:50,Attributes:[{Name:"generic.followRange",Base:64},{Name:"generic.maxHealth",Base:50},{Name:"generic.knockbackResistance",Base:0.8f}],HandItems:[{id:"minecraft:netherite_sword",Count:1},{}],HandDropChances:[0F,0F],ArmorItems:[{id:"minecraft:netherite_boots",Count:1},{id:"minecraft:netherite_leggings",Count:1},{id:"minecraft:netherite_chestplate",Count:1},{}],ArmorDropChances:[0F,0F,0F,0F]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Wither Skeleton has grown more powerful","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Wither Skeleton has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:wither_skeleton
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_wither_skele=..4}] nem_wither_skele 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_wither_skele=..4}] nem_wither_skele 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_wither_skele
+tp @e[tag=nemesis] ~ -64 ~

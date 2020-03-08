@@ -27,4 +27,4 @@
 # 14 invisibility
 /execute if score rng nem_num matches 4 <<start>>14,Amplifier:0<<end>>
 
-\file raid teardown.mctemplate
+\file teardown no kill.mctemplate

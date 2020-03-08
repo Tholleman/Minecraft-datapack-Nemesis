@@ -1,0 +1,16 @@
+# var scoreboardName
+# var mobId
+# var amount
+# var message
+
+\file teardown no rng.mctemplate
+
+# Reset for another summoning
+/execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={<<scoreboardName>>=..<<<<amount>> - 1>>}] <<scoreboardName>> 1
+
+# Clean up
+/scoreboard players reset rng
+/scoreboard players reset amount
+
+# Potentially uninstall
+/execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove <<scoreboardName>>

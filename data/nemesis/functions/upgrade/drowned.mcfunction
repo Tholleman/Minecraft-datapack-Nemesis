@@ -68,11 +68,11 @@ execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_blo
 execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~ {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
 execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~-1 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
 execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block ~-2 ~1 ~-2 {BlockState:{Name:"minecraft:magma_block"},Time:1,Motion:[0d,0d,0d]}
-execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Drowned has grown more powerful","italic":true,"color":"dark_red"}
+execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Drowned has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:drowned
-execute if entity @e[tag=nemesis] run scoreboard players add @s[scores={nem_drowned=..7}] nem_drowned 1
-tp @e[tag=nemesis] ~ -64 ~
 tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_drowned=..7}] nem_drowned 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_drowned
+tp @e[tag=nemesis] ~ -64 ~

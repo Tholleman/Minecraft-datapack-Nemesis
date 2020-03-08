@@ -13,7 +13,8 @@ execute if score rng nem_num matches 3 run summon minecraft:creeper ~ ~ ~ {Custo
 execute if score rng nem_num matches 3 run summon minecraft:creeper ~ ~ ~ {CustomName:"\"Missile\"",PersistenceRequired:1b,Fuse:10,Fire:1277951,ActiveEffects:[{Id:12,Amplifier:0,Duration:2147483647}],Attributes:[{Name:"generic.followRange",Base:64},{Name:"generic.maxHealth",Base:10},{Name:"generic.movementSpeed",Base:0.5f}]}
 execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Creeper has reincarnated into a more powerful version","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:creeper
-scoreboard players add @s[scores={nem_creeper=..3}] nem_creeper 1
+tag @e[tag=nemesis] remove nemesis
+execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_creeper=..3}] nem_creeper 1
 scoreboard players reset rng
 scoreboard players reset amount
 execute if entity @e[tag=nem_uninstall] run scoreboard objectives remove nem_creeper
