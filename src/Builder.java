@@ -18,10 +18,13 @@ public class Builder
 	public static final String SOURCE_DIRECTORY = "data source";
 	public static final String OUTPUT_DIRECTORY = "data";
 	public static final Map<String, String> OTHER_SOURCE_FILES = Map.ofEntries(Map.entry("pack.json", "pack.mcmeta"));
+	public static final String FORMAT = ".zip";
 	
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		System.out.println("Minecraft version " + CURRENT_MINECRAFT_VERSION);
+		
+		clean();
 		
 		iterate(new File(SOURCE_DIRECTORY));
 		
@@ -31,10 +34,67 @@ public class Builder
 		{
 			thread.join();
 		}
+		
+		// All threads are now back into this one
+		
+		if (!MultiThread.failures.isEmpty()) {
+			for (Throwable failure : MultiThread.failures)
+			{
+				failure.printStackTrace();
+			}
+			return;
+		}
+		
 		System.out.println("All files inside \"" + SOURCE_DIRECTORY + "\" are now parsed and ready to be used");
 		
-		Zipper.zip(toZip, DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + ".zip");
+		Zipper.zip(toZip, getDestZipFile());
 		System.out.println("The datapack is now a .zip file and ready to be distributed");
+	}
+	
+	private static String getDestZipFile()
+	{
+		return DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + FORMAT;
+	}
+	
+	private static void clean()
+	{
+		//noinspection ConstantConditions
+		for (File file : new File("./").listFiles())
+		{
+			if (file.getName().endsWith(FORMAT)) unsafeDelete(file);
+		}
+		
+		delete(new File(OUTPUT_DIRECTORY));
+		delete(new File(getDestZipFile()));
+		for (Map.Entry<String, String> stringStringEntry : OTHER_SOURCE_FILES.entrySet())
+		{
+			delete(new File(stringStringEntry.getValue()));
+		}
+		
+		System.out.println("Cleaned artifacts from previous build");
+	}
+	
+	private static void delete(File file)
+	{
+		if (file.exists())
+		{
+			unsafeDelete(file);
+		}
+	}
+	
+	private static void unsafeDelete(File file) {
+		if (file.isDirectory())
+		{
+			//noinspection ConstantConditions
+			for (File listFile : file.listFiles())
+			{
+				unsafeDelete(listFile);
+			}
+		}
+		if (!file.delete())
+		{
+			throw new RuntimeException("Could not delete file " + file.getPath());
+		}
 	}
 	
 	private static File[] getFilesToZip() throws IOException
@@ -122,10 +182,12 @@ public class Builder
 	private static class MultiThread extends Thread
 	{
 		private static final Vector<Thread> threads = new Vector<>();
+		private static final Vector<Throwable> failures = new Vector<>();
 		
 		public MultiThread()
 		{
 			threads.add(this);
+			setUncaughtExceptionHandler((t, e) -> failures.add(e));
 		}
 	}
 	

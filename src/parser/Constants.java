@@ -4,10 +4,9 @@ public class Constants
 {
 	public static class IDENTIFIERS
 	{
-		public static final String LINE_TERMINATOR = ";";
-		public static final String META_PREFIX = "${";
-		public static final String META_SUFFIX = "}";
-		public static final String META_MULTILINE = "\\";
+		
+		public static final String COMMAND_PREFIX = "/";
+		public static final String META_PREFIX = "\\";
 		
 		public static final String INLINE_META_PREFIX = "<<";
 		public static final String INLINE_META_SUFFIX = ">>";
@@ -33,9 +32,7 @@ public class Constants
 		
 		public static final String UNKNOWN_WRITE_ERROR = "An unexpected error occurred while writing line ";
 		
-		public static String EXPECTED_ANOTHER_LINE(int line) {return "Expected another line after " + line;}
-		
-		public static String EXPECTED_META_SUFFIX(int line) {return "Expected " + IDENTIFIERS.META_SUFFIX + " or " + IDENTIFIERS.META_MULTILINE + " at the end of line " + line;}
+		public static String UNEXPECTED_START(int line) {return "Line " + line + " started with an unexpected character";} 
 		
 		public static String UNKNOWN_VARIABLE(String variable, int line) {return "Unknown variable \"" + variable + "\" on line " + line;}
 		

@@ -1,14 +1,14 @@
-tag @s add nem_uninstall;
+/tag @s add nem_uninstall
 
-scoreboard objectives remove nem_num;
+/scoreboard objectives remove nem_num
 
-advancement grant @s from nemesis:root;
+/advancement grant @s from nemesis:root
 
-tellraw @s {
+/tellraw @s {
 	"text":"The nemesis datapack has been uninstalled\n
 	        All scoreboard objectives and tags have now been removed",
 	"italic":true,
 	"color":"green"
-};
+}
 
-tag @s remove nem_uninstall;
+/tag @s remove nem_uninstall
