@@ -12,7 +12,7 @@
 \repeat 3
 /execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	<<persistent>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	<<attributeStart>>,
 		{Name:generic.maxHealth,Base:20}
 	<<attributeEnd>>

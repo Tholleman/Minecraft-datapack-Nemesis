@@ -7,7 +7,7 @@
 
 \file raid setup.mctemplate
 
-\var defaultVindicatorData <<defaultData>>,CanPickUpLoot:1b
+\var defaultVindicatorData <<defaultData>>,<<sticky>>
 
 # Summon one of the vindicators
 /execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
@@ -26,7 +26,7 @@
 }
 
 /execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	<<persistent>>,
 
 	<<attributeStart>>,
@@ -45,7 +45,7 @@
 }
 
 /execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	<<persistent>>,
 
 	<<attributeStart>>,
@@ -72,7 +72,7 @@
 
 /execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
 	<<persistent>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 
 	<<attributeStart>>,
 		{Name:"generic.knockbackResistance",Base:0.4f}

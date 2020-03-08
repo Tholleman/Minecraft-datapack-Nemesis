@@ -23,7 +23,7 @@
 /execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {
 	CustomName:"\"Diver\"",
 	<<defaultData>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	HandItems:[{id:"minecraft:fishing_rod",Count:1},{}],
 	<<noHandDrop>>,
 	ArmorItems:[
@@ -39,7 +39,7 @@
 	minecraft:drowned ~ ~ ~ {
     	CustomName:"\"Bodyguard\"",
     	<<persistent>>,
-    	CanPickUpLoot:1b,
+    	<<sticky>>,
 
     	<<attributeStart>>,
     		{Name:"generic.knockbackResistance",Base:0.33f}
@@ -65,7 +65,7 @@
 	minecraft:drowned ~ ~ ~ {
     	CustomName:"\"Triton\"",
     	<<persistent>>,
-    	CanPickUpLoot:1b,
+    	<<sticky>>,
     	
     	Health:40,
     	<<attributeStart>>,

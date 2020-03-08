@@ -8,11 +8,13 @@
 
 \file setup.mctemplate
 
+\var rabbitData {RabbitType:99,<<persistent>>,<<sticky>>}
+
 # Summon one of the rabbits
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,PersistenceRequired:1b}
-/execute if score rng nem_num matches 1..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,PersistenceRequired:1b}
-/execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,PersistenceRequired:1b}
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,PersistenceRequired:1b}
+/execute if score rng nem_num matches 0..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
+/execute if score rng nem_num matches 1..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
+/execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
+/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
 
 /execute if entity @e[tag=nemesis] run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
 

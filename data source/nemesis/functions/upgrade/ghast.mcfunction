@@ -35,7 +35,7 @@
 \var wither_skeleton 
 	id:"minecraft:wither_skeleton",
 	<<persistent>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 
 	<<attributeStart>>,
 		{Name:"generic.knockbackResistance",Base:1f}

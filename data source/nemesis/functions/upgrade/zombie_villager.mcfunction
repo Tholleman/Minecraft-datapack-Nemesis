@@ -8,7 +8,7 @@
 
 \file setup.mctemplate
 
-\var zombieVillagerData PersistenceRequired:1b,CanPickUpLoot:1b,Attributes:[{Name:"generic.followRange",Base:64},{Name:"zombie.spawnReinforcements",Base:1f}],CanBreakDoors:1
+\var zombieVillagerData <<persistent>>,<<sticky>>,Attributes:[{Name:"generic.followRange",Base:64},{Name:"zombie.spawnReinforcements",Base:1f}],CanBreakDoors:1
 
 # Summon one of the zombie villagers
 \var nitwit minecraft:zombie_villager ~ ~ ~ {CustomName:"\"Nitwit\"",VillagerData:{profession:"minecraft:nitwit"},<<zombieVillagerData>>}
@@ -37,8 +37,8 @@
 	minecraft:zombie_villager ~ ~ ~ {
 		CustomName:"\"Librarian\"",
 		VillagerData:{profession:"minecraft:librarian"},
-		PersistenceRequired:1b,
-		CanPickUpLoot:1b,
+		<<persistent>>,
+		<<sticky>>,
 		Health:30,
 		Attributes:[{Name:"generic.maxHealth",Base:30},{Name:"generic.followRange",Base:64},{Name:"zombie.spawnReinforcements",Base:1f}],
 		CanBreakDoors:1,
@@ -62,8 +62,8 @@
 	minecraft:zombie_villager ~ ~ ~ {
 		CustomName:"\"Butcher\"",
 		VillagerData:{profession:"minecraft:butcher"},
-		PersistenceRequired:1b,
-		CanPickUpLoot:1b,
+		<<persistent>>,
+		<<sticky>>,
 		Attributes:[{Name:"generic.followRange",Base:64},{Name:"generic.movementSpeed",Base:0.4f},{Name:"zombie.spawnReinforcements",Base:1f}],
 		CanBreakDoors:1,
 		HandItems:[{id:"minecraft:iron_axe",Count:1},{}],

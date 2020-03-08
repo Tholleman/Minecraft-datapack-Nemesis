@@ -53,7 +53,7 @@
 /execute if score rng nem_num matches 11 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {
 	CustomName:"\"a different kind of Phantom\"",
 	<<defaultData>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	HandItems:[{id:"minecraft:iron_sword",Count:1},{}],
 	<<noHandDrop>>
 }

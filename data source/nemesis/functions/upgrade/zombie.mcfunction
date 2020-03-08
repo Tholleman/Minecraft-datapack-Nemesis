@@ -10,7 +10,7 @@
 \var zombieAttributeStart <<attributeStart>>,{Name:"zombie.spawnReinforcements",Base:1f}
 \var zombieAttributeEnd <<attributeEnd>>
 \var zombieAttributes <<zombieAttributeStart>><<zombieAttributeEnd>>
-\var zombieData <<persistent>>,CanPickUpLoot:1b,CanBreakDoors:1b,<<noHandDrop>>,<<noArmorDrop>>
+\var zombieData <<persistent>>,<<sticky>>,CanBreakDoors:1b,<<noHandDrop>>,<<noArmorDrop>>
 
 # Summon one of the Zombies
 /execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {

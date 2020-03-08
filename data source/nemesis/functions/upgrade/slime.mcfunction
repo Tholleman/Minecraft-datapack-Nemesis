@@ -27,7 +27,7 @@
 /execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
 	CustomName:"\"Absorbing Slime\"",
 	<<defaultData>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	Size:1,
 	ActiveEffects:[
 		# Speed

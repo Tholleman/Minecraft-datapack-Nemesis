@@ -11,7 +11,7 @@
 /execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Stationed Guard\"",
 	<<persistent>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	HandItems:[
 		{
 			id:"minecraft:bow",

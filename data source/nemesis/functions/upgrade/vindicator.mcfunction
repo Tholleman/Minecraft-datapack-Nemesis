@@ -32,7 +32,7 @@
 	Passengers:[{
 		id:"minecraft:pillager",
 		<<defaultData>>,
-		CanPickUpLoot:1b,
+		<<sticky>>,
 		HandItems:[{id:"minecraft:crossbow",Count:1},{}],
 		<<noHandDrop>>
 	}]
@@ -40,7 +40,7 @@
 \var vindicator {
 		id:"minecraft:vindicator",
 		<<defaultData>>,
-		CanPickUpLoot:1b,
+		<<sticky>>,
 		HandItems:[{id:"minecraft:iron_axe",Count:1},{}],
 		<<noHandDrop>>
 	}
@@ -56,7 +56,7 @@
 	Passengers:[{
 		id:"minecraft:evoker",
 		<<defaultData>>,
-		CanPickUpLoot:1b,
+		<<sticky>>,
 		PatrolLeader:1b,
 		ArmorItems:[
 			{},

@@ -56,7 +56,7 @@
 /<<start>>{Id:25,Amplifier:4,Duration:80}<<end>>
 
 # Selfish looters
-\var looter CanPickUpLoot:1b,<<defaultData>>
+\var looter <<sticky>>,<<defaultData>>
 \repeat 1
 /execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:3,<<looter>>}
 \repeat 2

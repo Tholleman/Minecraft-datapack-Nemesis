@@ -4,7 +4,7 @@
 \repeat 8
 /execute unless entity @e[tag=nem_uninstall] run summon minecraft:endermite ~ ~ ~ {
 	<<defaultData>>,
-	CanPickUpLoot:1b
+	<<sticky>>
 }
 
 /execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Enderman broke you down into Endermites","italic":true,"color":"dark_red"}

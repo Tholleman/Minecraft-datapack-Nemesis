@@ -49,7 +49,7 @@
 		<<defaultData>>,
 		HandItems:[{id:"minecraft:bow",Count:1},{}],
 		<<noHandDrop>>,
-		CanPickUpLoot:1b
+		<<sticky>>
 	}]
 }
 /execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {

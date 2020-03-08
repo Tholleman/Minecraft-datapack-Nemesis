@@ -9,7 +9,7 @@
 
 \var start at @e[tag=nemesis] run summon minecraft:witch ~ ~ ~ {
 	<<defaultData>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	Passengers:[{
 		id:"minecraft:potion",
 		Potion:{

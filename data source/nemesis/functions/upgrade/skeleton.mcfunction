@@ -18,7 +18,7 @@
 	CustomName:"\"Zombie\"",
 	Tags:["nem_skeleton_zombie"],
 	<<defaultData>>,
-	CanPickUpLoot:1b,
+	<<sticky>>,
 	ArmorItems:[
 		{id:"minecraft:leather_boots",tag:{display:{color:7105634}},Count:1},
 		{id:"minecraft:leather_leggings",tag:{display:{color:4602788}},Count:1},
