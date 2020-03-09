@@ -9,3 +9,6 @@
 
 # just in case
 /advancement revoke @s from nemesis:root
+
+\clevel 2
+/tellraw @a "Nemesis is ready for action"

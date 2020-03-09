@@ -15,14 +15,34 @@ public class Builder
 	
 	public static final String DATAPACK_NAME = "nemesis";
 	public static final String CURRENT_MINECRAFT_VERSION = "1.16";
+	public static final CompileLevel compileLevel = CompileLevel.develop;
 	public static final String SOURCE_DIRECTORY = "data source";
 	public static final String OUTPUT_DIRECTORY = "data";
 	public static final Map<String, String> OTHER_SOURCE_FILES = Map.ofEntries(Map.entry("pack.json", "pack.mcmeta"));
 	public static final String FORMAT = ".zip";
 	
+	public enum CompileLevel
+	{
+		production("Production", 1, ""),
+		develop("Develop", 2, " DEV"),
+		verbose("Verbose", 3, " VERBOSE");
+		
+		public final String name;
+		public final int level;
+		public final String zipSuffix;
+		
+		CompileLevel(String name, int level, String zipSuffix)
+		{
+			this.name = name;
+			this.level = level;
+			this.zipSuffix = zipSuffix;
+		}
+	}
+	
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		System.out.println("Minecraft version " + CURRENT_MINECRAFT_VERSION);
+		System.out.println("Compile level: " + compileLevel.name);
 		
 		clean();
 		
@@ -37,7 +57,8 @@ public class Builder
 		
 		// All threads are now back into this one
 		
-		if (!MultiThread.failures.isEmpty()) {
+		if (!MultiThread.failures.isEmpty())
+		{
 			for (Throwable failure : MultiThread.failures)
 			{
 				failure.printStackTrace();
@@ -53,7 +74,7 @@ public class Builder
 	
 	private static String getDestZipFile()
 	{
-		return DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + FORMAT;
+		return DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + compileLevel.zipSuffix + FORMAT;
 	}
 	
 	private static void clean()
@@ -82,7 +103,8 @@ public class Builder
 		}
 	}
 	
-	private static void unsafeDelete(File file) {
+	private static void unsafeDelete(File file)
+	{
 		if (file.isDirectory())
 		{
 			//noinspection ConstantConditions
@@ -166,7 +188,7 @@ public class Builder
 		{
 			if (f.getName().matches(s))
 			{
-				new ParseThread(f, output).start();
+				new ParseThread(f, output, compileLevel.level).start();
 				return true;
 			}
 		}
@@ -195,11 +217,13 @@ public class Builder
 	{
 		public final File f;
 		public final String output;
+		public final int compileLevel;
 		
-		private ParseThread(File f, String output)
+		private ParseThread(File f, String output, int compileLevel)
 		{
 			this.f = f;
 			this.output = output;
+			this.compileLevel = compileLevel;
 		}
 		
 		@Override
@@ -207,7 +231,7 @@ public class Builder
 		{
 			try
 			{
-				Parser.parse(f, output);
+				Parser.parse(f, output, compileLevel);
 			}
 			catch (ParsingException pEx)
 			{

@@ -22,6 +22,8 @@
 		}
 	]
 }
+\clevel 2
+/execute if score rng nem_num matches 0 run tellraw @s "subjugator"
 
 # A collection of speed demons
 \repeat 4
@@ -31,6 +33,8 @@
 	# Speed
 	ActiveEffects:[{Id:1,Amplifier:4,Duration:2147483647}]
 }
+\clevel 2
+/execute if score rng nem_num matches 1 run tellraw @s "Speed Demon"
 
 # A large collection of demons
 \repeat 8
@@ -38,6 +42,8 @@
 	CustomName:"\"Inferno\"",
 	<<defaultData>>
 }
+\clevel 2
+/execute if score rng nem_num matches 2 run tellraw @s "Inferno"
 
 # A fire demon
 /execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:blaze ~ ~ ~ {
@@ -53,6 +59,8 @@
 /execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[-1.0d,0.3d,0.0d]}
 /execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[-1.0d,0.3d,1.0d]}
 /execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:lava"},Time:1,Motion:[-1.0d,0.3d,-1.0d]}
+\clevel 2
+/execute if score rng nem_num matches 3 run tellraw @s "Pyromaniac"
 
 \var blazePassenger 
 	id:"minecraft:blaze",
@@ -82,5 +90,7 @@
 		}
 	]
 }
+\clevel 2
+/execute if score rng nem_num matches 4 run tellraw @s "Large Demon"
 
 \file teardown.mctemplate

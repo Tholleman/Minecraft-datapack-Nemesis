@@ -9,12 +9,12 @@ import static parser.Helper.splitOnWS;
 
 public class Parser
 {
-	public static void parse(File file, String outputPath)
+	public static void parse(File file, String outputPath, int compileLevel)
 	{
 		try (BufferedReader br = new BufferedReader(new FileReader(file));
 		     FileWriter fw = new FileWriter(outputPath))
 		{
-			new Parser(file.getParent(), br, fw).parse();
+			new Parser(file.getParent(), br, fw, compileLevel).parse();
 		}
 		catch (IOException e)
 		{
@@ -26,21 +26,20 @@ public class Parser
 	private final Reader reader;
 	private final Writer writer;
 	private final HashMap<String, String> variables;
+	private final int compileLevel;
 	
-	public Parser(String inputDir, BufferedReader fileToParse, FileWriter output)
+	public Parser(String inputDir, BufferedReader fileToParse, FileWriter output, int compileLevel)
 	{
-		this.inputDir = inputDir;
-		reader = new Reader(fileToParse);
-		writer = new Writer(output);
-		variables = new HashMap<>();
+		this(inputDir, fileToParse, new Writer(output), new HashMap<>(), compileLevel);
 	}
 	
-	private Parser(String inputDir, BufferedReader fileToParse, Writer writer, HashMap<String, String> variables)
+	private Parser(String inputDir, BufferedReader fileToParse, Writer writer, HashMap<String, String> variables, int compileLevel)
 	{
 		this.inputDir = inputDir;
 		reader = new Reader(fileToParse);
 		this.writer = writer;
 		this.variables = variables;
+		this.compileLevel = compileLevel;
 	}
 	
 	public void parse()
@@ -83,13 +82,23 @@ public class Parser
 				String filePath = inputDir + File.separator + Helper.reattach(line, args[0]);
 				try (BufferedReader br = new BufferedReader(new FileReader(new File(filePath))))
 				{
-					new Parser(inputDir, br, writer, variables).parse();
+					new Parser(inputDir, br, writer, variables, compileLevel).parse();
 				}
 				catch (IOException e)
 				{
 					throw new ParsingException(AN_ERROR_OCCURRED_WHILE_PARSING(filePath, reader.getLineCounter()), e);
 				}
 				return;
+			case Constants.META_TAGS.COMPILE_LEVEL:
+				if (args.length != 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS(args[0], 2, reader.getLineCounter()));
+				try {
+					if (Integer.parseInt(args[1]) > compileLevel) reader.skipOne();
+				}
+				catch (NumberFormatException nfEx)
+				{
+					throw new ParsingException(NOT_A_NUMBER(reader.getLineCounter()), nfEx);
+				}
+				break;
 			default:
 				throw new ParsingException(UNKNOWN_LINE_META(args[0], reader.getLineCounter()));
 		}
@@ -138,6 +147,7 @@ public class Parser
 		private final BufferedReader fileToParse;
 		private int lineCounter = 0;
 		private boolean meta;
+		private boolean skipOne;
 		private String next;
 		
 		public Reader(BufferedReader fileToParse)
@@ -145,6 +155,7 @@ public class Parser
 			assert fileToParse != null;
 			this.fileToParse = fileToParse;
 			meta = false;
+			skipOne = false;
 		}
 		
 		public String readLine()
@@ -156,7 +167,7 @@ public class Parser
 				do
 				{
 					String s;
-					if (next == null)
+					if (next == null || useSkipOne())
 					{
 						s = fileToParse.readLine();
 						if (s == null)
@@ -174,7 +185,7 @@ public class Parser
 						s = s.replaceAll("^\\s+", "");
 						if (s.isEmpty()) continue;
 						if (s.startsWith(COMMENT_PREFIX)) continue;
-						
+						if (useSkipOne()) continue;
 						
 						if (multilining)
 						{
@@ -229,6 +240,18 @@ public class Parser
 		public boolean isMeta()
 		{
 			return meta;
+		}
+		
+		public void skipOne()
+		{
+			skipOne = true;
+		}
+		
+		private boolean useSkipOne()
+		{
+			boolean skip = skipOne;
+			skipOne = false;
+			return skip;
 		}
 	}
 	

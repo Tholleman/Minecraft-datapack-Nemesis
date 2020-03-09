@@ -24,6 +24,7 @@ public class Constants
 		public static final String FILE = "file";
 		public static final String REPEAT = "repeat";
 		public static final String VAR = "var";
+		public static final String COMPILE_LEVEL = "clevel";
 	}
 	
 	public static class ERROR_MESSAGES
