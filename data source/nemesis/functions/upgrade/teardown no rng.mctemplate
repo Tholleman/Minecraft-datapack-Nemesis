@@ -2,7 +2,7 @@
 # var message
 
 # Warn the player
-/execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
+/execute <<warnDefault>> run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
 
 # Reset for another summoning
 /advancement revoke @s only nemesis:<<mobId>>

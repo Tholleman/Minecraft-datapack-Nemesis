@@ -9,7 +9,7 @@ execute if score rng nem_num matches 0..6 at @e[tag=nemesis] run summon minecraf
 execute if score rng nem_num matches 2..6 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
 execute if score rng nem_num matches 4..6 at @e[tag=nemesis] run summon minecraft:evoker ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
 execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon minecraft:illusioner ~ ~ ~ {PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:bow",Count:1},{}]}
-execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Ravager has increased the raid","italic":true,"color":"dark_red"}
+execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Ravager has increased the raid","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:ravager
 tag @e[tag=nemesis] remove nemesis
 execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_ravager=..6}] nem_ravager 1

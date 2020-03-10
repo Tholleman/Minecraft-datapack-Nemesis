@@ -26,7 +26,7 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:m
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:0,CanPickUpLoot:1b,PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:0,CanPickUpLoot:1b,PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:0,CanPickUpLoot:1b,PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}]}
-execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Magma Cube has grown more powerful","italic":true,"color":"dark_red"}
+execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Magma Cube has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:magma_cube
 tag @e[tag=nemesis] remove nemesis
 execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_magma_cube=..2}] nem_magma_cube 1

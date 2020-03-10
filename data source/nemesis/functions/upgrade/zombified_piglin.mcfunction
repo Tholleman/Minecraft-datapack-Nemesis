@@ -6,6 +6,7 @@
 \var alterAmount 5
 \var mobId zombified_piglin
 \var scoreboardName nem_zombified_pi
+\var warnDefault <<warnNoTag>>
 
 # The amount of different outcomes (index + 1)
 # This amount -1 should also be at the bottom at # Reset...

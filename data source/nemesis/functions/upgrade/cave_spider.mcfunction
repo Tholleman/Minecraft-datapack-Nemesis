@@ -23,6 +23,8 @@
 		{Id:28,Amplifier:1,Duration:2147483647,ShowParticles:0b}
 	]
 }
+\clevel 2
+/execute if score rng nem_num matches 0 run tellraw @s {"text":"Light Spider","color":"green"}
 
 \repeat 3
 /execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {
@@ -32,6 +34,8 @@
 		{Name:"generic.movementSpeed",Base:0.5f}
 	<<attributeEnd>>
 }
+\clevel 2
+/execute if score rng nem_num matches 1 run tellraw @s {"text":"Skitter","color":"green"}
 
 \repeat 3
 /execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {
@@ -40,6 +44,8 @@
 	# Regeneration
 	ActiveEffects:[{Id:10,Amplifier:1,Duration:2147483647}]
 }
+\clevel 2
+/execute if score rng nem_num matches 2 run tellraw @s {"text":"Leeching Spider","color":"green"}
 
 \repeat 3
 /execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {
@@ -48,6 +54,8 @@
 	# Invisibility
 	ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}]
 }
+\clevel 2
+/execute if score rng nem_num matches 3 run tellraw @s {"text":"Chameleon Spider","color":"green"}
 
 \repeat 3
 /execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {
@@ -66,6 +74,8 @@
 		}
 	]
 }
+\clevel 2
+/execute if score rng nem_num matches 4 run tellraw @s {"text":"Imitator","color":"green"}
 
 \repeat 3
 /execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:cave_spider ~ ~ ~ {
@@ -84,5 +94,7 @@
 		}
 	]
 }
+\clevel 2
+/execute if score rng nem_num matches 5 run tellraw @s {"text":"Innovator","color":"green"}
 
 \file teardown.mctemplate

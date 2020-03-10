@@ -4,6 +4,7 @@
 \var scoreboardName nem_piglin
 \var mobId piglin
 \var amount 8
+\var warnDefault <<warnNoTag>>
 \var message The Piglin took a look at your items
 
 # The amount of different outcomes (index + 1)

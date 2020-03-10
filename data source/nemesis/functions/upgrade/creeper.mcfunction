@@ -3,6 +3,7 @@
 \var scoreboardName nem_creeper
 \var mobId creeper
 \var amount 4
+\var warnDefault <<warnNoTag>>
 \var message The Creeper has reincarnated into a more powerful version
 
 \file setup no tag.mctemplate

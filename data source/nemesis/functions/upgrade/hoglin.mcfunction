@@ -1,7 +1,9 @@
 \var name Hoglin
 \file global.mctemplate
 \var mobId hoglin
+\var warnDefault <<warnNoTag>>
 \var message The Hoglin feast
+
 /execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type=<<mobId>>] add nemesis
 
 \repeat 8

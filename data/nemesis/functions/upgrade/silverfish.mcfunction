@@ -15,7 +15,7 @@ execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:s
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:silverfish ~ ~ ~ {CustomName:"\"an infestation of Silverfish\"",PersistenceRequired:1b,Health:40,Attributes:[{Name:"generic.followRange",Base:64},{Name:"generic.maxHealth",Base:40}]}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run fill ~-5 ~-5 ~-5 ~5 ~5 ~5 minecraft:infested_stone_bricks replace minecraft:stone_bricks
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run fill ~-3 ~-3 ~-3 ~3 ~3 ~3 minecraft:infested_stone replace minecraft:stone
-execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Silverfish has grown more powerful","italic":true,"color":"dark_red"}
+execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Silverfish has grown more powerful","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:silverfish
 tag @e[tag=nemesis] remove nemesis
 execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_silverfish=..3}] nem_silverfish 1

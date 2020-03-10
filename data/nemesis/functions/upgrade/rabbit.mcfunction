@@ -9,7 +9,7 @@ execute if score rng nem_num matches 0..3 at @e[tag=nemesis] run summon minecraf
 execute if score rng nem_num matches 1..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,PersistenceRequired:1b,CanPickUpLoot:1b}
 execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,PersistenceRequired:1b,CanPickUpLoot:1b}
 execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {RabbitType:99,PersistenceRequired:1b,CanPickUpLoot:1b}
-execute unless entity @e[tag=nem_uninstall] run tellraw @s {"text":"The Bunny has multiplied","italic":true,"color":"dark_red"}
+execute if entity @e[tag=nemesis] run tellraw @s {"text":"The Bunny has multiplied","italic":true,"color":"dark_red"}
 advancement revoke @s only nemesis:rabbit
 tag @e[tag=nemesis] remove nemesis
 execute unless entity @e[tag=nem_uninstall] run scoreboard players add @s[scores={nem_rabbit=..3}] nem_rabbit 1

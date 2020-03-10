@@ -1,6 +1,7 @@
 \var name Enderman
 \file global.mctemplate
 \var mobId enderman
+\var warnDefault <<warnNoTag>>
 \var message The Enderman broke you down into Endermites
 
 \repeat 8

@@ -7,3 +7,5 @@
 \var defaultData <<persistent>>,<<attributeStart>><<attributeEnd>>
 \var noHandDrop HandDropChances:[0F,0F]
 \var noArmorDrop ArmorDropChances:[0F,0F,0F,0F]
+\var warnDefault if entity @e[tag=nemesis]
+\var warnNoTag unless entity @e[tag=nem_uninstall]
