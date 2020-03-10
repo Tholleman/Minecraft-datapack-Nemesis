@@ -7,42 +7,45 @@ import java.nio.file.*;
 import java.util.*;
 
 import static parser.Constants.ERROR_MESSAGES.*;
+import static properties.Properties.*;
 
 public class Builder
 {
+	/**
+	 * Files that should be ignored from the data source directory
+	 */
 	private static final String[] BLACKLIST = {".*\\.mctemplate", ".*\\.md", ".*\\.txt"};
+	
+	/**
+	 * Files that should be parsed from the data source directory
+	 */
 	private static final String[] PARSE_WHITELIST = {".*\\.mcfunction"};
 	
-	public static final String DATAPACK_NAME = "nemesis";
-	public static final String CURRENT_MINECRAFT_VERSION = "1.16";
-	public static final CompileLevel compileLevel = CompileLevel.develop;
-	public static final String SOURCE_DIRECTORY = "data source";
-	public static final String OUTPUT_DIRECTORY = "data";
-	public static final Map<String, String> OTHER_SOURCE_FILES = Map.ofEntries(Map.entry("pack.json", "pack.mcmeta"));
-	public static final String FORMAT = ".zip";
+	/**
+	 * The directory that should be parsed and or copied
+	 */
+	private static final String SOURCE_DIRECTORY = "data source";
+	/**
+	 * The files that should be added to the final zip but isn't in the {@link Builder#SOURCE_DIRECTORY}.
+	 * 
+	 * If the file should be parsed in some way, add the file name of the parsed file as the second entry.
+	 * Use {@code null} if no parsing is needed
+	 */
+	private static final Map<String, String> OTHER_SOURCE_FILES = Map.ofEntries(Map.entry("pack.json", "pack.mcmeta"));
 	
-	public enum CompileLevel
-	{
-		production("Production", 1, ""),
-		develop("Develop", 2, " DEV"),
-		verbose("Verbose", 3, " VERBOSE");
-		
-		public final String name;
-		public final int level;
-		public final String zipSuffix;
-		
-		CompileLevel(String name, int level, String zipSuffix)
-		{
-			this.name = name;
-			this.level = level;
-			this.zipSuffix = zipSuffix;
-		}
-	}
+	/**
+	 * The directory that should be the place where the files from {@link Builder#SOURCE_DIRECTORY} should be parsed/copied to
+	 */
+	private static final String OUTPUT_DIRECTORY = "data";
+	/**
+	 * used to make and recognize zip files
+	 */
+	private static final String ZIP = ".zip";
 	
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		System.out.println("Minecraft version " + CURRENT_MINECRAFT_VERSION);
-		System.out.println("Compile level: " + compileLevel.name);
+		System.out.println("Compile level: " + COMPILE_LEVEL.name);
 		
 		clean();
 		
@@ -74,7 +77,7 @@ public class Builder
 	
 	private static String getDestZipFile()
 	{
-		return DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + compileLevel.zipSuffix + FORMAT;
+		return DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + COMPILE_LEVEL.zipSuffix + ZIP;
 	}
 	
 	private static void clean()
@@ -82,7 +85,7 @@ public class Builder
 		//noinspection ConstantConditions
 		for (File file : new File("./").listFiles())
 		{
-			if (file.getName().endsWith(FORMAT)) unsafeDelete(file);
+			if (file.getName().endsWith(ZIP)) unsafeDelete(file);
 		}
 		
 		delete(new File(OUTPUT_DIRECTORY));
@@ -188,7 +191,7 @@ public class Builder
 		{
 			if (f.getName().matches(s))
 			{
-				new ParseThread(f, output, compileLevel.level).start();
+				new ParseThread(f, output, COMPILE_LEVEL.level).start();
 				return true;
 			}
 		}
