@@ -249,9 +249,12 @@ public class Parser
 		
 		private boolean useSkipOne()
 		{
-			boolean skip = skipOne;
+			if (!skipOne) return false;
+			
 			skipOne = false;
-			return skip;
+			next = null;
+			
+			return true;
 		}
 	}
 	
