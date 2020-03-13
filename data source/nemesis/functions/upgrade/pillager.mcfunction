@@ -10,7 +10,9 @@
 \var defaultVindicatorData <<defaultData>>,<<sticky>>
 
 # Summon one of the vindicators
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"wood axe","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
 	<<defaultVindicatorData>>,
 
 	HandItems:[{id:"minecraft:wooden_axe",Count:1},{}],
@@ -25,7 +27,9 @@
 	]
 }
 
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"stone axe","color":"green"}
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
 	<<sticky>>,
 	<<persistent>>,
 
@@ -44,7 +48,9 @@
 	<<noHandDrop>>
 }
 
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"iron axe","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
 	<<sticky>>,
 	<<persistent>>,
 
@@ -56,7 +62,9 @@
 	<<noHandDrop>>
 }
 
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"golden axe","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
 	<<defaultVindicatorData>>,
 	Silent:1,
 	HandItems:[
@@ -70,7 +78,9 @@
 	<<noHandDrop>>
 }
 
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"diamond axe","color":"green"}
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:vindicator ~ ~ ~ {
 	<<persistent>>,
 	<<sticky>>,
 

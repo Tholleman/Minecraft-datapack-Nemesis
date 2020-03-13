@@ -8,7 +8,9 @@
 \file setup.mctemplate
 
 # Summon one of the spider
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"light spider","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
 	CustomName:"\"Light Spider\"",
 	<<persistent>>,
 	<<attributeStart>>,
@@ -22,26 +24,34 @@
 		{Id:28,Amplifier:1,Duration:2147483647,ShowParticles:0b}
 	]
 }
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"skitter","color":"green"}
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
 	CustomName:"\"Skitter\"",
 	<<persistent>>,
 	<<attributeStart>>,
 		{Name:"generic.movementSpeed",Base:0.5f}
 	<<attributeEnd>>
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"chameleon spider","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
 	CustomName:"\"Chameleon Spider\"",
 	<<defaultData>>,
 	# Invisibility
 	ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}]
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"leeching spider","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
 	CustomName:"\"Leeching Spider\"",
 	<<defaultData>>,
 	# Regeneration
 	ActiveEffects:[{Id:10,Amplifier:1,Duration:2147483647}]
 }
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"allied spider","color":"green"}
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
 	CustomName:"\"Allied Spider\"",
 	<<defaultData>>,
 	Passengers:[{
@@ -52,7 +62,9 @@
 		<<sticky>>
 	}]
 }
-/execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 5 run tellraw @s {"text":"infested spider","color":"green"}
+/execute if <<step>> 5 at @e[tag=nemesis] run summon minecraft:spider ~ ~ ~ {
 	CustomName:"\"Infested Spider\"",
 	<<defaultData>>,
 	Passengers:[

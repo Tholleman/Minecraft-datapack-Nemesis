@@ -9,7 +9,9 @@
 \file setup no tag.mctemplate
 
 # Summon one of the creepers
-/execute if score rng nem_num matches 0 run summon minecraft:creeper ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"Doubled Creeper","color":"green"}
+/execute if <<step>> 0 run summon minecraft:creeper ~ ~ ~ {
 	CustomName:"\"Doubled Creeper\"",
 	<<defaultData>>,
 	ExplosionRadius:6,
@@ -17,7 +19,9 @@
 	# 20 hearts
 	ActiveEffects:[{Id:21,Amplifier:4,Duration:2147483647}]
 }
-/execute if score rng nem_num matches 1 run summon minecraft:creeper ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"Stormy","color":"green"}
+/execute if <<step>> 1 run summon minecraft:creeper ~ ~ ~ {
 	CustomName:"\"Stormy\"",
 	<<persistent>>,
 	powered:1,
@@ -29,15 +33,19 @@
 	# Invisibility
 	ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647}]
 }
-/execute if score rng nem_num matches 2 run summon minecraft:creeper ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"Disguised","color":"green"}
+/execute if <<step>> 2 run summon minecraft:creeper ~ ~ ~ {
 	CustomName:"\"Disguised\"",
 	<<defaultData>>,
 	# Invisibility
 	ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647}],
 	Passengers:[{id:"minecraft:bat"}]
 }
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"Missile","color":"green"}
 \repeat 3
-/execute if score rng nem_num matches 3 run summon minecraft:creeper ~ ~ ~ {
+/execute if <<step>> 3 run summon minecraft:creeper ~ ~ ~ {
 	CustomName:"\"Missile\"",
 	<<persistent>>,
 	Fuse:10,

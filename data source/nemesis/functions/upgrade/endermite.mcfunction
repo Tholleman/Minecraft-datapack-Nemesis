@@ -14,7 +14,9 @@
 	ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}]
 
 # Summon one of the endermites
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"Tundra","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Tundra\"",
 	<<endermiteData>>,
 	Passengers:[{
@@ -24,23 +26,27 @@
 	}]
 }
 
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"Dessert","color":"green"}
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Dessert\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:husk",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Dessert\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:rabbit",RabbitType:99,<<defaultData>>}]
 }
 
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"Plains","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Plains\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:creeper",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Plains\"",
 	<<endermiteData>>,
 	Passengers:[{
@@ -50,54 +56,58 @@
 		<<defaultData>>
 	}]
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Plains\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:spider",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Plains\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:witch",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Plains\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:zombie",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Plains\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:zombie_villager",<<defaultData>>}]
 }
 
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"Underground","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Underground\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:cave_spider",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Underground\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:silverfish",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Underground\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:slime",Size:3,<<defaultData>>}]
 }
 
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"Nether","color":"green"}
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Nether\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:blaze",<<defaultData>>}]
 }
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Nether\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:magma_cube",Size:3,<<defaultData>>}]
 }
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Nether\"",
 	<<endermiteData>>,
 	Passengers:[{
@@ -109,7 +119,9 @@
 	}]
 }
 
-/execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 5 run tellraw @s {"text":"Raid","color":"green"}
+/execute if <<step>> 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Raid\"",
 	<<endermiteData>>,
 	Passengers:[{
@@ -120,7 +132,7 @@
 		<<noHandDrop>>
 	}]
 }
-/execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Raid\"",
 	<<endermiteData>>,
 	Passengers:[{
@@ -131,7 +143,7 @@
 		<<noHandDrop>>
 	}]
 }
-/execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
+/execute if <<step>> 5 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
 	CustomName:"\"Raid\"",
 	<<endermiteData>>,
 	Passengers:[{id:"minecraft:evoker",<<defaultData>>}]

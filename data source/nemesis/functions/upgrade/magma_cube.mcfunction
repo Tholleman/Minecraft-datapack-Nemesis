@@ -9,7 +9,9 @@
 
 # Summon one of the Magma Cubes
 # Reverse pyramid
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"Reverse pyramid","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {
 	<<defaultData>>,
 	Size:0,
 	Passengers:[{
@@ -30,7 +32,9 @@
 }
 
 # Bad potion effects on death
-\var start execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"lingering potions","color":"green"}
+\var start execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {
 	<<defaultData>>,
 	Size:2,
 	Passengers:[{
@@ -56,14 +60,16 @@
 /<<start>>{Id:25,Amplifier:4,Duration:80}<<end>>
 
 # Selfish looters
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"looters","color":"green"}
 \var looter <<sticky>>,<<defaultData>>
 \repeat 1
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:3,<<looter>>}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:3,<<looter>>}
 \repeat 2
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:2,<<looter>>}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:2,<<looter>>}
 \repeat 4
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:1,<<looter>>}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:1,<<looter>>}
 \repeat 8
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:0,<<looter>>}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {Size:0,<<looter>>}
 
 \file teardown.mctemplate

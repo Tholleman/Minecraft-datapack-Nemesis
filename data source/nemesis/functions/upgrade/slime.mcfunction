@@ -8,7 +8,9 @@
 \file setup.mctemplate
 
 # Summon one of the Slimes
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"stacked slime","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
 	CustomName:"\"Stacked Slime\"",
 	<<defaultData>>,
 	Size:2,
@@ -19,12 +21,16 @@
 		{id:"minecraft:slime",Size:1,<<defaultData>>}
 	]
 }
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"big slime","color":"green"}
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
 	CustomName:"\"Big Slime\"",
 	<<defaultData>>,
 	Size:9
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"absorbing slime","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
 	CustomName:"\"Absorbing Slime\"",
 	<<defaultData>>,
 	<<sticky>>,
@@ -37,7 +43,9 @@
 		{Id:12,Amplifier:0,Duration:2147483647,ShowParticles:0b}
 	]
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"loving father","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:slime ~ ~ ~ {
 	CustomName:"\"Loving father\"",
 	<<defaultData>>,
 	Size:4,
@@ -67,7 +75,9 @@
 		}
 	]
 }
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"burned slime","color":"green"}
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:magma_cube ~ ~ ~ {
 	CustomName:"\"Burned Slime\"",
 	<<defaultData>>,
 	Size:3

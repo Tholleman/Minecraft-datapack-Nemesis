@@ -8,7 +8,9 @@
 \file setup.mctemplate
 
 # Summon one of the Ghasts
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"immortal","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
 	CustomName:"\"the immortal\"",
 	<<persistent>>,
 	Silent:1,
@@ -19,13 +21,17 @@
 	<<attributeEnd>>
 }
 
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"abundant","color":"green"}
 \repeat 5
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
 	CustomName:"\"the abundant\"",
 	<<defaultData>>
 }
 
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"undetectable","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
 	CustomName:"\"the undetectable\"",
 	<<defaultData>>,
 	# Invisibility
@@ -47,7 +53,9 @@
 
 	# Slow Falling
 	ActiveEffects:[{Id:28,Amplifier:0,Duration:2147483647}]
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"gate","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:ghast ~ ~ ~ {
 	CustomName:"\"the gate\"",
 	<<defaultData>>,
 	Passengers:[

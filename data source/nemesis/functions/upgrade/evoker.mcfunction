@@ -23,14 +23,18 @@
 	}
 
 # Summon one of the pillagers
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"3 pillagers","color":"green"}
 \repeat 3
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	<<defaultData>>,
 	HandItems:[{id:"minecraft:crossbow",Count:1},<<fireworks>>],
 }
 
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"2 enchanted pillagers","color":"green"}
 \repeat 2
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	<<defaultData>>,
 	CanPickUpLoot:1b,
 	HandItems:[
@@ -46,7 +50,9 @@
 	]
 }
 
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"raid leader pillager","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	<<persistent>>,
 	CanPickUpLoot:1b,
 	PatrolLeader:1b,

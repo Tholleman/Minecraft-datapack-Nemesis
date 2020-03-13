@@ -13,7 +13,9 @@
 \var zombieData <<persistent>>,<<sticky>>,CanBreakDoors:1b,<<noHandDrop>>,<<noArmorDrop>>
 
 # Summon one of the Zombies
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"patient 0","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
 	CustomName:"\"Patient 0\"",
 	<<zombieData>>,
 	Health:40,
@@ -22,8 +24,10 @@
 		{Name:"generic.attackDamage",Base:4},
 	<<zombieAttributeEnd>>
 }
-/execute if score rng nem_num matches 0 run tp @e[type=item,distance=..5] ~ ~ ~
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
+/execute if <<step>> 0 run tp @e[type=item,distance=..5] ~ ~ ~
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"scavenger zombie","color":"green"}
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
 	CustomName:"\"Scavenger\"",
 	<<zombieData>>,
 	<<zombieAttributes>>,
@@ -35,7 +39,9 @@
 		{id:"minecraft:golden_helmet",Count:1}
 	]
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"golden zombie","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
 	CustomName:"\"Flaunter\"",
 	<<zombieData>>,
 	<<zombieAttributes>>,
@@ -47,7 +53,9 @@
 		{id:"minecraft:golden_helmet",Count:1}
 	]
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"child zombie","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
 	CustomName:"\"Pest\"",
 	<<zombieData>>,
 	<<zombieAttributes>>,
@@ -60,7 +68,9 @@
 		{id:"minecraft:chainmail_helmet",Count:1}
 	]
 }
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"tank zombie","color":"green"}
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:zombie ~ ~ ~ {
 	CustomName:"\"Tank\"",
 	<<zombieData>>,
 	Health:80,

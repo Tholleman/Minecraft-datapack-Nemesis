@@ -20,6 +20,8 @@
 	}
 
 # summon
+\clevel 2
+/execute if @e[tag=nemesis] run tellraw @s {"text":"raid leader pillager","color":"green"}
 /execute at @e[tag=nemesis] run summon minecraft:pillager ~ ~ ~ {
 	PersistenceRequired:1b,
 	<<defaultData>>,

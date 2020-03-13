@@ -17,14 +17,24 @@
 
 # Summon one of the evokers
 # 12 fire resistance
-/execute if score rng nem_num matches 0 <<start>>12,Amplifier:0<<end>>
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"fire resistance illusioner","color":"green"}
+/execute if <<step>> 0 <<start>>12,Amplifier:0<<end>>
 # 22 absorption
-/execute if score rng nem_num matches 1 <<start>>22,Amplifier:4<<end>>
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"absorption illusioner","color":"green"}
+/execute if <<step>> 1 <<start>>22,Amplifier:4<<end>>
 # 10 regeneration
-/execute if score rng nem_num matches 2 <<start>>10,Amplifier:0<<end>>
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"regeneration illusioner","color":"green"}
+/execute if <<step>> 2 <<start>>10,Amplifier:0<<end>>
 #  1 speed
-/execute if score rng nem_num matches 3 <<start>>1,Amplifier:1<<end>>
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"speed illusioner","color":"green"}
+/execute if <<step>> 3 <<start>>1,Amplifier:1<<end>>
 # 14 invisibility
-/execute if score rng nem_num matches 4 <<start>>14,Amplifier:0<<end>>
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"invisibility illusioner","color":"green"}
+/execute if <<step>> 4 <<start>>14,Amplifier:0<<end>>
 
 \file teardown no kill.mctemplate

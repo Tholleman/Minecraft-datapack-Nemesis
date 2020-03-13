@@ -8,10 +8,16 @@
 \file raid setup.mctemplate
 
 # Summon one of the pillagers
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>}
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"1 ravager","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>}
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"2 ravagers","color":"green"}
 \repeat 2
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>}
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {<<defaultData>>}
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"fire ravager","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Fire:1277951,
 	HandDropChances:[0F,0F],
@@ -27,7 +33,9 @@
 	],
 	ActiveEffects:[{Id:12,Amplifier:0,Duration:2147483647}]
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"pillager ravager","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Passengers:[{
 		id:"minecraft:pillager",
@@ -44,14 +52,18 @@
 		HandItems:[{id:"minecraft:iron_axe",Count:1},{}],
 		<<noHandDrop>>
 	}
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"vindicator ravager","color":"green"}
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Passengers:[
 		<<vindicator>>,
 		<<vindicator>>
 	]
 }
-/execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 5 run tellraw @s {"text":"evoker ravager","color":"green"}
+/execute if <<step>> 5 at @e[tag=nemesis] run summon minecraft:ravager ~ ~ ~ {
 	<<defaultData>>,
 	Passengers:[{
 		id:"minecraft:evoker",

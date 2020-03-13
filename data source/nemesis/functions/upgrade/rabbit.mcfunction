@@ -11,9 +11,17 @@
 \var rabbitData {RabbitType:99,<<persistent>>,<<sticky>>}
 
 # Summon one of the rabbits
-/execute if score rng nem_num matches 0..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
-/execute if score rng nem_num matches 1..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
-/execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"1 additional rabbit","color":"green"}
+/execute if <<step>> 0..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"2 additional rabbits","color":"green"}
+/execute if <<step>> 1..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"3 additional rabbits","color":"green"}
+/execute if <<step>> 2..3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"4 additional rabbits","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ <<rabbitData>>
 
 \file teardown no kill.mctemplate

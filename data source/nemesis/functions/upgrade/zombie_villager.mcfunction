@@ -11,10 +11,14 @@
 \var zombieVillagerData <<persistent>>,<<sticky>>,Attributes:[{Name:"generic.followRange",Base:64},{Name:"zombie.spawnReinforcements",Base:1f}],CanBreakDoors:1
 
 # Summon one of the zombie villagers
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"nitwit","color":"green"}
 \var nitwit minecraft:zombie_villager ~ ~ ~ {CustomName:"\"Nitwit\"",VillagerData:{profession:"minecraft:nitwit"},<<zombieVillagerData>>}
 \repeat 5
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon <<nitwit>>
+/execute if <<step>> 0 at @e[tag=nemesis] run summon <<nitwit>>
 
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"farmer","color":"green"}
 \var farmer 
 	minecraft:zombie_villager ~ ~ ~ {
 		CustomName:"\"Farmer\"",
@@ -31,8 +35,10 @@
 		<<noHandDrop>>
 	}
 \repeat 3
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon <<farmer>>
+/execute if <<step>> 1 at @e[tag=nemesis] run summon <<farmer>>
 
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"librarian","color":"green"}
 \var librarianStart 
 	minecraft:zombie_villager ~ ~ ~ {
 		CustomName:"\"Librarian\"",
@@ -54,10 +60,12 @@
 		{}
 		]
 	}
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon <<librarianStart>>{id:knockback,lvl:2}<<librarianEnd>>
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon <<librarianStart>>{id:fire_aspect,lvl:2}<<librarianEnd>>
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon <<librarianStart>>{id:sharpness,lvl:5}<<librarianEnd>>
+/execute if <<step>> 2 at @e[tag=nemesis] run summon <<librarianStart>>{id:knockback,lvl:2}<<librarianEnd>>
+/execute if <<step>> 2 at @e[tag=nemesis] run summon <<librarianStart>>{id:fire_aspect,lvl:2}<<librarianEnd>>
+/execute if <<step>> 2 at @e[tag=nemesis] run summon <<librarianStart>>{id:sharpness,lvl:5}<<librarianEnd>>
 
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"butcher","color":"green"}
 \var butcher 
 	minecraft:zombie_villager ~ ~ ~ {
 		CustomName:"\"Butcher\"",
@@ -77,13 +85,15 @@
 		<<noArmorDrop>>
 	}
 \repeat 3
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon <<butcher>>
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=chicken,distance=..5]
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=cow,distance=..5]
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=mooshroom,distance=..5]
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=pig,distance=..5]
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run kill @e[type=sheep,distance=..5]
+/execute if <<step>> 3 at @e[tag=nemesis] run summon <<butcher>>
+/execute if <<step>> 3 at @e[tag=nemesis] run kill @e[type=chicken,distance=..5]
+/execute if <<step>> 3 at @e[tag=nemesis] run kill @e[type=cow,distance=..5]
+/execute if <<step>> 3 at @e[tag=nemesis] run kill @e[type=mooshroom,distance=..5]
+/execute if <<step>> 3 at @e[tag=nemesis] run kill @e[type=pig,distance=..5]
+/execute if <<step>> 3 at @e[tag=nemesis] run kill @e[type=sheep,distance=..5]
 
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"priest","color":"green"}
 \var priestStart 
 	minecraft:zombie_villager ~ ~ ~ {
 		CustomName:"\"Priest\"",
@@ -109,10 +119,12 @@
 	}
 \var priestJack <<priestStart>>minecraft:jack_o_lantern<<priestEnd>>
 \var priestIron <<priestStart>>minecraft:iron_block<<priestEnd>>
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon <<priestJack>>
+/execute if <<step>> 4 at @e[tag=nemesis] run summon <<priestJack>>
 \repeat 4
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon <<priestIron>>
+/execute if <<step>> 4 at @e[tag=nemesis] run summon <<priestIron>>
 
+\clevel 2
+/execute if <<step>> 5 run tellraw @s {"text":"blacksmith","color":"green"}
 \var blacksmith 
 	minecraft:zombie_villager ~ ~ ~ {
 		CustomName:"\"Blacksmith\"",
@@ -189,19 +201,21 @@
 		],
 		<<noArmorDrop>>
 	}
-/execute if score rng nem_num matches 5 at @e[tag=nemesis] run summon <<blacksmith>>
+/execute if <<step>> 5 at @e[tag=nemesis] run summon <<blacksmith>>
 
 # Dear god, it's the entire village
+\clevel 2
+/execute if <<step>> 6 run tellraw @s {"text":"all of the villagers","color":"green"}
 \repeat 3
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<nitwit>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<nitwit>>
 \repeat 3
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<farmer>>
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<librarianStart>>{id:fire_aspect,lvl:2}<<librarianEnd>>
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<librarianStart>>{id:sharpness,lvl:5}<<librarianEnd>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<farmer>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<librarianStart>>{id:fire_aspect,lvl:2}<<librarianEnd>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<librarianStart>>{id:sharpness,lvl:5}<<librarianEnd>>
 \repeat 2
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<butcher>>
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<priestJack>>
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<priestIron>>
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<blacksmith>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<butcher>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<priestJack>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<priestIron>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<blacksmith>>
 
 \file teardown.mctemplate

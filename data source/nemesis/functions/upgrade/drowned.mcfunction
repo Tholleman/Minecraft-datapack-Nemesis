@@ -8,7 +8,9 @@
 \file setup.mctemplate
 
 # Summon one of the drowned
-/execute if score rng nem_num matches 0..1 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0..1 run tellraw @s {"text":"Angler Fish","color":"green"}
+/execute if <<step>> 0..1 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {
 	CustomName:"\"Angler Fish\"",
 	<<defaultData>>,
 	CanPickUpLoot:0b,
@@ -20,7 +22,9 @@
 	ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647}]
 }
 
-/execute if score rng nem_num matches 2..3 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2..3 run tellraw @s {"text":"Diver","color":"green"}
+/execute if <<step>> 2..3 at @e[tag=nemesis] run summon minecraft:drowned ~ ~ ~ {
 	CustomName:"\"Diver\"",
 	<<defaultData>>,
 	<<sticky>>,
@@ -85,16 +89,22 @@
     	<<noArmorDrop>>
     }
 
-/execute if score rng nem_num matches 4..5 at @e[tag=nemesis] run summon <<bodyguard>>
+\clevel 2
+/execute if <<step>> 4..5 run tellraw @s {"text":"Bodyguard","color":"green"}
+/execute if <<step>> 4..5 at @e[tag=nemesis] run summon <<bodyguard>>
 
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<triton>>
+\clevel 2
+/execute if <<step>> 6 run tellraw @s {"text":"Triton","color":"green"}
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<triton>>
 \repeat 4
-/execute if score rng nem_num matches 6 at @e[tag=nemesis] run summon <<bodyguard>>
+/execute if <<step>> 6 at @e[tag=nemesis] run summon <<bodyguard>>
 
-/execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon <<triton>>
+\clevel 2
+/execute if <<step>> 7 run tellraw @s {"text":"Triton w magma","color":"green"}
+/execute if <<step>> 7 at @e[tag=nemesis] run summon <<triton>>
 \repeat 4
-/execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon <<bodyguard>>
-\var summonBlock execute if score rng nem_num matches 7 at @e[tag=nemesis] run summon falling_block
+/execute if <<step>> 7 at @e[tag=nemesis] run summon <<bodyguard>>
+\var summonBlock execute if <<step>> 7 at @e[tag=nemesis] run summon falling_block
 \var magmaBlockEntity BlockState:{Name:"minecraft:magma_block"},Time:1
 /<<summonBlock>> ~ ~1 ~ {<<magmaBlockEntity>>,Motion:[2.0d,0.4d,2d]}
 /<<summonBlock>> ~ ~1 ~ {<<magmaBlockEntity>>,Motion:[1.2d,0.3d,1.5d]}

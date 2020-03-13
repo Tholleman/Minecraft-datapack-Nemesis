@@ -1,33 +1,33 @@
 \var name Shulker
 \file global.mctemplate
-#                    123456789 123456
+#                   123456789 123456
 \var scoreboardName nem_shulker
 \var mobId shulker
-\var amount 4
+\var amount 3
 \var message The Shulker gains help
 
 \file setup.mctemplate
 
+\var step score rng nem_num matches
+\var summon run execute at @e[type=minecraft:shulker,distance=..64] run summon
+\var at ~ ~ ~
+
 # Summon one of the help
-\repeat 3
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:endermite ~ ~ ~ {
-	<<persistent>>,
-	<<sticky>>,
-	<<attributeStart>>,
-		{Name:generic.maxHealth,Base:20}
-	<<attributeEnd>>
-}
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"endermites","color":"green"}
+/execute if <<step>> 0 <<summon>> minecraft:endermite ~ ~ ~
 
-\repeat 3
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
-	<<defaultData>>
-}
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"phantom","color":"green"}
+/execute if <<step>> 1 <<summon>> minecraft:phantom ~ ~ ~
 
-\repeat 3
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {
+\var vexData {
 	<<defaultData>>,
 	HandItems:[{id:"minecraft:iron_sword",Count:1b},{}],
 	<<noHandDrop>>
 }
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"vex","color":"green"}
+/execute if <<step>> 2 <<summon>> minecraft:vex ~ ~ ~ <<vexData>>
 
 \file teardown no kill.mctemplate

@@ -8,7 +8,9 @@
 \file setup.mctemplate
 
 # Summon one of the strays
-/execute if score rng nem_num matches 0..2 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0..2 run tellraw @s {"text":"fast stray","color":"green"}
+/execute if <<step>> 0..2 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
 	<<persistent>>,
 	<<attributeStart>>,
 		{Name:"generic.movementSpeed",Base:0.4f}
@@ -23,7 +25,9 @@
 	],
 	<<noHandDrop>>
 }
-/execute if score rng nem_num matches 3..5 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3..5 run tellraw @s {"text":"projectile protection","color":"green"}
+/execute if <<step>> 3..5 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
 	<<defaultData>>,
 
 	HandItems:[
@@ -59,7 +63,9 @@
 	],
 	<<noArmorDrop>>
 }
-/execute if score rng nem_num matches 6..8 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 6..8 run tellraw @s {"text":"rabbit stray","color":"green"}
+/execute if <<step>> 6..8 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {
 	RabbitType:1,
 	Passengers:[{
 		id:"minecraft:stray",
@@ -68,7 +74,9 @@
 		<<noHandDrop>>
 	}]
 }
-/execute if score rng nem_num matches 9..11 at @e[tag=nemesis] run summon minecraft:bat ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 9..11 run tellraw @s {"text":"bat stray","color":"green"}
+/execute if <<step>> 9..11 at @e[tag=nemesis] run summon minecraft:bat ~ ~ ~ {
 	Passengers:[{
 		id:"minecraft:stray",
 		<<defaultData>>,
@@ -80,7 +88,9 @@
 		ActiveEffects:[{Id:28,Amplifier:0,Duration:2147483647}]
 	}]
 }
-/execute if score rng nem_num matches 12 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 12 run tellraw @s {"text":"killer rabbit stray","color":"green"}
+/execute if <<step>> 12 at @e[tag=nemesis] run summon minecraft:rabbit ~ ~ ~ {
 	RabbitType:99,
 	Passengers:[{
 		id:"minecraft:stray",

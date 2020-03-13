@@ -9,12 +9,17 @@
 \file setup.mctemplate
 
 # If the skeleton believes it's that mob, it should upgrade like one
-/execute if entity @e[tag=nem_skeleton_zombie,tag=nemesis] run function nemesis:upgrade/zombie
-/execute if entity @e[tag=nem_skeleton_blaze,tag=nemesis] run function nemesis:upgrade/blaze
-/execute if entity @e[tag=nem_skeleton_wither_skeleton,tag=nemesis] run function nemesis:upgrade/wither_skeleton
+/execute if entity @e[tag=nemesis,tag=nem_skeleton_zombie] run function nemesis:upgrade/zombie
+/execute if entity @e[tag=nemesis,tag=nem_skeleton_blaze] run function nemesis:upgrade/blaze
+/execute if entity @e[tag=nemesis,tag=nem_skeleton_wither_skeleton] run function nemesis:upgrade/wither_skeleton
+
+\clevel 2
+/execute if entity @e[tag=nem_uninstall] run scoreboard players set rng nem_num -1
 
 # Summon one of the nemesis
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"zombie","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
 	CustomName:"\"Zombie\"",
 	Tags:["nem_skeleton_zombie"],
 	<<defaultData>>,
@@ -27,14 +32,18 @@
 	],
 	<<noArmorDrop>>
 }
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"stray","color":"green"}
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {
 	CustomName:"\"Stray\"",
 	Tags:["nem_skeleton_stray"],
 	<<defaultData>>,
 	HandItems:[{id:"minecraft:bow",Count:1},{}],
 	<<noHandDrop>>
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"blaze","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
 	CustomName:"\"Blaze\"",
 	Tags:["nem_skeleton_blaze"],
 	<<defaultData>>,
@@ -51,7 +60,9 @@
 		{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}
 	]
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"wither skeleton","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {
 	CustomName:"\"Wither Skeleton\"",
 	Tags:["nem_skeleton_wither_skeleton"],
 	<<persistent>>,

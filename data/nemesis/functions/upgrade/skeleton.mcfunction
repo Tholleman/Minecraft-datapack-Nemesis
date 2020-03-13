@@ -5,9 +5,9 @@ scoreboard objectives add nem_skeleton dummy "Nemesis Skeleton Progress"
 scoreboard players add @s nem_skeleton 0
 execute if score @s nem_skeleton < amount nem_num run scoreboard players operation rng nem_num = @s nem_skeleton
 execute unless entity @e[tag=nem_uninstall] run tag @e[sort=nearest,limit=1,type=skeleton] add nemesis
-execute if entity @e[tag=nem_skeleton_zombie,tag=nemesis] run function nemesis:upgrade/zombie
-execute if entity @e[tag=nem_skeleton_blaze,tag=nemesis] run function nemesis:upgrade/blaze
-execute if entity @e[tag=nem_skeleton_wither_skeleton,tag=nemesis] run function nemesis:upgrade/wither_skeleton
+execute if entity @e[tag=nemesis,tag=nem_skeleton_zombie] run function nemesis:upgrade/zombie
+execute if entity @e[tag=nemesis,tag=nem_skeleton_blaze] run function nemesis:upgrade/blaze
+execute if entity @e[tag=nemesis,tag=nem_skeleton_wither_skeleton] run function nemesis:upgrade/wither_skeleton
 execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {CustomName:"\"Zombie\"",Tags:["nem_skeleton_zombie"],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],CanPickUpLoot:1b,ArmorItems:[{id:"minecraft:leather_boots",tag:{display:{color:7105634}},Count:1},{id:"minecraft:leather_leggings",tag:{display:{color:4602788}},Count:1},{id:"minecraft:leather_chestplate",tag:{display:{color:175790}},Count:1},{id:"minecraft:zombie_head",Count:1}],ArmorDropChances:[0F,0F,0F,0F]}
 execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:stray ~ ~ ~ {CustomName:"\"Stray\"",Tags:["nem_skeleton_stray"],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:bow",Count:1},{}],HandDropChances:[0F,0F]}
 execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:skeleton ~ ~ ~ {CustomName:"\"Blaze\"",Tags:["nem_skeleton_blaze"],PersistenceRequired:1b,Attributes:[{Name:"generic.followRange",Base:64}],HandItems:[{id:"minecraft:bow",tag:{Enchantments:[{id:flame,lvl:1}]},Count:1},{}],HandDropChances:[0F,0F],Fire:1277951,ActiveEffects:[{Id:12,Amplifier:0,Duration:2147483647,ShowParticles:0b},{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}]}

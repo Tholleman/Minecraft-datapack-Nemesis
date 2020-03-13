@@ -9,7 +9,9 @@
 \file setup.mctemplate
 
 # Summon one of the phantoms
-/execute if score rng nem_num matches 0..5 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0..5 run tellraw @s {"text":"Size 3","color":"green"}
+/execute if <<step>> 0..5 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
 	CustomName:"\"Greater Phantom\"",
 	Size:3,
 	Silent:1,
@@ -19,7 +21,9 @@
 	<<attributeEnd>>
 }
 
-/execute if score rng nem_num matches 6..8 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 6..8 run tellraw @s {"text":"Size 10","color":"green"}
+/execute if <<step>> 6..8 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
 	CustomName:"\"Nightmare Phantom\"",
 	Size:10,
 	Silent:1,
@@ -29,28 +33,35 @@
 	<<attributeEnd>>
 }
 
+\clevel 2
+/execute if <<step>> 9 run tellraw @s {"text":"5 Invisible","color":"green"}
 \repeat 5
-/execute if score rng nem_num matches 9 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
+/execute if <<step>> 9 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
 	CustomName:"\"Invisible Phantom\"",
 	<<defaultData>>,
 	Silent:1,
 	ActiveEffects:[{Id:14,Amplifier:0,Duration:2147483647,ShowParticles:0b}]
 }
 
-/execute if score rng nem_num matches 10 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
+\var health 60
+\clevel 2
+/execute if <<step>> 10 run tellraw @s {"text":"Size 20","color":"green"}
+/execute if <<step>> 10 at @e[tag=nemesis] run summon minecraft:phantom ~ ~ ~ {
 	CustomName:"\"Phantom King\"",
 	<<persistent>>,
 	Silent:1,
 	Size:20,
-	Health:40,
+	Health:<<health>>,
 	<<attributeStart>>,
-		{Name:"generic.maxHealth",Base:60},
+		{Name:"generic.maxHealth",Base:<<health>>},
 		{Name:"generic.attackDamage",Base:8}
 	<<attributeEnd>>
 }
 
+\clevel 2
+/execute if <<step>> 11 run tellraw @s {"text":"vex","color":"green"}
 \repeat 2
-/execute if score rng nem_num matches 11 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {
+/execute if <<step>> 11 at @e[tag=nemesis] run summon minecraft:vex ~ ~ ~ {
 	CustomName:"\"a different kind of Phantom\"",
 	<<defaultData>>,
 	<<sticky>>,

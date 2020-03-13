@@ -8,7 +8,9 @@
 \file setup.mctemplate
 
 # Summon one of the wither skeletons
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"stationed guard","color":"green"}
+/execute if <<step>> 0 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Stationed Guard\"",
 	<<persistent>>,
 	<<sticky>>,
@@ -31,8 +33,10 @@
 		{Name:"generic.attackDamage",Base:20}
 	]
 }
-/execute if score rng nem_num matches 0 at @e[tag=nemesis] run tp @e[type=item,distance=..5] ~ ~ ~
-/execute if score rng nem_num matches 1 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+/execute if <<step>> 0 at @e[tag=nemesis] run tp @e[type=item,distance=..5] ~ ~ ~
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"iron gear","color":"green"}
+/execute if <<step>> 1 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Adaptus Astartes\"",
 	<<defaultData>>,
 
@@ -47,7 +51,9 @@
 	],
 	<<noArmorDrop>>
 }
-/execute if score rng nem_num matches 2 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"golden gear","color":"green"}
+/execute if <<step>> 2 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Adaptus Custodes\"",
 	<<defaultData>>,
 
@@ -62,7 +68,9 @@
 	],
 	<<noArmorDrop>>
 }
-/execute if score rng nem_num matches 3 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"diamond gear","color":"green"}
+/execute if <<step>> 3 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Warmaster\"",
 	<<defaultData>>,
 
@@ -77,7 +85,9 @@
 	],
 	<<noArmorDrop>>
 }
-/execute if score rng nem_num matches 4 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"netherite gear","color":"green"}
+/execute if <<step>> 4 at @e[tag=nemesis] run summon minecraft:wither_skeleton ~ ~ ~ {
 	CustomName:"\"Captain-General\"",
 	<<persistent>>,
 	Health:50,

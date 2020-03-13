@@ -23,7 +23,6 @@
 
 /execute if entity @e[tag=nem_uninstall] run scoreboard players set rng nem_num -1
 
-\var step execute if score rng nem_num matches
 \var selector as @e[type=minecraft:zombified_piglin,distance=..<<maxRange>>,limit=<<alterAmount>>,sort=random]
 \var merge <<selector>> run data merge entity @s
 
@@ -40,12 +39,24 @@
 \var defaultData <<sticky>>,<<persistent>>
 \var health 40
 
-/<<step>> 0 <<merge>> {<<defaultData>>,<<atrSingle>>generic.maxHealth<<atrTo>><<health>><<atrEnd>>,Health:<<health>>,CustomName:"\"Heart\""}
-/<<step>> 1 <<merge>> {<<defaultData>>,<<atrSingle>>generic.movementSpeed<<atrTo>>0.4<<atrEnd>>,CustomName:"\"Gluteus maximus\""}
-/<<step>> 2 <<merge>> {<<defaultData>>,<<atrSingle>>generic.knockbackResistance<<atrTo>>1<<atrEnd>>,CustomName:"\"Rectus abdominis\""}
-/<<step>> 3 <<merge>> {<<defaultData>>,<<attributes>>{Name:"generic.armor",Base:4},{Name:"generic.armorToughness",Base:4}<<attributesEnd>>,CustomName:"\"Pectoralis major\""}
-/<<step>> 4 <<merge>> {<<defaultData>>,<<attributes>>{Name:"generic.attackKnockback",Base:10},{Name:"generic.attackDamage",Base:15}<<attributesEnd>>,CustomName:"\"Biceps brachii\""}
-/<<step>> 5 <<merge>> {
+\clevel 2
+/execute if <<step>> 0 run tellraw @s {"text":"<<health>> health","color":"green"}
+/execute if <<step>> 0 <<merge>> {<<defaultData>>,<<atrSingle>>generic.maxHealth<<atrTo>><<health>><<atrEnd>>,Health:<<health>>,CustomName:"\"Heart\""}
+\clevel 2
+/execute if <<step>> 1 run tellraw @s {"text":"speed","color":"green"}
+/execute if <<step>> 1 <<merge>> {<<defaultData>>,<<atrSingle>>generic.movementSpeed<<atrTo>>0.4<<atrEnd>>,CustomName:"\"Gluteus maximus\""}
+\clevel 2
+/execute if <<step>> 2 run tellraw @s {"text":"knockback resistance","color":"green"}
+/execute if <<step>> 2 <<merge>> {<<defaultData>>,<<atrSingle>>generic.knockbackResistance<<atrTo>>1<<atrEnd>>,CustomName:"\"Rectus abdominis\""}
+\clevel 2
+/execute if <<step>> 3 run tellraw @s {"text":"armor","color":"green"}
+/execute if <<step>> 3 <<merge>> {<<defaultData>>,<<attributes>>{Name:"generic.armor",Base:4},{Name:"generic.armorToughness",Base:4}<<attributesEnd>>,CustomName:"\"Pectoralis major\""}
+\clevel 2
+/execute if <<step>> 4 run tellraw @s {"text":"attack","color":"green"}
+/execute if <<step>> 4 <<merge>> {<<defaultData>>,<<attributes>>{Name:"generic.attackKnockback",Base:10},{Name:"generic.attackDamage",Base:15}<<attributesEnd>>,CustomName:"\"Biceps brachii\""}
+\clevel 2
+/execute if <<step>> 5 run tellraw @s {"text":"all","color":"green"}
+/execute if <<step>> 5 <<merge>> {
 	<<defaultData>>,
 	<<attributes>>
 		{Name:"generic.maxHealth",Base:<<health>>},
