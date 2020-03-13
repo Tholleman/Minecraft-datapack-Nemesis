@@ -23,6 +23,8 @@ public class Zipper
 	 *
 	 * @param listFiles   A collection of files and directories
 	 * @param destZipFile The path of the destination zip file
+	 *
+	 * @throws IOException Could be thrown while zipping a file
 	 */
 	public static void zip(File[] listFiles, String destZipFile) throws IOException
 	{

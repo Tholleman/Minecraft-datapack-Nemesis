@@ -89,6 +89,11 @@ public class Minify
 	 *
 	 * @param in  The <code>InputStream</code> from which to get the un-minified JSON
 	 * @param out The <code>OutputStream</code> where the resulting minified JSON will be streamed to
+	 *
+	 * @throws IOException                        Could happen
+	 * @throws UnterminatedRegExpLiteralException Could happen
+	 * @throws UnterminatedCommentException       Could happen
+	 * @throws UnterminatedStringLiteralException Could happen
 	 */
 	public void minify(InputStream in, OutputStream out) throws IOException, UnterminatedRegExpLiteralException,
 	                                                            UnterminatedCommentException,
@@ -362,17 +367,18 @@ public class Minify
 					get();
 					for (; ; )
 					{
-						switch (get())
+						int i = get();
+						if (i == '*')
 						{
-							case '*':
-								if (peek() == '/')
-								{
-									get();
-									return ' ';
-								}
-								break;
-							case EOF:
-								throw new UnterminatedCommentException(line, column);
+							if (peek() == '/')
+							{
+								get();
+								return ' ';
+							}
+						}
+						else if (i == EOF)
+						{
+							throw new UnterminatedCommentException(line, column);
 						}
 					}
 				
