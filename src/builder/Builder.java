@@ -1,13 +1,19 @@
-import json.Minify;
-import parser.*;
-import zipper.Zipper;
+package builder;
+
+import builder.json.Minify;
+import builder.parser.Constants;
+import builder.parser.Parser;
+import builder.parser.ParsingException;
+import builder.zipper.Zipper;
 
 import java.io.*;
-import java.nio.file.*;
-import java.util.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
 
-import static parser.Constants.ERROR_MESSAGES.*;
-import static properties.Properties.*;
+import static builder.properties.Properties.*;
 
 public class Builder
 {
@@ -45,7 +51,7 @@ public class Builder
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		System.out.println("Minecraft version " + CURRENT_MINECRAFT_VERSION);
-		System.out.println("Compile level: " + COMPILE_LEVEL.name);
+		System.out.println("Compile level: " + COMPILE_LEVEL.label);
 		
 		clean();
 		
@@ -80,7 +86,7 @@ public class Builder
 		return DATAPACK_NAME + " " + CURRENT_MINECRAFT_VERSION + COMPILE_LEVEL.zipSuffix + ZIP;
 	}
 	
-	private static void clean()
+	private static void clean() throws IOException
 	{
 		//noinspection ConstantConditions
 		for (File file : new File("./").listFiles())
@@ -98,7 +104,7 @@ public class Builder
 		System.out.println("Cleaned artifacts from previous build");
 	}
 	
-	private static void delete(File file)
+	private static void delete(File file) throws IOException
 	{
 		if (file.exists())
 		{
@@ -106,7 +112,7 @@ public class Builder
 		}
 	}
 	
-	private static void unsafeDelete(File file)
+	private static void unsafeDelete(File file) throws IOException
 	{
 		if (file.isDirectory())
 		{
@@ -116,10 +122,8 @@ public class Builder
 				unsafeDelete(listFile);
 			}
 		}
-		if (!file.delete())
-		{
-			throw new RuntimeException("Could not delete file " + file.getPath());
-		}
+		
+		Files.delete(file.toPath());
 	}
 	
 	private static File[] getFilesToZip() throws IOException
@@ -159,12 +163,9 @@ public class Builder
 		if (f.isDirectory())
 		{
 			File dataVersion = new File(dataVersion(f.getPath()));
-			if (!dataVersion.exists())
+			if (!dataVersion.exists() && !dataVersion.mkdir())
 			{
-				if (!dataVersion.mkdir())
-				{
-					throw new ParsingException(COULD_NOT_CREATE_DIRECTORY);
-				}
+				throw new ParsingException(Constants.ERROR_MESSAGES.COULD_NOT_CREATE_DIRECTORY);
 			}
 			File[] files = f.listFiles();
 			assert files != null;
@@ -204,7 +205,7 @@ public class Builder
 		return false;
 	}
 	
-	private static class MultiThread extends Thread
+	private abstract static class MultiThread extends Thread
 	{
 		private static final Vector<Thread> threads = new Vector<>();
 		private static final Vector<Throwable> failures = new Vector<>();
@@ -214,6 +215,9 @@ public class Builder
 			threads.add(this);
 			setUncaughtExceptionHandler((t, e) -> failures.add(e));
 		}
+		
+		@Override
+		public abstract void run();
 	}
 	
 	private static class ParseThread extends MultiThread
@@ -238,7 +242,7 @@ public class Builder
 			}
 			catch (ParsingException pEx)
 			{
-				throw new ParsingException(AN_ERROR_OCCURRED_WHILE_PARSING(f.getName()), pEx);
+				throw new ParsingException(Constants.ERROR_MESSAGES.AN_ERROR_OCCURRED_WHILE_PARSING(f.getName()), pEx);
 			}
 		}
 	}

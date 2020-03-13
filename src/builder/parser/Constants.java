@@ -1,9 +1,18 @@
-package parser;
+package builder.parser;
 
 public class Constants
 {
+	/**
+	 * Utility class should not be instantiated
+	 */
+	private Constants() {}
+	
 	public static class IDENTIFIERS
 	{
+		/**
+		 * Utility class should not be instantiated
+		 */
+		private IDENTIFIERS() {}
 		
 		public static final String COMMAND_PREFIX = "/";
 		public static final String META_PREFIX = "\\";
@@ -21,6 +30,11 @@ public class Constants
 	
 	public static class META_TAGS
 	{
+		/**
+		 * Utility class should not be instantiated
+		 */
+		private META_TAGS() {}
+		
 		public static final String FILE = "file";
 		public static final String REPEAT = "repeat";
 		public static final String VAR = "var";
@@ -29,17 +43,24 @@ public class Constants
 	
 	public static class ERROR_MESSAGES
 	{
+		/**
+		 * Utility class should not be instantiated
+		 */
+		private ERROR_MESSAGES() {}
+		
 		public static String UNKNOWN_READ_ERROR(int line) {return "An unexpected error occurred while reading line " + line;}
 		
 		public static final String UNKNOWN_WRITE_ERROR = "An unexpected error occurred while writing line ";
 		
-		public static String UNEXPECTED_START(int line) {return "Line " + line + " started with an unexpected character";} 
+		public static String UNEXPECTED_START(int line) {return "Line " + line + " started with an unexpected character";}
 		
 		public static String UNKNOWN_VARIABLE(String variable, int line) {return "Unknown variable \"" + variable + "\" on line " + line;}
 		
 		public static String UNKNOWN_LINE_META(String tag, int line) {return "Unknown line meta tag \"" + tag + "\" on line " + line;}
 		
 		public static String UNKNOWN_INLINE_META(String tag, int line) {return "Unknown inline meta tag \"" + tag + "\" on line " + line;}
+		
+		public static String UNKNOWN_OPERATOR(String operator, int line) {return "Unknown operator \"" + operator + "\" on line " + line;}
 		
 		public static String NOT_ENOUGH_ARGUMENTS(String tag, int expected, int line) {return "Expected " + expected + " arguments for tag " + tag + " on line " + line;}
 		

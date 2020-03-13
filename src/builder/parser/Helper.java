@@ -1,7 +1,12 @@
-package parser;
+package builder.parser;
 
 public class Helper
 {
+	/**
+	 * Utility class should not be instantiated
+	 */
+	private Helper() {}
+	
 	public static String[] splitOnWS(String line)
 	{
 		return line.split("\\s+");

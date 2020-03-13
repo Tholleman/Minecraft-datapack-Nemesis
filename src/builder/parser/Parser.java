@@ -1,11 +1,11 @@
-package parser;
+package builder.parser;
 
 import java.io.*;
 import java.util.HashMap;
 
-import static parser.Constants.ERROR_MESSAGES.*;
-import static parser.Constants.IDENTIFIERS.*;
-import static parser.Helper.splitOnWS;
+import static builder.parser.Constants.ERROR_MESSAGES.*;
+import static builder.parser.Constants.IDENTIFIERS.*;
+import static builder.parser.Helper.splitOnWS;
 
 public class Parser
 {
@@ -104,44 +104,6 @@ public class Parser
 		}
 	}
 	
-	private String parseInlineMeta(String line)
-	{
-		int last;
-		while ((last = line.lastIndexOf(INLINE_META_PREFIX)) != -1)
-		{
-			int endIndex = line.indexOf(INLINE_META_SUFFIX, last);
-			String result = handleInlineMeta(line.substring(last + INLINE_META_PREFIX.length(), endIndex));
-			line = line.substring(0, last) + result + line.substring(endIndex + INLINE_META_SUFFIX.length());
-		}
-		return line;
-	}
-	
-	private String handleInlineMeta(String line)
-	{
-		String[] args = splitOnWS(line);
-		if (args.length == 1)
-		{
-			String variableValue = variables.get((args[0]));
-			if (variableValue == null) throw new ParsingException(UNKNOWN_VARIABLE(args[0], reader.getLineCounter()));
-			return variableValue;
-		}
-		if (args.length == 3)
-		{
-			switch (args[1])
-			{
-				case PLUS:
-					return Integer.parseInt(args[0]) + Integer.parseInt(args[2]) + "";
-				case MINUS:
-					return Integer.parseInt(args[0]) - Integer.parseInt(args[2]) + "";
-				case MULTIPLY:
-					return Integer.parseInt(args[0]) * Integer.parseInt(args[2]) + "";
-				case DIVIDE:
-					return Integer.parseInt(args[0]) / Integer.parseInt(args[2]) + "";
-			}
-		}
-		throw new ParsingException(UNKNOWN_INLINE_META(line, reader.getLineCounter()));
-	}
-	
 	private class Reader
 	{
 		private final BufferedReader fileToParse;
@@ -229,6 +191,46 @@ public class Parser
 			{
 				throw new ParsingException(UNKNOWN_READ_ERROR(getLineCounter()), e);
 			}
+		}
+		
+		private String parseInlineMeta(String line)
+		{
+			int last;
+			while ((last = line.lastIndexOf(INLINE_META_PREFIX)) != -1)
+			{
+				int endIndex = line.indexOf(INLINE_META_SUFFIX, last);
+				String result = handleInlineMeta(line.substring(last + INLINE_META_PREFIX.length(), endIndex));
+				line = line.substring(0, last) + result + line.substring(endIndex + INLINE_META_SUFFIX.length());
+			}
+			return line;
+		}
+		
+		private String handleInlineMeta(String line)
+		{
+			String[] args = splitOnWS(line);
+			if (args.length == 1)
+			{
+				String variableValue = variables.get((args[0]));
+				if (variableValue == null) throw new ParsingException(UNKNOWN_VARIABLE(args[0], reader.getLineCounter()));
+				return variableValue;
+			}
+			if (args.length == 3)
+			{
+				switch (args[1])
+				{
+					case PLUS:
+						return Integer.parseInt(args[0]) + Integer.parseInt(args[2]) + "";
+					case MINUS:
+						return Integer.parseInt(args[0]) - Integer.parseInt(args[2]) + "";
+					case MULTIPLY:
+						return Integer.parseInt(args[0]) * Integer.parseInt(args[2]) + "";
+					case DIVIDE:
+						return Integer.parseInt(args[0]) / Integer.parseInt(args[2]) + "";
+					default:
+						throw new ParsingException(UNKNOWN_OPERATOR(args[1], getLineCounter()));
+				}
+			}
+			throw new ParsingException(UNKNOWN_INLINE_META(line, reader.getLineCounter()));
 		}
 		
 		public int getLineCounter()

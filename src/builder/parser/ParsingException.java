@@ -1,4 +1,4 @@
-package parser;
+package builder.parser;
 
 public class ParsingException extends RuntimeException
 {

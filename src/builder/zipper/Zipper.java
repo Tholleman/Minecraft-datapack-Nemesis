@@ -1,10 +1,13 @@
-package zipper;
+package builder.zipper;
 
 import java.io.*;
-import java.util.zip.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class Zipper
 {
+	private Zipper() {}
+	
 	/**
 	 * A constants for buffer size used to read/write data
 	 */
@@ -73,13 +76,15 @@ public class Zipper
 	private static void write(String entry, File file, ZipOutputStream zos) throws IOException
 	{
 		zos.putNextEntry(new ZipEntry(entry));
-		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
-		byte[] bytesIn = new byte[BUFFER_SIZE];
-		int read;
-		while ((read = bis.read(bytesIn)) != -1)
+		try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file)))
 		{
-			zos.write(bytesIn, 0, read);
+			byte[] bytesIn = new byte[BUFFER_SIZE];
+			int read;
+			while ((read = bis.read(bytesIn)) != -1)
+			{
+				zos.write(bytesIn, 0, read);
+			}
+			zos.closeEntry();
 		}
-		zos.closeEntry();
 	}
 }
