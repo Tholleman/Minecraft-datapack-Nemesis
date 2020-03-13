@@ -63,44 +63,65 @@ public class Parser
 		switch (args[0])
 		{
 			case Constants.META_TAGS.VAR:
-				if (args.length < 3) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 3, reader.getLineCounter()));
-				variables.put(args[1], Helper.reattach(line, args[1]));
-				return;
+				addVariable(args, line);
+				break;
 			case Constants.META_TAGS.REPEAT:
-				try
-				{
-					if (args.length != 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS(args[0], 2, reader.getLineCounter()));
-					writer.setRepeat(Integer.parseInt(args[1]));
-					return;
-				}
-				catch (NumberFormatException nfEx)
-				{
-					throw new ParsingException(NOT_A_NUMBER(reader.getLineCounter()), nfEx);
-				}
+				repeatNextLine(args);
+				break;
 			case Constants.META_TAGS.FILE:
-				if (args.length < 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 2, reader.getLineCounter()));
-				String filePath = inputDir + File.separator + Helper.reattach(line, args[0]);
-				try (BufferedReader br = new BufferedReader(new FileReader(new File(filePath))))
-				{
-					new Parser(inputDir, br, writer, variables, compileLevel).parse();
-				}
-				catch (IOException e)
-				{
-					throw new ParsingException(AN_ERROR_OCCURRED_WHILE_PARSING(filePath, reader.getLineCounter()), e);
-				}
-				return;
+				parseFile(args, line);
+				break;
 			case Constants.META_TAGS.COMPILE_LEVEL:
-				if (args.length != 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS(args[0], 2, reader.getLineCounter()));
-				try {
-					if (Integer.parseInt(args[1]) > compileLevel) reader.skipOne();
-				}
-				catch (NumberFormatException nfEx)
-				{
-					throw new ParsingException(NOT_A_NUMBER(reader.getLineCounter()), nfEx);
-				}
+				handleCompileLevel(args);
 				break;
 			default:
 				throw new ParsingException(UNKNOWN_LINE_META(args[0], reader.getLineCounter()));
+		}
+	}
+	
+	private void addVariable(String[] args, String line)
+	{
+		if (args.length < 3) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 3, reader.getLineCounter()));
+		variables.put(args[1], Helper.reattach(line, args[1]));
+	}
+	
+	private void repeatNextLine(String[] args)
+	{
+		try
+		{
+			if (args.length != 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS(args[0], 2, reader.getLineCounter()));
+			writer.setRepeat(Integer.parseInt(args[1]));
+		}
+		catch (NumberFormatException nfEx)
+		{
+			throw new ParsingException(NOT_A_NUMBER(reader.getLineCounter()), nfEx);
+		}
+	}
+	
+	private void parseFile(String[] args, String line)
+	{
+		if (args.length < 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS_AT_LEAST(args[0], 2, reader.getLineCounter()));
+		String filePath = inputDir + File.separator + Helper.reattach(line, args[0]);
+		try (BufferedReader br = new BufferedReader(new FileReader(new File(filePath))))
+		{
+			new Parser(inputDir, br, writer, variables, compileLevel).parse();
+		}
+		catch (IOException e)
+		{
+			throw new ParsingException(AN_ERROR_OCCURRED_WHILE_PARSING(filePath, reader.getLineCounter()), e);
+		}
+	}
+	
+	private void handleCompileLevel(String[] args)
+	{
+		if (args.length != 2) throw new ParsingException(NOT_ENOUGH_ARGUMENTS(args[0], 2, reader.getLineCounter()));
+		try
+		{
+			if (Integer.parseInt(args[1]) > compileLevel) reader.skipOne();
+		}
+		catch (NumberFormatException nfEx)
+		{
+			throw new ParsingException(NOT_A_NUMBER(reader.getLineCounter()), nfEx);
 		}
 	}
 	
@@ -126,66 +147,83 @@ public class Parser
 			{
 				StringBuilder result = new StringBuilder();
 				boolean multilining = false;
+				// Loop until a full command is found or until the end of the file is reached
 				do
 				{
-					String s;
+					String line;
+					// Read a line if the next line is still unknown
+					// If the next line is known but it should be skipped, also read the next line
 					if (next == null || useSkipOne())
 					{
-						s = fileToParse.readLine();
-						if (s == null)
+						line = fileToParse.readLine();
+						lineCounter++;
+						// If the end of the file is reached, return what's left
+						if (line == null)
 						{
 							
-							s = result.toString();
-							if (s.isEmpty())
+							String lastCommand = result.toString();
+							if (lastCommand.isEmpty())
 							{
 								return null;
 							}
-							return s;
+							return lastCommand;
 						}
-						lineCounter++;
 						
-						s = s.replaceAll("^\\s+", "");
-						if (s.isEmpty()) continue;
-						if (s.startsWith(COMMENT_PREFIX)) continue;
+						// Remove all leading whitespaces
+						line = line.replaceAll("^\\s+", "");
+						
+						// If the line is empty, read the next
+						if (line.isEmpty()) continue;
+						// If the line is a comment, read the next
+						if (line.startsWith(COMMENT_PREFIX)) continue;
+						// If the line should be skipped, read the next
 						if (useSkipOne()) continue;
 						
+						// If the previous line isn't completed yet, check if this can be added
+						// If it can't, set it as the next line.
 						if (multilining)
 						{
-							if (s.startsWith(META_PREFIX) || s.startsWith(COMMAND_PREFIX))
+							// If the current line shouldn't be added to the result, set it as next and return the result
+							if (line.startsWith(META_PREFIX) || line.startsWith(COMMAND_PREFIX))
 							{
-								next = s;
-								break;
+								next = line;
+								return result.toString();
 							}
-							s = parseInlineMeta(s);
+							line = parseInlineMeta(line);
 							
-							result.append(s);
+							result.append(line);
 							continue;
 						}
 					}
+					// Use the previously read line
+					// There is no need to do any parsing of inline meta, comments, etc since those are done the moment the line was read
 					else
 					{
-						s = next;
+						line = next;
 						next = null;
 					}
-					s = parseInlineMeta(s);
+					line = parseInlineMeta(line);
 					
-					if (s.startsWith(META_PREFIX))
+					// Now that the line is read and known to not be part of a previous line, identify it as a meta or command line
+					if (line.startsWith(META_PREFIX))
 					{
 						meta = true;
 						multilining = true;
-						result.append(s.substring(META_PREFIX.length()));
-						continue;
+						result.append(line.substring(META_PREFIX.length()));
 					}
-					else if (s.startsWith(COMMAND_PREFIX))
+					else if (line.startsWith(COMMAND_PREFIX))
 					{
 						meta = false;
 						multilining = true;
-						result.append(s.substring(COMMAND_PREFIX.length()));
-						continue;
+						result.append(line.substring(COMMAND_PREFIX.length()));
 					}
-					throw new ParsingException(UNEXPECTED_START(lineCounter));
+					// The line is new but it's function is unknown.
+					// Throw an error, the user probably made a mistake
+					else
+					{
+						throw new ParsingException(UNEXPECTED_START(lineCounter));
+					}
 				} while (true);
-				return result.toString();
 			}
 			catch (IOException e)
 			{
