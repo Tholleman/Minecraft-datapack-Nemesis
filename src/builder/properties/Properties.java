@@ -7,6 +7,8 @@ import java.io.IOException;
 
 /**
  * Supplier for the properties of a datapack
+ *
+ * @author Thomas Holleman
  */
 public class Properties
 {

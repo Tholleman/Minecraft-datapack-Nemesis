@@ -15,6 +15,11 @@ import java.util.Vector;
 
 import static builder.properties.Properties.*;
 
+/**
+ * The main class that will build the datapack with {@link Builder#main(String[])}
+ *
+ * @author Thomas Holleman
+ */
 public class Builder
 {
 	/**
@@ -30,10 +35,11 @@ public class Builder
 	/**
 	 * The directory that should be parsed and or copied
 	 */
-	private static final String SOURCE_DIRECTORY = "data source";
+	public static final String SOURCE_DIRECTORY = "data source";
+	
 	/**
 	 * The files that should be added to the final zip but isn't in the {@link Builder#SOURCE_DIRECTORY}.
-	 * 
+	 * <p>
 	 * If the file should be parsed in some way, add the file name of the parsed file as the second entry.
 	 * Use {@code null} if no parsing is needed
 	 */
@@ -42,12 +48,25 @@ public class Builder
 	/**
 	 * The directory that should be the place where the files from {@link Builder#SOURCE_DIRECTORY} should be parsed/copied to
 	 */
-	private static final String OUTPUT_DIRECTORY = "data";
-	/**
-	 * used to make and recognize zip files
-	 */
-	private static final String ZIP = ".zip";
+	public static final String OUTPUT_DIRECTORY = "data";
 	
+	/**
+	 * String of the archive file type
+	 * <p>
+	 * Used to make and recognize zip files
+	 */
+	public static final String ZIP = ".zip";
+	
+	/**
+	 * Build the datapack using the files from {@link Builder#SOURCE_DIRECTORY} into {@link Builder#OUTPUT_DIRECTORY} and into a {@link Builder#ZIP} file.
+	 *
+	 * @param args Not used
+	 *
+	 * @throws IOException          Could be thrown while reading the files out of {@link Builder#SOURCE_DIRECTORY},
+	 *                              while writing to {@link Builder#OUTPUT_DIRECTORY},
+	 *                              or while zipping it into a {@link Builder#ZIP} file
+	 * @throws InterruptedException Could be thrown while failing to join up the threads that were made to parse each file
+	 */
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		System.out.println("Minecraft version " + CURRENT_MINECRAFT_VERSION);
@@ -80,6 +99,8 @@ public class Builder
 		Zipper.zip(toZip, getDestZipFile());
 		System.out.println("The datapack is now a .zip file and ready to be distributed");
 	}
+	
+	private Builder() {}
 	
 	private static String getDestZipFile()
 	{

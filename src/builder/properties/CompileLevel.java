@@ -4,6 +4,8 @@ import builder.parser.ParsingException;
 
 /**
  * A level a command can have for it to be parsed.
+ *
+ * @author Thomas Holleman
  */
 @SuppressWarnings("unused")
 public enum CompileLevel
