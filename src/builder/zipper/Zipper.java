@@ -4,6 +4,11 @@ import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+/**
+ * Zip files and directories with {@link Zipper#zip(File[], String)} into 1 .zip file
+ *
+ * @author Thomas Holleman
+ */
 public class Zipper
 {
 	private Zipper() {}
@@ -25,56 +30,51 @@ public class Zipper
 		{
 			for (File file : listFiles)
 			{
-				if (file.isDirectory())
-				{
-					zipDirectory(file, file.getName(), zos);
-				}
-				else
-				{
-					zipFile(file, zos);
-				}
+				zip(file.getName(), file, zos);
 			}
 			zos.flush();
 		}
 	}
 	
 	/**
-	 * Adds a directory to the current zip output stream
+	 * Zip a given file/directory
 	 *
-	 * @param folder       the directory to be  added
-	 * @param parentFolder the path of parent directory
-	 * @param zos          the current zip output stream
+	 * @param path The path of the file including the file/directory itself!
+	 * @param file The file to zip
+	 * @param zos  The output stream to write the file(s) to
+	 *
+	 * @throws IOException Could be thrown while zipping a file
 	 */
-	private static void zipDirectory(File folder, String parentFolder, ZipOutputStream zos) throws IOException
+	private static void zip(String path, File file, ZipOutputStream zos) throws IOException
 	{
-		assert folder != null;
-		assert folder.isDirectory();
-		//noinspection ConstantConditions
-		for (File file : folder.listFiles())
+		assert path.endsWith(file.getName());
+		if (file.isDirectory())
 		{
-			if (file.isDirectory())
+			//noinspection ConstantConditions
+			for (File supFile : file.listFiles())
 			{
-				zipDirectory(file, parentFolder + "/" + file.getName(), zos);
-				continue;
+				zip(path + "/" + supFile.getName(), supFile, zos);
 			}
-			
-			write(parentFolder + "/" + file.getName(), file, zos);
+		}
+		else
+		{
+			write(path, file, zos);
 		}
 	}
 	
 	/**
-	 * Adds a file to the current zip output stream
+	 * Zip a single file
 	 *
-	 * @param file the file to be added
-	 * @param zos  the current zip output stream
+	 * @param entry The path of the file including the file itself
+	 * @param file  The file to zip
+	 * @param zos   The output stream to write to
+	 *
+	 * @throws IOException Could be thrown throughout the zipping process
 	 */
-	private static void zipFile(File file, ZipOutputStream zos) throws IOException
-	{
-		write(file.getName(), file, zos);
-	}
-	
 	private static void write(String entry, File file, ZipOutputStream zos) throws IOException
 	{
+		assert entry.endsWith(file.getName());
+		assert file.isFile();
 		zos.putNextEntry(new ZipEntry(entry));
 		try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file)))
 		{
