@@ -3,7 +3,7 @@ package builder.parser;
 /**
  * Helper class to do simple operations in a single location
  */
-public class Helper
+class Helper
 {
 	/**
 	 * Utility class should not be instantiated

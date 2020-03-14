@@ -9,8 +9,18 @@ import static builder.constants.ErrorMessages.*;
 import static builder.constants.Identifiers.*;
 import static builder.parser.Helper.splitOnWS;
 
+/**
+ * Will change a file from this projects format to an mcfunction usable by minecraft
+ */
 public class Parser
 {
+	/**
+	 * Parse a file
+	 *
+	 * @param file         The file to parse
+	 * @param outputPath   The path to write to
+	 * @param compileLevel The compile level that lines should have at minimum when clevel is given.
+	 */
 	public static void parse(File file, String outputPath, int compileLevel)
 	{
 		try (BufferedReader br = new BufferedReader(new FileReader(file));
@@ -30,6 +40,18 @@ public class Parser
 	private final HashMap<String, String> variables;
 	private final int compileLevel;
 	
+	/**
+	 * Constructor of a parser object.
+	 * <p>
+	 * Use {@link Parser#parse()} to start parsing the file after instantiating.
+	 * <p>
+	 * Use {@link Parser#parse(File, String, int)} To instantiate and parse immidiatly
+	 *
+	 * @param inputDir     The path to the input directory
+	 * @param fileToParse  The file to parse
+	 * @param output       The path of the file that should be created
+	 * @param compileLevel The compile level that lines should have at minimum when clevel is given.
+	 */
 	public Parser(String inputDir, BufferedReader fileToParse, FileWriter output, int compileLevel)
 	{
 		this(inputDir, fileToParse, new Writer(output), new HashMap<>(), compileLevel);
@@ -44,6 +66,9 @@ public class Parser
 		this.compileLevel = compileLevel;
 	}
 	
+	/**
+	 * Start parsing with the data given by the constructor.
+	 */
 	public void parse()
 	{
 		String line;
