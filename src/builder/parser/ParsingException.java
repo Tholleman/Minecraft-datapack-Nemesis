@@ -1,5 +1,8 @@
 package builder.parser;
 
+/**
+ * An exception that is thrown while parsing
+ */
 public class ParsingException extends RuntimeException
 {
 	public ParsingException(String message)

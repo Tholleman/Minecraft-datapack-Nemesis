@@ -1,7 +1,5 @@
 package builder.properties;
 
-import builder.parser.ParsingException;
-
 /**
  * A level a command can have for it to be parsed.
  *
@@ -42,7 +40,7 @@ public enum CompileLevel
 	 * @param level The number to get the level for
 	 *
 	 * @return The according {@link CompileLevel}
-	 * @throws ParsingException if the level is unknown
+	 * @throws SetupException if the level is unknown
 	 */
 	static CompileLevel getLevel(int level)
 	{
@@ -54,6 +52,6 @@ public enum CompileLevel
 				return value;
 			}
 		}
-		throw new ParsingException("Unknown level");
+		throw new SetupException("Unknown level");
 	}
 }

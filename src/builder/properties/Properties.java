@@ -1,7 +1,5 @@
 package builder.properties;
 
-import builder.parser.ParsingException;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -33,7 +31,7 @@ public class Properties
 		}
 		catch (IOException e)
 		{
-			throw new ParsingException(COULD_NOT_READ_PROPERTIES_FILE, e);
+			throw new SetupException(COULD_NOT_READ_PROPERTIES_FILE, e);
 		}
 	}
 	

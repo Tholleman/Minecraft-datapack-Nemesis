@@ -153,7 +153,7 @@ public class Builder
 			File dataVersion = new File(dataVersion(f.getPath()));
 			if (!dataVersion.exists() && !dataVersion.mkdir())
 			{
-				throw new ParsingException(ErrorMessages.COULD_NOT_CREATE_DIRECTORY);
+				throw new BuildException(ErrorMessages.COULD_NOT_CREATE_DIRECTORY);
 			}
 			File[] files = f.listFiles();
 			assert files != null;
@@ -255,7 +255,7 @@ public class Builder
 			}
 			catch (Exception e)
 			{
-				throw new ParsingException(e.getMessage(), e);
+				throw new BuildException(e.getMessage(), e);
 			}
 		}
 	}
