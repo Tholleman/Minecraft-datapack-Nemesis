@@ -1,7 +1,7 @@
 package builder;
 
+import builder.constants.ErrorMessages;
 import builder.json.Minify;
-import builder.parser.Constants;
 import builder.parser.Parser;
 import builder.parser.ParsingException;
 import builder.zipper.Zipper;
@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import static builder.constants.FileStrings.*;
 import static builder.properties.Properties.*;
 
 /**
@@ -23,48 +24,14 @@ import static builder.properties.Properties.*;
 public class Builder
 {
 	/**
-	 * Files that should be ignored from the data source directory
-	 */
-	private static final String[] BLACKLIST = {".*\\.mctemplate", ".*\\.md", ".*\\.txt"};
-	
-	/**
-	 * Files that should be parsed from the data source directory
-	 */
-	private static final String[] PARSE_WHITELIST = {".*\\.mcfunction"};
-	
-	/**
-	 * The directory that should be parsed and or copied
-	 */
-	public static final String SOURCE_DIRECTORY = "data source";
-	
-	/**
-	 * The files that should be added to the final zip but isn't in the {@link Builder#SOURCE_DIRECTORY}.
-	 * <p>
-	 * If the file should be parsed in some way, add the file name of the parsed file as the second entry.
-	 * Use {@code null} if no parsing is needed
-	 */
-	private static final Map<String, String> OTHER_SOURCE_FILES = Map.ofEntries(Map.entry("pack.json", "pack.mcmeta"));
-	
-	/**
-	 * The directory that should be the place where the files from {@link Builder#SOURCE_DIRECTORY} should be parsed/copied to
-	 */
-	public static final String OUTPUT_DIRECTORY = "data";
-	
-	/**
-	 * String of the archive file type
-	 * <p>
-	 * Used to make and recognize zip files
-	 */
-	public static final String ZIP = ".zip";
-	
-	/**
-	 * Build the datapack using the files from {@link Builder#SOURCE_DIRECTORY} into {@link Builder#OUTPUT_DIRECTORY} and into a {@link Builder#ZIP} file.
+	 * Build the datapack using the files from {@link builder.constants.FileStrings#SOURCE_DIRECTORY}
+	 * into {@link builder.constants.FileStrings#OUTPUT_DIRECTORY} and into a {@link builder.constants.FileStrings#ZIP} file.
 	 *
 	 * @param args Not used
 	 *
-	 * @throws IOException          Could be thrown while reading the files out of {@link Builder#SOURCE_DIRECTORY},
-	 *                              while writing to {@link Builder#OUTPUT_DIRECTORY},
-	 *                              or while zipping it into a {@link Builder#ZIP} file
+	 * @throws IOException          Could be thrown while reading the files out of {@link builder.constants.FileStrings#SOURCE_DIRECTORY},
+	 *                              while writing to {@link builder.constants.FileStrings#OUTPUT_DIRECTORY},
+	 *                              or while zipping it into a {@link builder.constants.FileStrings#ZIP} file
 	 * @throws InterruptedException Could be thrown while failing to join up the threads that were made to parse each file
 	 */
 	public static void main(String[] args) throws IOException, InterruptedException
@@ -117,7 +84,7 @@ public class Builder
 		
 		delete(new File(OUTPUT_DIRECTORY));
 		delete(new File(getDestZipFile()));
-		for (Map.Entry<String, String> stringStringEntry : OTHER_SOURCE_FILES.entrySet())
+		for (Map.Entry<String, String> stringStringEntry : otherSourceFiles().entrySet())
 		{
 			delete(new File(stringStringEntry.getValue()));
 		}
@@ -149,7 +116,7 @@ public class Builder
 	
 	private static File[] getFilesToZip() throws IOException
 	{
-		Set<Map.Entry<String, String>> entries = OTHER_SOURCE_FILES.entrySet();
+		Set<Map.Entry<String, String>> entries = otherSourceFiles().entrySet();
 		File[] toZip = new File[entries.size() + 1];
 		int index = 0;
 		for (Map.Entry<String, String> nameOutputSet : entries)
@@ -186,7 +153,7 @@ public class Builder
 			File dataVersion = new File(dataVersion(f.getPath()));
 			if (!dataVersion.exists() && !dataVersion.mkdir())
 			{
-				throw new ParsingException(Constants.ERROR_MESSAGES.COULD_NOT_CREATE_DIRECTORY);
+				throw new ParsingException(ErrorMessages.COULD_NOT_CREATE_DIRECTORY);
 			}
 			File[] files = f.listFiles();
 			assert files != null;
@@ -197,7 +164,7 @@ public class Builder
 			return;
 		}
 		
-		for (String s : BLACKLIST)
+		for (String s : zipBlackList())
 		{
 			if (f.getName().matches(s)) return;
 		}
@@ -209,7 +176,7 @@ public class Builder
 	
 	private static boolean parseFile(File f, String output) throws FileNotFoundException
 	{
-		for (String s : PARSE_WHITELIST)
+		for (String s : parseWhiteList())
 		{
 			if (f.getName().matches(s))
 			{
@@ -218,7 +185,7 @@ public class Builder
 			}
 		}
 		
-		if (f.getName().endsWith(".json"))
+		if (f.getName().endsWith(JSON))
 		{
 			new MinifyThread(f, output).start();
 			return true;
@@ -263,7 +230,7 @@ public class Builder
 			}
 			catch (ParsingException pEx)
 			{
-				throw new ParsingException(Constants.ERROR_MESSAGES.AN_ERROR_OCCURRED_WHILE_PARSING(f.getName()), pEx);
+				throw new ParsingException(ErrorMessages.AN_ERROR_OCCURRED_WHILE_PARSING(f.getName()), pEx);
 			}
 		}
 	}

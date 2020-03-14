@@ -1,10 +1,12 @@
 package builder.parser;
 
+import builder.constants.MetaTags;
+
 import java.io.*;
 import java.util.HashMap;
 
-import static builder.parser.Constants.ERROR_MESSAGES.*;
-import static builder.parser.Constants.IDENTIFIERS.*;
+import static builder.constants.ErrorMessages.*;
+import static builder.constants.Identifiers.*;
 import static builder.parser.Helper.splitOnWS;
 
 public class Parser
@@ -62,16 +64,16 @@ public class Parser
 		
 		switch (args[0])
 		{
-			case Constants.META_TAGS.VAR:
+			case MetaTags.VAR:
 				addVariable(args, line);
 				break;
-			case Constants.META_TAGS.REPEAT:
+			case MetaTags.REPEAT:
 				repeatNextLine(args);
 				break;
-			case Constants.META_TAGS.FILE:
+			case MetaTags.FILE:
 				parseFile(args, line);
 				break;
-			case Constants.META_TAGS.COMPILE_LEVEL:
+			case MetaTags.COMPILE_LEVEL:
 				handleCompileLevel(args);
 				break;
 			default:
@@ -257,13 +259,13 @@ public class Parser
 				switch (args[1])
 				{
 					case PLUS:
-						return Integer.parseInt(args[0]) + Integer.parseInt(args[2]) + "";
+						return String.valueOf(Integer.parseInt(args[0]) + Integer.parseInt(args[2]));
 					case MINUS:
-						return Integer.parseInt(args[0]) - Integer.parseInt(args[2]) + "";
+						return String.valueOf(Integer.parseInt(args[0]) - Integer.parseInt(args[2]));
 					case MULTIPLY:
-						return Integer.parseInt(args[0]) * Integer.parseInt(args[2]) + "";
+						return String.valueOf(Integer.parseInt(args[0]) * Integer.parseInt(args[2]));
 					case DIVIDE:
-						return Integer.parseInt(args[0]) / Integer.parseInt(args[2]) + "";
+						return String.valueOf(Integer.parseInt(args[0]) / Integer.parseInt(args[2]));
 					default:
 						throw new ParsingException(UNKNOWN_OPERATOR(args[1], getLineCounter()));
 				}

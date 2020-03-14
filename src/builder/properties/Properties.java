@@ -5,6 +5,9 @@ import builder.parser.ParsingException;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import static builder.constants.ErrorMessages.COULD_NOT_READ_PROPERTIES_FILE;
+import static builder.constants.FileStrings.CONFIG_PATH;
+
 /**
  * Supplier for the properties of a datapack
  *
@@ -26,11 +29,11 @@ public class Properties
 	{
 		try
 		{
-			propertiesLoader.load(new FileInputStream("src/config.properties"));
+			propertiesLoader.load(new FileInputStream(CONFIG_PATH));
 		}
 		catch (IOException e)
 		{
-			throw new ParsingException("Could not read properties file", e);
+			throw new ParsingException(COULD_NOT_READ_PROPERTIES_FILE, e);
 		}
 	}
 	
