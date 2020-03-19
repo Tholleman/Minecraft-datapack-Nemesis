@@ -4,15 +4,15 @@ import builder.constants.ErrorMessages;
 import builder.json.Minify;
 import builder.parser.Parser;
 import builder.parser.ParsingException;
+import builder.properties.Properties;
 import builder.zipper.Zipper;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.Map;
-import java.util.Set;
 import java.util.Vector;
 
+import static builder.constants.ErrorMessages.COULD_NOT_CREATE_PACK_MCMETA;
 import static builder.constants.FileStrings.*;
 import static builder.properties.Properties.*;
 
@@ -42,7 +42,7 @@ public class Builder
 		clean();
 		
 		iterate(new File(SOURCE_DIRECTORY));
-		
+		new PackDotMCMetaCreator(Properties.DESCRIPTION).start();
 		File[] toZip = getFilesToZip();
 		
 		for (Thread thread : MultiThread.threads)
@@ -84,10 +84,7 @@ public class Builder
 		
 		delete(new File(OUTPUT_DIRECTORY));
 		delete(new File(getDestZipFile()));
-		for (Map.Entry<String, String> stringStringEntry : otherSourceFiles().entrySet())
-		{
-			delete(new File(stringStringEntry.getValue()));
-		}
+		delete(new File(PACK_DOT_MCMETA));
 		
 		System.out.println("Cleaned artifacts from previous build");
 	}
@@ -114,35 +111,9 @@ public class Builder
 		Files.delete(file.toPath());
 	}
 	
-	private static File[] getFilesToZip() throws IOException
+	private static File[] getFilesToZip()
 	{
-		Set<Map.Entry<String, String>> entries = otherSourceFiles().entrySet();
-		File[] toZip = new File[entries.size() + 1];
-		int index = 0;
-		for (Map.Entry<String, String> nameOutputSet : entries)
-		{
-			if (nameOutputSet.getValue() == null || nameOutputSet.getKey().equals(nameOutputSet.getValue()))
-			{
-				toZip[index] = new File(nameOutputSet.getKey());
-			}
-			else
-			{
-				File in = new File(nameOutputSet.getKey());
-				if (parseFile(in, nameOutputSet.getValue()))
-				{
-					File out = new File(nameOutputSet.getValue());
-					toZip[index] = out;
-				}
-				else
-				{
-					Files.copy(in.toPath(), new File(nameOutputSet.getValue()).toPath(), StandardCopyOption.REPLACE_EXISTING);
-					toZip[index] = new File(nameOutputSet.getValue());
-				}
-			}
-			index++;
-		}
-		toZip[index] = new File(OUTPUT_DIRECTORY);
-		return toZip;
+		return new File[]{new File(PACK_DOT_MCMETA), new File(OUTPUT_DIRECTORY)};
 	}
 	
 	private static void iterate(File f) throws IOException
@@ -256,6 +227,35 @@ public class Builder
 			catch (Exception e)
 			{
 				throw new BuildException(e.getMessage(), e);
+			}
+		}
+	}
+	
+	private static class PackDotMCMetaCreator extends MultiThread
+	{
+		private final String description;
+		
+		public PackDotMCMetaCreator(String description)
+		{
+			this.description = description;
+		}
+		
+		@Override
+		public void run()
+		{
+			try (FileOutputStream fileOutputStream = new FileOutputStream(new File(PACK_DOT_MCMETA)))
+			{
+				fileOutputStream.write(("{" +
+				                        "\"pack\":{" +
+				                        "\"pack_format\":5," +
+				                        "\"description\":\"" + description + "\"" +
+				                        "}" +
+				                        "}").getBytes());
+				fileOutputStream.flush();
+			}
+			catch (IOException e)
+			{
+				throw new BuildException(COULD_NOT_CREATE_PACK_MCMETA, e);
 			}
 		}
 	}

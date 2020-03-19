@@ -53,4 +53,8 @@ public class Properties
 	 */
 	public static final CompileLevel COMPILE_LEVEL = CompileLevel.getLevel(Integer.parseInt(propertiesLoader.getProperty("COMPILE_LEVEL")));
 	
+	/**
+	 * The description of the datapack
+	 */
+	public static final String DESCRIPTION = propertiesLoader.getProperty("DESCRIPTION");
 }

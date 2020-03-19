@@ -1,7 +1,5 @@
 package builder.constants;
 
-import java.util.Map;
-
 public class FileStrings
 {
 	private FileStrings() {}
@@ -16,15 +14,9 @@ public class FileStrings
 	 */
 	public static final String OUTPUT_DIRECTORY = "data";
 	
-	/**
-	 * The files that should be added to the final zip but isn't in the {@link FileStrings#SOURCE_DIRECTORY}.
-	 * <p>
-	 * If the file should be parsed in some way, add the file name of the parsed file as the second entry.
-	 * Use {@code null} if no parsing is needed
-	 */
-	public static Map<String, String> otherSourceFiles() {return Map.ofEntries(Map.entry("pack.json", "pack.mcmeta"));}
+	public static final String CONFIG_PATH = "config.properties";
 	
-	public static final String CONFIG_PATH = "src/config.properties";
+	public static final String PACK_DOT_MCMETA = "pack.mcmeta";
 	
 	/**
 	 * String of the archive file type

@@ -36,4 +36,6 @@ public class ErrorMessages
 	public static final String UNEXPECTED_ERROR_WHILE_INITIALIZING = "An unexpected error occurred while initializing";
 	
 	public static final String COULD_NOT_CREATE_DIRECTORY = "Could not create directory";
+	
+	public static final String COULD_NOT_CREATE_PACK_MCMETA = "Error while creating pack.mcmeta";
 }
