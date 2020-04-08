@@ -1,4 +1,4 @@
-\file phantom.txt
+\file piglin.txt
 
 \var amount 8
 \file templates/rng.txt
