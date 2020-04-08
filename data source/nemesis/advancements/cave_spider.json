@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/cave_spider"
+        "function": "nemesis:logic/upgrade/cave_spider"
     },
     "parent": "nemesis:root"
 }

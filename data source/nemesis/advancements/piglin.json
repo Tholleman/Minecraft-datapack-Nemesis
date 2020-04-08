@@ -10,7 +10,7 @@
     }
   },
   "rewards": {
-    "function": "nemesis:upgrade/piglin"
+    "function": "nemesis:logic/upgrade/piglin"
   },
   "parent": "nemesis:root"
 }

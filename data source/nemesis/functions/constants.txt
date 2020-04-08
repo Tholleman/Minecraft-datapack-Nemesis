@@ -1,0 +1,123 @@
+# CONSTANTS
+\var uninstallTag nem_uninstall
+\var numberObjective nem_num
+\var amountHolder amount <<numberObjective>>
+\var rngHolder rng <<numberObjective>>
+\var upgradeTag nemesis
+
+# Utility
+\var uninstalling entity @e[tag=<<uninstallTag>>]
+\var step score <<rngHolder>> matches
+
+\var message The ^<<name>> has grown more powerful
+
+\var toUpgradeSelector tag=<<upgradeTag>>
+\var toUpgrade @e[<<toUpgradeSelector>>]
+
+# Minecraft
+\var persistent PersistenceRequired:1b
+\var looter CanPickUpLoot:1b
+\var noLoot CanPickUpLoot:0b
+\var silent Silent:1b
+\var leftHanded LeftHanded:1
+\var passengers Passengers
+\var customName CustomName
+\var onFire Fire:1277951
+\var health Health
+\var size Size
+
+\var handItems HandItems
+\var noHandDrop HandDropChances:[0F,0F]
+
+\var armorItems ArmorItems
+\var noArmorDrop ArmorDropChances:[0F,0F,0F,0F]
+
+#<<attributes>>:[<<maxFollowRange>>]
+\var attributes Attributes
+\var setFollowRange Name:"generic.follow_range",Base
+\var maxFollowRange {<<setFollowRange>>:2048}
+\var setAttackDamage Name:"generic.attack_damage",Base
+\var setMovementSpeed Name:"generic.movement_speed",Base
+\var setKnockbackResistance Name:"generic.knockback_resistance",Base
+\var setMaxHealth Name:"generic.max_health",Base
+\var setArmor Name:"generic.armor",Base
+\var setArmorToughness Name:"generic.armor_toughness",Base
+\var setAttackKnockback Name:"generic.attack_knockback",Base
+
+\var effects ActiveEffects
+\var maxDuration Duration:2147483647
+\var noParticles ShowParticles:0b
+\var speedId Id:1
+\var slowId Id:2
+\var miningFatigueId Id:4
+\var strengthId Id:5
+\var damageId Id:7
+\var jumpBoostId Id:8
+\var nauseaId Id:9
+\var regenerationId Id:10
+\var resistanceId Id:11
+\var fireResistanceId Id:12
+\var invisibilityId Id:14
+\var invisibility {<<invisibilityId>>,Amplifier:0,<<maxDuration>>,<<noParticles>>}
+\var blindnessId Id:15
+\var hungerId Id:17
+\var weaknessId Id:18
+\var witherId Id:20
+\var healthBoostId Id:22
+\var glowingId Id:24
+\var glowing {<<glowingId>>,Amplifier:0,<<maxDuration>>,<<noParticles>>}
+\var levitationId Id:25
+\var badLuckId Id:27
+\var slowFallingId Id:28
+\var badOmenId Id:31
+
+#Creeper
+\var explosionRadius ExplosionRadius
+\var fuse Fuse
+\var powered powered:1
+
+#Zombie
+\var baby IsBaby:1
+\var canBreakDoors CanBreakDoors:1b
+\var setZombieReinforcements Name:"zombie.spawn_reinforcements",Base
+\var maxZombieReinforcements {<<setZombieReinforcements>>:1f}
+
+#Bunny
+\var whiteBunny RabbitType:1
+\var killerBunny RabbitType:99
+
+#Raid
+\var raidLeader PatrolLeader:1b
+\var leaderBanner 
+	id:"minecraft:white_banner",
+	Count:1b,
+	tag:{
+		BlockEntityTag:{Patterns:[
+			{Pattern:"mr",Color:9},
+			{Pattern:"bs",Color:8},
+			{Pattern:"cs",Color:7},
+			{Pattern:"bo",Color:8},
+			{Pattern:"ms",Color:15},
+			{Pattern:"hh",Color:8},
+			{Pattern:"mc",Color:8},
+			{Pattern:"bo",Color:15}
+		]},
+		display:{
+			Name:'{"color":"gold","translate":"block.minecraft.ominous_banner"}'
+		}
+	}
+\var pillagerFireworks {
+	id:"minecraft:firework_rocket",
+	Count:4b,
+	tag:{Fireworks:{
+		Flight:1b,
+		Explosions:[{
+			Type:4,
+			Colors:[I;16633688,15891724,8390921,15761171]
+		}]
+	}}
+}
+
+#var warnDefault if entity @e[tag=nemesis]
+#var warnNoTag unless entity @e[tag=nem_uninstall]
+

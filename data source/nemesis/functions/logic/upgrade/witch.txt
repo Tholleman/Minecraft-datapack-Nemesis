@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase witch
+\var type minecraft:<<fileBase>>
+\var name Witch
+\var scoreboardName nem_witch

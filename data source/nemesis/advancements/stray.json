@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/stray"
+        "function": "nemesis:logic/upgrade/stray"
     },
     "parent": "nemesis:root"
 }

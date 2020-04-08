@@ -1,9 +1,0 @@
-# var mobId
-# var message
-
-# Warn the player
-/execute <<warnDefault>> run tellraw @s {"text":"<<message>>","italic":true,"color":"dark_red"}
-
-# Reset for another summoning
-/advancement revoke @s only nemesis:<<mobId>>
-/tag @e[tag=nemesis] remove nemesis

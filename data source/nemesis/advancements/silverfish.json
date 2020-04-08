@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/silverfish"
+        "function": "nemesis:logic/upgrade/silverfish"
     },
     "parent": "nemesis:root"
 }

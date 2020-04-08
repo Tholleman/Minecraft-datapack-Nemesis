@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/evoker"
+        "function": "nemesis:logic/upgrade/evoker"
     },
     "parent": "nemesis:root"
 }

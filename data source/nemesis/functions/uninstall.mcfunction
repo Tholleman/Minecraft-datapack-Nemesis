@@ -1,6 +1,8 @@
-/tag @s add nem_uninstall
+\file constants.txt
 
-/scoreboard objectives remove nem_num
+/tag @s add <<uninstallTag>>
+
+/scoreboard objectives remove <<numberObjective>>
 
 /advancement grant @s from nemesis:root
 
@@ -11,4 +13,11 @@
 	"color":"green"
 }
 
-/tag @s remove nem_uninstall
+\var successStorage uninstallSuccess
+/scoreboard objectives add <<successStorage>> dummy
+/execute store result score @s <<successStorage>> run datapack disable "file/nemesis 1.16.zip"
+/tellraw @s[scores={<<successStorage>>=0}] {"text":"Disable/remove the zip file to uninstall","italic":true,"color":"red"}
+/tellraw @s[scores={<<successStorage>>=1..}] {"text":"The datapack is disabled but should be removed to completely uninstall","italic":true,"color":"green"}
+/scoreboard objectives remove <<successStorage>>
+
+/tag @s remove <<uninstallTag>>

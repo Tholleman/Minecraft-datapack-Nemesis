@@ -1,1 +1,16 @@
-{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:endermite"}}}},"rewards":{"function":"nemesis:upgrade/endermite"},"parent":"nemesis:root"}
+{
+  "criteria": {
+    "killed": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:endermite"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "nemesis:logic/upgrade/endermite"
+  },
+  "parent": "nemesis:root"
+}

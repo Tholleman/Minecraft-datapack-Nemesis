@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase spider
+\var type minecraft:<<fileBase>>
+\var name Spider
+\var scoreboardName nem_spider

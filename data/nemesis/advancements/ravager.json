@@ -1,1 +1,16 @@
-{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:ravager"}}}},"rewards":{"function":"nemesis:upgrade/ravager"},"parent":"nemesis:root"}
+{
+  "criteria": {
+    "killed": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:ravager"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "nemesis:logic/upgrade/ravager"
+  },
+  "parent": "nemesis:root"
+}

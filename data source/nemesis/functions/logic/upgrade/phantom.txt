@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase phantom
+\var type minecraft:<<fileBase>>
+\var name Phantom
+\var scoreboardName nem_phantom
+\var message The Phantom has become a worse nightmare

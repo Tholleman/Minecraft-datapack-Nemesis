@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/shulker"
+        "function": "nemesis:logic/upgrade/shulker"
     },
     "parent": "nemesis:root"
 }

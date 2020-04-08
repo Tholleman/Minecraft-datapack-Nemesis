@@ -1,1 +1,5 @@
-{"values":["nemesis:on_load"]}
+{
+  "values": [
+    "nemesis:logic/load"
+  ]
+}

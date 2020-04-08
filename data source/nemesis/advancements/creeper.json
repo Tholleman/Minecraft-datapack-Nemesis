@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/creeper"
+        "function": "nemesis:logic/upgrade/creeper"
     },
     "parent": "nemesis:root"
 }

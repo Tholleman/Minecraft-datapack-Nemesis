@@ -1,0 +1,15 @@
+scoreboard players set amount nem_num 5
+execute store result score rng nem_num run loot spawn ~ ~ ~ loot nemesis:rng
+scoreboard players operation rng nem_num %= amount nem_num
+scoreboard objectives add nem_wither_skele dummy "Nemesis Wither Skeleton Progress"
+scoreboard players add @s nem_wither_skele 0
+execute if score @s nem_wither_skele < amount nem_num run scoreboard players operation rng nem_num = @s nem_wither_skele
+execute if score rng nem_num matches 0 run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Stationed Guard\"",PersistenceRequired:1b,CanPickUpLoot:1b,HandItems:[{id:"minecraft:bow",tag:{Enchantments:[{id:power,lvl:5},{id:punch,lvl:2},{id:flame,lvl:1}]},Count:1},{}],Attributes:[{Name:"generic.follow_range",Base:2048},{Name:"generic.knockback_resistance",Base:1f},{Name:"generic.movement_speed",Base:0f},{Name:"generic.attack_damage",Base:20}]}
+execute if score rng nem_num matches 0 run tp @e[type=item,distance=..5] ~ ~ ~
+execute if score rng nem_num matches 1 run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Adaptus Astartes\"",PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:2048}],HandItems:[{id:"minecraft:iron_sword",Count:1},{}],HandDropChances:[0F,0F],ArmorItems:[{id:"minecraft:iron_boots",Count:1},{id:"minecraft:iron_leggings",Count:1},{id:"minecraft:iron_chestplate",Count:1},{id:"minecraft:iron_helmet",Count:1}],ArmorDropChances:[0F,0F,0F,0F]}
+execute if score rng nem_num matches 2 run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Adaptus Custodes\"",PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:2048}],HandItems:[{id:"minecraft:golden_sword",Count:1},{}],HandDropChances:[0F,0F],ArmorItems:[{id:"minecraft:golden_boots",Count:1},{id:"minecraft:golden_leggings",Count:1},{id:"minecraft:golden_chestplate",Count:1},{id:"minecraft:golden_helmet",Count:1}],ArmorDropChances:[0F,0F,0F,0F]}
+execute if score rng nem_num matches 3 run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Warmaster\"",PersistenceRequired:1b,Attributes:[{Name:"generic.follow_range",Base:2048}],HandItems:[{id:"minecraft:diamond_sword",Count:1},{}],HandDropChances:[0F,0F],ArmorItems:[{id:"minecraft:diamond_boots",Count:1},{id:"minecraft:diamond_leggings",Count:1},{id:"minecraft:diamond_chestplate",Count:1},{id:"minecraft:diamond_helmet",Count:1}],ArmorDropChances:[0F,0F,0F,0F]}
+execute if score rng nem_num matches 4 run summon minecraft:wither_skeleton ~ ~ ~ {CustomName:"\"Captain-General\"",PersistenceRequired:1b,Health:50,Attributes:[{Name:"generic.follow_range",Base:2048},{Name:"generic.movement_speed",Base:0.35d},{Name:"generic.attack_damage",Base:17},{Name:"generic.max_health",Base:50},{Name:"generic.knockback_resistance",Base:0.8f}],HandItems:[{id:"minecraft:netherite_sword",Count:1},{}],HandDropChances:[0F,0F],ArmorItems:[{id:"minecraft:netherite_boots",Count:1},{id:"minecraft:netherite_leggings",Count:1},{id:"minecraft:netherite_chestplate",Count:1},{}],ArmorDropChances:[0F,0F,0F,0F]}
+scoreboard players add @s[scores={nem_wither_skele=..4}] nem_wither_skele 1
+scoreboard players reset rng
+scoreboard players reset amount

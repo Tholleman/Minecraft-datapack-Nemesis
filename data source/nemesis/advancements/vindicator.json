@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/vindicator"
+        "function": "nemesis:logic/upgrade/vindicator"
     },
     "parent": "nemesis:root"
 }

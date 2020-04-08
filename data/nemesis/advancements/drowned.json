@@ -1,1 +1,16 @@
-{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:drowned"}}}},"rewards":{"function":"nemesis:upgrade/drowned"},"parent":"nemesis:root"}
+{
+  "criteria": {
+    "killed": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:drowned"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "nemesis:logic/upgrade/drowned"
+  },
+  "parent": "nemesis:root"
+}

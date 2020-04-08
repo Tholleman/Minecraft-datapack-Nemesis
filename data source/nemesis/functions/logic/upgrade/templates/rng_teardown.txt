@@ -1,0 +1,7 @@
+#file constants.txt
+#var scoreboardName 
+#var amount 
+
+/scoreboard players add @s[scores={<<scoreboardName>>=..<<<<amount>> - 1>>}] <<scoreboardName>> 1
+/scoreboard players reset rng
+/scoreboard players reset amount

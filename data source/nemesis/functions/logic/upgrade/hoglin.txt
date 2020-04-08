@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase hoglin
+\var type minecraft:<<fileBase>>
+\var name Hoglin
+\var message The Hoglin feast

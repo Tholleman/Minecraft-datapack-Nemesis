@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase vex
+\var type minecraft:<<fileBase>>
+\var name Vex
+\var scoreboardName nem_vex
+\var message The Vex has increased the raid

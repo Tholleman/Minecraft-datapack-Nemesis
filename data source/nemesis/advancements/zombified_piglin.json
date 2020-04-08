@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/zombified_piglin"
+        "function": "nemesis:logic/upgrade/zombified_piglin"
     },
     "parent": "nemesis:root"
 }

@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/magma_cube"
+        "function": "nemesis:logic/upgrade/magma_cube"
     },
     "parent": "nemesis:root"
 }

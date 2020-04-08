@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/wither_skeleton"
+        "function": "nemesis:logic/upgrade/wither_skeleton"
     },
     "parent": "nemesis:root"
 }

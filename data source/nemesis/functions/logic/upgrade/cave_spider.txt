@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase cave_spider
+\var type minecraft:<<fileBase>>
+\var name Cave Spider
+\var scoreboardName nem_cave_spider
+\var message The Cave Spider has laid eggs and started a cluster

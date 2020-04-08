@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/phantom"
+        "function": "nemesis:logic/upgrade/phantom"
     },
     "parent": "nemesis:root"
 }

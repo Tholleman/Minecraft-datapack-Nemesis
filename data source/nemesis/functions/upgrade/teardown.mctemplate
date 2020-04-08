@@ -1,9 +1,0 @@
-# var scoreboardName
-# var mobId
-# var amount
-# var message
-
-\file teardown no kill.mctemplate
-
-# Replace the original killer
-/tp @e[tag=nemesis] ~ -64 ~

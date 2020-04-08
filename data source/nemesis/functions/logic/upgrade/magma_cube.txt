@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase magma_cube
+\var type minecraft:<<fileBase>>
+\var name Magma Cube
+\var scoreboardName nem_magma_cube

@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase endermite
+\var type minecraft:<<fileBase>>
+\var name Endermite
+\var scoreboardName nem_endermite
+\var message The Endermite has warped around to collect other mobs

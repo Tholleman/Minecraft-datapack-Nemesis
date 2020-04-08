@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/slime"
+        "function": "nemesis:logic/upgrade/slime"
     },
     "parent": "nemesis:root"
 }

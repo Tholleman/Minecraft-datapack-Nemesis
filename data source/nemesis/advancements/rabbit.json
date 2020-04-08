@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/rabbit"
+        "function": "nemesis:logic/upgrade/rabbit"
     },
     "parent": "nemesis:root"
 }

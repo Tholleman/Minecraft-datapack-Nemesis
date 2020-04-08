@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/ghast"
+        "function": "nemesis:logic/upgrade/ghast"
     },
     "parent": "nemesis:root"
 }

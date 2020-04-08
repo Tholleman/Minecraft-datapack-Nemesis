@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/vex"
+        "function": "nemesis:logic/upgrade/vex"
     },
     "parent": "nemesis:root"
 }

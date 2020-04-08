@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/witch"
+        "function": "nemesis:logic/upgrade/witch"
     },
     "parent": "nemesis:root"
 }

@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase stray
+\var type minecraft:<<fileBase>>
+\var name Stray
+\var scoreboardName nem_stray

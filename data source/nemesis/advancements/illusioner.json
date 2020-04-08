@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/illusioner"
+        "function": "nemesis:logic/upgrade/illusioner"
     },
     "parent": "nemesis:root"
 }

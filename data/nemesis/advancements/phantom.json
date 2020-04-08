@@ -1,1 +1,16 @@
-{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:phantom"}}}},"rewards":{"function":"nemesis:upgrade/phantom"},"parent":"nemesis:root"}
+{
+  "criteria": {
+    "killed": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:phantom"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "nemesis:logic/upgrade/phantom"
+  },
+  "parent": "nemesis:root"
+}

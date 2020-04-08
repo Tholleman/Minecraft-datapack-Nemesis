@@ -1,1 +1,16 @@
-{"criteria":{"killed":{"trigger":"minecraft:entity_killed_player","conditions":{"entity":{"type":"minecraft:spider"}}}},"rewards":{"function":"nemesis:upgrade/spider"},"parent":"nemesis:root"}
+{
+  "criteria": {
+    "killed": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:spider"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "nemesis:logic/upgrade/spider"
+  },
+  "parent": "nemesis:root"
+}

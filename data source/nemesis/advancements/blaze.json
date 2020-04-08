@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/blaze"
+        "function": "nemesis:logic/upgrade/blaze"
     },
     "parent": "nemesis:root"
 }

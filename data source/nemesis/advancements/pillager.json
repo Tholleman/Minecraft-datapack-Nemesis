@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/pillager"
+        "function": "nemesis:logic/upgrade/pillager"
     },
     "parent": "nemesis:root"
 }

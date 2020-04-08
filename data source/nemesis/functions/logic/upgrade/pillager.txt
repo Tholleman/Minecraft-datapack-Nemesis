@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase pillager
+\var type minecraft:<<fileBase>>
+\var name Pillager
+\var scoreboardName nem_pillager

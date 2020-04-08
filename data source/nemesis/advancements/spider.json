@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/spider"
+        "function": "nemesis:logic/upgrade/spider"
     },
     "parent": "nemesis:root"
 }

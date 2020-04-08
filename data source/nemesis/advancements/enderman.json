@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/enderman"
+        "function": "nemesis:logic/upgrade/enderman"
     },
     "parent": "nemesis:root"
 }

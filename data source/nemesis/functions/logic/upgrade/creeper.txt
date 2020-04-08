@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase creeper
+\var type minecraft:<<fileBase>>
+\var name Creeper
+\var scoreboardName nem_creeper
+\var message The Creeper has reincarnated into a more powerful version

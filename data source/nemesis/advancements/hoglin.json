@@ -10,7 +10,7 @@
     }
   },
   "rewards": {
-    "function": "nemesis:upgrade/hoglin"
+    "function": "nemesis:logic/upgrade/hoglin"
   },
   "parent": "nemesis:root"
 }

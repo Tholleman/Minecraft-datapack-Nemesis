@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase wither_skeleton
+\var type minecraft:<<fileBase>>
+\var name Wither Skeleton
+#                   123456789 123456
+\var scoreboardName nem_wither_skele

@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase rabbit
+\var type minecraft:<<fileBase>>
+\var name Rabbit
+\var scoreboardName nem_rabbit
+\var message The Bunny has multiplied

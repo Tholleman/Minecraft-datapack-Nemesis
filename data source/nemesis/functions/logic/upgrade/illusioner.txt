@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase illusioner
+\var type minecraft:<<fileBase>>
+\var name Illusioner
+\var scoreboardName nem_illusioner

@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase slime
+\var type minecraft:<<fileBase>>
+\var name Slime
+\var scoreboardName nem_slime

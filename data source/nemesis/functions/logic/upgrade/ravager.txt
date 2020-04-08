@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase ravager
+\var type minecraft:<<fileBase>>
+\var name Ravager
+\var scoreboardName nem_ravager

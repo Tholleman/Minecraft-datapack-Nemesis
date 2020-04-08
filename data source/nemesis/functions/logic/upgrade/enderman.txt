@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase enderman
+\var type minecraft:<<fileBase>>
+\var name Enderman
+\var message The Enderman broke you down into Endermites

@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/zombie_villager"
+        "function": "nemesis:logic/upgrade/zombie_villager"
     },
     "parent": "nemesis:root"
 }

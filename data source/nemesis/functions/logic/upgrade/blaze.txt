@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase blaze
+\var type minecraft:<<fileBase>>
+\var name Blaze
+\var scoreboardName nem_blaze
+

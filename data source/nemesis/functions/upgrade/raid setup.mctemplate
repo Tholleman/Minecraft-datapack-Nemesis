@@ -1,8 +1,0 @@
-# var scoreboardName
-# var mobId
-# var name
-# var amount
-
-\file setup.mctemplate
-
-\var message The <<name>> has increased the raid

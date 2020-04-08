@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase husk
+\var type minecraft:<<fileBase>>
+\var name Husk
+\var scoreboardName nem_husk

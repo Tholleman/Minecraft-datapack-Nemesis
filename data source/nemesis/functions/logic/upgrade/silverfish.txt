@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase silverfish
+\var type minecraft:<<fileBase>>
+\var name Silverfish
+\var scoreboardName nem_silverfish

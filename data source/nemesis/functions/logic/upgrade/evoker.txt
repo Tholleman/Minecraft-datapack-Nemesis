@@ -1,0 +1,6 @@
+\file ../../constants.txt
+
+\var fileBase evoker
+\var type minecraft:<<fileBase>>
+\var name Evoker
+\var scoreboardName nem_evoker

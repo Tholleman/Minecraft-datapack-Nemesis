@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase shulker
+\var type minecraft:<<fileBase>>
+\var name Shulker
+\var scoreboardName nem_shulker
+\var message The Shulker gains help

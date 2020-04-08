@@ -1,0 +1,7 @@
+\file ../../constants.txt
+
+\var fileBase piglin
+\var type minecraft:<<fileBase>>
+\var name Piglin
+\var scoreboardName nem_piglin
+\var message The Piglin took a look at your items

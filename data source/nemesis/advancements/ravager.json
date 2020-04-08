@@ -10,7 +10,7 @@
         }
     },
     "rewards": {
-        "function": "nemesis:upgrade/ravager"
+        "function": "nemesis:logic/upgrade/ravager"
     },
     "parent": "nemesis:root"
 }
